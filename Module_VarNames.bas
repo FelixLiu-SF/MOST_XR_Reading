@@ -3,8 +3,9 @@ Option Compare Database
 Option Explicit
 
 '---CONCAT_VISITVARSIDE---'
-Public Function Concat_VisitVarSide(VisitArray As Variant, VarArray As Variant, SideString As Variant) As Variant
+Public Function Concat_VisitVarSide(VisitArray As Variant, VarArray As Variant, SideArray As Variant) As Variant
 
+    Dim ControlArray() As String
     Dim VisitUB As Integer
     Dim VarUB As Integer
     Dim SideUB As Integer
@@ -21,7 +22,7 @@ Public Function Concat_VisitVarSide(VisitArray As Variant, VarArray As Variant, 
 
     ArrayUB = VisitUB*VarUB*SideUB
 
-    Dim ControlArray(ArrayUB) As String
+    ReDim ControlArray(ArrayUB) As String
 
     VisitIX = 0
     VarIX = 0
