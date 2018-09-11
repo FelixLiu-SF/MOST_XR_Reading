@@ -26,12 +26,12 @@ Else
     FormIn(ControlIn).Visible = True
 End If
 
-LockBox = True
+HideBox = True
 
 End function
 
 '---HIDEVARS---'
-Public Function HideVars(FormIn as Access.Form, ControlArray As String, HideBool As Boolean)
+Public Function HideVars(FormIn as Access.Form, ControlArray As Variant, HideBool As Boolean)
 
 Dim Upper as Integer
 Dim Index as Integer
@@ -41,7 +41,7 @@ Upper = UBound(ControlArray, 1)
 
 Index = 0
 For Index = 0 To Upper
-    FuncBool = HideBox(FormIn,ControlArray(Index), HideBool)
+    FuncBool = HideBox(FormIn,CStr(ControlArray(Index)), HideBool)
 Next
 
 HideVars = True
@@ -49,7 +49,7 @@ HideVars = True
 End function
 
 '---LOCKVARS---'
-Public Function LockVars(FormIn as Access.Form, ControlArray As String, LockBool As Boolean)
+Public Function LockVars(FormIn as Access.Form, ControlArray As Variant, LockBool As Boolean)
 
 Dim Upper as Integer
 Dim Index as Integer
@@ -59,7 +59,7 @@ Upper = UBound(ControlArray, 1)
 
 Index = 0
 For Index = 0 To Upper
-    FuncBool = LockBox(FormIn,ControlArray(Index), LockBool)
+    FuncBool = LockBox(FormIn, CStr(ControlArray(Index)), LockBool)
 Next
 
 LockVars = True
