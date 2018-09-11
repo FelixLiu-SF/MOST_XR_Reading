@@ -3,7 +3,7 @@ Option Compare Database
 Option Explicit
 
 '---CONCAT_VISITVARSIDE---'
-Public Function Concat_VisitVarSide(VisitArray As Variant, VarArray As Variant, SideArray As Variant) As Variant
+Public Function Concat_VisitVarSide(VisitArray() As String, VarArray() As String, SideArray() As String) As String()
 
     Dim ControlArray() As String
     Dim VisitUB As Integer
@@ -44,12 +44,12 @@ Public Function Concat_VisitVarSide(VisitArray As Variant, VarArray As Variant, 
 End Function
 
 '---CONCAT_PREFIX---'
-Public Function Concat_Prefix(PrefixStr As String, ControlArray As Variant) As Variant
+Public Function Concat_Prefix(PrefixStr As String, ControlArray() As String) As String()
 
     Dim ArrayUB As Integer
     Dim Index As Integer
 
-    ArrayUB = UBound(ControlArray,1)
+    ArrayUB = UBound(ControlArray,1) - 1
 
     Index = 0
     For Index = 0 To ArrayUB
@@ -61,12 +61,12 @@ Public Function Concat_Prefix(PrefixStr As String, ControlArray As Variant) As V
 End Function
 
 '---CONCAT_SUFFIX---'
-Public Function Concat_Suffix(ControlArray As Variant, SuffixStr As String) As Variant
+Public Function Concat_Suffix(ControlArray() As String, SuffixStr As String) As String()
 
     Dim ArrayUB As Integer
     Dim Index As Integer
 
-    ArrayUB = UBound(ControlArray,1)
+    ArrayUB = UBound(ControlArray,1) - 1
 
     Index = 0
     For Index = 0 To ArrayUB
