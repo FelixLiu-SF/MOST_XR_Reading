@@ -3,7 +3,7 @@ Option Compare Database
 Option Explicit
 
 '---CONCAT_VISITVARSIDE---'
-Public Function Concat_VisitVarSide(VisitArray As String, VarArray As String, SideString As String) As Variant
+Public Function Concat_VisitVarSide(VisitArray As Variant, VarArray As Variant, SideString As Variant) As Variant
 
     Dim VisitUB As Integer
     Dim VarUB As Integer
@@ -32,7 +32,7 @@ Public Function Concat_VisitVarSide(VisitArray As String, VarArray As String, Si
     For VisitIX = 0 To VisitUB
       For VarIX = 0 To VarUB
         For SideIX = 0 to SideUB
-            ControlArray(Index) = VisitArray(VisitIX) & VarArray(VarIX) & SideArray(SideIX)
+            ControlArray(Index) = CStr(VisitArray(VisitIX)) & CStr(VarArray(VarIX)) & CStr(SideArray(SideIX))
             Index = Index + 1
         Next
       Next
@@ -43,7 +43,7 @@ Public Function Concat_VisitVarSide(VisitArray As String, VarArray As String, Si
 End Function
 
 '---CONCAT_PREFIX---'
-Public Function Concat_Prefix(PrefixStr As String, ControlArray As String) As Variant
+Public Function Concat_Prefix(PrefixStr As String, ControlArray As Variant) As Variant
 
     Dim ArrayUB As Integer
     Dim Index As Integer
@@ -52,7 +52,7 @@ Public Function Concat_Prefix(PrefixStr As String, ControlArray As String) As Va
 
     Index = 0
     For Index = 0 To ArrayUB
-        ControlArray(Index) = PrefixStr & ControlArray(Index)
+        ControlArray(Index) = PrefixStr & CStr(ControlArray(Index))
     Next
 
     Concat_Prefix = ControlArray
@@ -60,7 +60,7 @@ Public Function Concat_Prefix(PrefixStr As String, ControlArray As String) As Va
 End Function
 
 '---CONCAT_SUFFIX---'
-Public Function Concat_Suffix(ControlArray As String, SuffixStr As String) As Variant
+Public Function Concat_Suffix(ControlArray As Variant, SuffixStr As String) As Variant
 
     Dim ArrayUB As Integer
     Dim Index As Integer
@@ -69,7 +69,7 @@ Public Function Concat_Suffix(ControlArray As String, SuffixStr As String) As Va
 
     Index = 0
     For Index = 0 To ArrayUB
-        ControlArray(Index) = ControlArray(Index) & SuffixStr
+        ControlArray(Index) = CStr(ControlArray(Index)) & SuffixStr
     Next
 
     Concat_Suffix = ControlArray
