@@ -1,3 +1,4 @@
+Attribute VB_Name = "Module_VarNames"
 Option Compare Database
 Option Explicit
 
