@@ -4,17 +4,17 @@ Option Explicit
 
 '---CONTROL_EDIT_FOCUS---'
 Public Function Control_Edit_OnFocus(FormIn as Access.Form, ControlName As String, FocusFuncStr As String)
-'Insert table from SQL Select query into combo box dropdown menu when box has focus
+'Insert function into control box to be called on focus
 
     FormIn(ControlName).OnGotFocus = FocusFuncStr
 
 End function
 
-'---CONTROL_EDIT_AfterUpdate---'
-Public Function Control_Edit_AfterUpdate(FormIn as Access.Form, ControlName As String, UpdateFunc As String)
-'Update the control afterupdate function
+'---CONTROL_EDIT_AFTERUPDATE---'
+Public Function Control_Edit_AfterUpdate(FormIn as Access.Form, ControlName As String, UpdateFuncStr As String)
+'Insert function into control box to be called after updating
 
-    FormIn(ControlName).AfterUpdate = UpdateFunc
+    FormIn(ControlName).AfterUpdate = UpdateFuncStr
 
 End function
 
@@ -36,6 +36,8 @@ Public Function Make_ControlUpdate_Func(ControlName As String, SelectFunc As Str
     Dim FocusFuncStr As String
 
     FocusFuncStr = "=UpdateDropdown(""" & ControlName & """,""" & SelectFunc & """)"
+
+    Make_ControlUpdate_Func = FocusFuncStr
 
 End Function
 
