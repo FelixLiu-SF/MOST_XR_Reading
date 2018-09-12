@@ -64,7 +64,7 @@ Public Function LockVars(FormIn as Access.Form, ControlArray() As String, LockBo
     'Get the upper bound of the control name string array
     Upper = UBound(ControlArray, 1) - 1
 
-    'Loop and lock 
+    'Loop and lock
     Index = 0
     For Index = 0 To Upper
         FuncBool = LockBox(FormIn, CStr(ControlArray(Index)), LockBool)
@@ -73,3 +73,91 @@ Public Function LockVars(FormIn as Access.Form, ControlArray() As String, LockBo
     LockVars = True
 
 End function
+
+'---BACKCOLORCODE---'
+Private Function BackcolorCode(FormIn as Access.Form, ControlIn As String)
+'Set the control background color according to property status
+
+    'Color variables
+    Dim ColorWhite As Long
+    Dim ColorSilver As Long
+    Dim ColorLightGrey As Long
+    Dim ColorPaleYellow As Long
+    Dim ColorYellow As Long
+    Dim ColorBlue As Long
+    Dim ColorBrown As Long
+
+    'Value variables
+    Dim CheckVar As Variant
+    Dim CheckValue As Variant
+    Dim CheckType As Integer
+    Dim StrValue As String
+
+    'Assign RGB color codes
+    ColorWhite = RGB(255, 255, 255)
+    ColorSilver = RGB(192, 192, 192)
+    ColorLightGrey = RGB(210, 210, 210)
+    ColorPaleYellow = RGB(255, 255, 166)
+    ColorYellow = RGB(192, 192, 0)
+    ColorBlue = RGB(0, 0, 150)
+    ColorBrown = RGB(205, 133, 63)
+
+    'Check if the control is Locked
+    If FormIn(ControlIn).Locked Then
+    'Color the Locked=TRUE boxes
+
+        FormIn(ControlIn).BackColor = ColorSilver
+        FormIn(ControlIn).FontWeight = 400
+        FormIn(ControlIn).BorderColor = ColorSilver
+
+    Else 'Color the rest based on null values
+
+        'Check for associated variable in control
+        CheckVar = FormIn(ControlIn).ControlSource
+
+        If Len(Nz(CheckVar, "")) > 0 Then
+        'Control is bound to a variable
+
+            'Get the bound variable type and value
+            CheckType = VarType(CheckVar)
+            CheckValue = FormIn.Recordset.Fields(CheckVar).Value
+
+            'Format value score into string
+            If Len(Nz(CheckValue, "")) > 0 Then
+                If CheckType = 2 Or CheckType = 3 Then
+                    StrValue = Trim(CStr(CheckValue))
+                Else
+                    StrValue = Trim(CheckValue)
+                End If
+            Else
+                StrValue = ""
+            End If
+
+        Else
+        'Control is not bound to a variable. Assume value is a string
+
+            StrValue = FormIn(ControlIn).Value
+
+        End If
+
+        'Color the control background according to the value
+
+        If Len(Nz(StrValue, "")) > 0 Then 'Is Not Null
+
+            FormIn(ControlIn).BackColor = ColorWhite
+            FormIn(ControlIn).FontWeight = 400
+            FormIn(ControlIn).BorderColor = ColorSilver
+
+        Else 'Is Null
+
+            FormIn(ControlIn).BackColor = ColorPaleYellow
+            FormIn(ControlIn).FontWeight = 400
+            FormIn(ControlIn).BorderColor = ColorSilver
+
+        End If 'null
+
+    End If 'locked
+
+    BackcolorCode = True
+
+End Function

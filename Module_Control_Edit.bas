@@ -8,7 +8,14 @@ Public Function Control_Edit_OnFocus(FormIn as Access.Form, ControlName As Strin
 
     FormIn(ControlName).OnGotFocus = FocusFuncStr
 
-End function
+End Function
+
+'---CONTROL_EDIT_LOSTFOCUS---'
+Public Function Control_Edit_LostFocus(FormIn as Access.Form, ControlName As String, LostFuncStr As String)
+
+    FormIn(ControlName).OnLostFocus = LostFuncStr
+
+End Function
 
 '---CONTROL_EDIT_AFTERUPDATE---'
 Public Function Control_Edit_AfterUpdate(FormIn as Access.Form, ControlName As String, UpdateFuncStr As String)
