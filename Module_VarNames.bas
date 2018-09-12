@@ -4,6 +4,7 @@ Option Explicit
 
 '---CONCAT_VISITVARSIDE---'
 Public Function Concat_VisitVarSide(VisitArray() As String, VarArray() As String, SideArray() As String) As String()
+'Concatenate variable roots with visit prefix and side suffix
 
     Dim ControlArray() As String
     Dim VisitUB As Integer
@@ -16,14 +17,16 @@ Public Function Concat_VisitVarSide(VisitArray() As String, VarArray() As String
     Dim ArrayIX As Integer
     Dim Index As Integer
 
+    'Get upper bound for each string array
     VisitUB = UBound(VisitArray,1)
     VarUB = UBound(VarArray,1)
     SideUB = UBound(SideArray,1)
 
+    'Calculate size of output string array and redim
     ArrayUB = VisitUB*VarUB*SideUB
-
     ReDim ControlArray(ArrayUB) As String
 
+    'Loop through all combinations and concatenate
     VisitIX = 0
     VarIX = 0
     SideIX = 0
@@ -45,6 +48,7 @@ End Function
 
 '---CONCAT_PREFIX---'
 Public Function Concat_Prefix(PrefixStr As String, ControlArray() As String) As String()
+'Concatenate control array with static prefix
 
     Dim ArrayUB As Integer
     Dim Index As Integer
@@ -62,6 +66,7 @@ End Function
 
 '---CONCAT_SUFFIX---'
 Public Function Concat_Suffix(ControlArray() As String, SuffixStr As String) As String()
+'Concatenate control array with static suffix 
 
     Dim ArrayUB As Integer
     Dim Index As Integer
