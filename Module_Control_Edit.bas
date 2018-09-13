@@ -91,3 +91,24 @@ Public Function UpdateDropdown(FormIn As Access.Form, ControlIn As String, Contr
     Exit Function
 
 End Function
+
+'---DIRTYSAVE---'
+Private Function DirtySave(FormIn as Access.Form)
+'Save Dirty record
+
+    On Error GoTo DirtySaveErr
+
+    If FormIn.Dirty Then
+        FormIn.Dirty = False
+    End If
+
+    DoCmd.Save(acForm, FormIn)
+    
+    On Error GoTo 0
+    DirtySave = True
+    Exit Function
+
+    DirtySaveErr:
+    Resume Next
+
+End Function
