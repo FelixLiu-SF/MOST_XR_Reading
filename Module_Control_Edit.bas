@@ -93,7 +93,7 @@ Public Function UpdateDropdown(FormIn As Access.Form, ControlIn As String, Contr
 End Function
 
 '---DIRTYSAVE---'
-Private Function DirtySave(FormIn as Access.Form)
+Public Function DirtySave(FormIn as Access.Form)
 'Save Dirty record
 
     On Error GoTo DirtySaveErr
@@ -103,7 +103,7 @@ Private Function DirtySave(FormIn as Access.Form)
     End If
 
     DoCmd.Save(acForm, FormIn)
-    
+
     On Error GoTo 0
     DirtySave = True
     Exit Function
