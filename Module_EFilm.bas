@@ -44,6 +44,20 @@ End Function
 
 Public Function VBA_OpenStudy(PATID As String, PATACC As String) As Boolean
 
+    Dim WindowBool As Boolean
+
+    On Error GoTo ErrorHandler1
+
+    WindowBool = EFilmAuto.oleShowMainWindow(1)
     VBA_OpenStudy = EFilmAuto.oleOpenStudy2(PATID, PATACC, True, False, 1, 5, 1, 1, False, False, "{0CBB4846-0868-4f42-8AC3-63F5B8822AF6}")
+
+    On Error GoTo 0
+    Exit Function
+
+ErrorHandler1:
+
+    LoadEFilmAuto
+
+Exit Function 
 
 End Function
