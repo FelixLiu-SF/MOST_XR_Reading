@@ -68,7 +68,7 @@ Public Function UpdateDropdown(FormName As String, ControlIn As String, ControlS
     Dim DumLoop As Integer
     Dim DumBool As Boolean
 
-    If Forms!FormName.Controls!ControlIn..Locked = False Then
+    If Forms(FormName).Controls(ControlIn)..Locked = False Then
 
         ' initialize DAO objects
         On Error GoTo ErrorHandler1
@@ -76,8 +76,8 @@ Public Function UpdateDropdown(FormName As String, ControlIn As String, ControlS
         Set rs = db.OpenRecordset(ControlSQL)
 
         ' Update Combo Box
-        Forms!FormName.Controls!ControlIn.RowSourceType = "Table/Query"
-        Set Forms!FormName.Controls!ControlIn..Recordset = rs
+        Forms(FormName).Controls(ControlIn).RowSourceType = "Table/Query"
+        Set Forms(FormName).Controls(ControlIn).Recordset = rs
 
         ' dummy loop to wait before clearing rs
         For DumLoop = 0 To 500
@@ -110,8 +110,8 @@ Public Function DirtySave(FormName As String)
 
     On Error GoTo DirtySaveErr
 
-    If Forms!FormName.Dirty Then
-        Forms!FormName.Dirty = False
+    If Forms(FormName).Dirty Then
+        Forms(FormName).Dirty = False
     End If
 
     DoCmd.Save acForm, Forms!FormName
