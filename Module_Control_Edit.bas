@@ -102,7 +102,7 @@ Public Function DirtySave(FormIn as Access.Form)
         FormIn.Dirty = False
     End If
 
-    DoCmd.Save(acForm, FormIn)
+    DoCmd.Save acForm, FormIn
 
     On Error GoTo 0
     DirtySave = True

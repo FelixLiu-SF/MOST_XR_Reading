@@ -23,7 +23,9 @@ ErrorHandler1:
     'str_err = ""
     'msg_err = MsgBox(str_err, vbOKOnly, "EFilm-Access Connection")
 
-Exit Function
+    Exit Function
+
+End Function 
 
 Public Function UnloadEFilmAuto()
 
@@ -58,6 +60,6 @@ ErrorHandler1:
 
     LoadEFilmAuto
 
-Exit Function 
+Exit Function
 
 End Function
