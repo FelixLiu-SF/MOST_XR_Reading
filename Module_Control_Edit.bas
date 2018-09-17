@@ -36,6 +36,18 @@ Public Function Control_Edit_Binding(FormIn as Access.Form, ControlName As Strin
 
 End Function
 
+'---MAKE_CONTROLCOLOR_FUNC---'
+Public Function Make_ControlColor_Func(ControlName As String) As String
+'Concatente string for updating dropdown menu SQL query
+
+    Dim ColorFuncStr As String
+
+    ColorFuncStr = "=BackcolorCode(""" & ControlName & """)"
+
+    Make_ControlColor_Func = ColorFuncStr
+
+End Function
+
 '---MAKE_CONTROLUPDATE_FUNC---'
 Public Function Make_ControlUpdate_Func(ControlName As String, SelectFunc As String) As String
 'Concatente string for updating dropdown menu SQL query
