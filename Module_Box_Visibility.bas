@@ -75,7 +75,7 @@ Public Function LockVars(FormIn as Access.Form, ControlArray() As String, LockBo
 End function
 
 '---BACKCOLORCODE---'
-Private Function BackcolorCode(FormIn as Access.Form, ControlIn As String)
+Public Function BackcolorCode(FormName As String, ControlIn As String)
 'Set the control background color according to property status
 
     'Color variables
@@ -103,17 +103,17 @@ Private Function BackcolorCode(FormIn as Access.Form, ControlIn As String)
     ColorBrown = RGB(205, 133, 63)
 
     'Check if the control is Locked
-    If FormIn(ControlIn).Locked Then
+    If Forms!FormName.Controls!ControlIn.Locked Then
     'Color the Locked=TRUE boxes
 
-        FormIn(ControlIn).BackColor = ColorSilver
-        FormIn(ControlIn).FontWeight = 400
-        FormIn(ControlIn).BorderColor = ColorSilver
+        Forms!FormName.Controls!ControlIn.BackColor = ColorSilver
+        Forms!FormName.Controls!ControlIn.FontWeight = 400
+        Forms!FormName.Controls!ControlIn.BorderColor = ColorSilver
 
     Else 'Color the rest based on null values
 
         'Check for associated variable in control
-        CheckVar = FormIn(ControlIn).ControlSource
+        CheckVar = Forms!FormName.Controls!ControlIn.ControlSource
 
         If Len(Nz(CheckVar, "")) > 0 Then
         'Control is bound to a variable
@@ -136,7 +136,7 @@ Private Function BackcolorCode(FormIn as Access.Form, ControlIn As String)
         Else
         'Control is not bound to a variable. Assume value is a string
 
-            StrValue = FormIn(ControlIn).Value
+            StrValue = Forms!FormName.Controls!ControlIn.Value
 
         End If
 
@@ -144,15 +144,15 @@ Private Function BackcolorCode(FormIn as Access.Form, ControlIn As String)
 
         If Len(Nz(StrValue, "")) > 0 Then 'Is Not Null
 
-            FormIn(ControlIn).BackColor = ColorWhite
-            FormIn(ControlIn).FontWeight = 400
-            FormIn(ControlIn).BorderColor = ColorSilver
+            Forms!FormName.Controls!ControlIn.BackColor = ColorWhite
+            Forms!FormName.Controls!ControlIn.FontWeight = 400
+            Forms!FormName.Controls!ControlIn.BorderColor = ColorSilver
 
         Else 'Is Null
 
-            FormIn(ControlIn).BackColor = ColorPaleYellow
-            FormIn(ControlIn).FontWeight = 400
-            FormIn(ControlIn).BorderColor = ColorSilver
+            Forms!FormName.Controls!ControlIn.BackColor = ColorPaleYellow
+            Forms!FormName.Controls!ControlIn.FontWeight = 400
+            Forms!FormName.Controls!ControlIn.BorderColor = ColorSilver
 
         End If 'null
 

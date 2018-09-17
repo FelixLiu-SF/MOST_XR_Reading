@@ -37,38 +37,38 @@ Public Function Control_Edit_Binding(FormIn as Access.Form, ControlName As Strin
 End Function
 
 '---MAKE_CONTROLCOLOR_FUNC---'
-Public Function Make_ControlColor_Func(ControlName As String) As String
+Public Function Make_ControlColor_Func(FormName As String, ControlName As String) As String
 'Concatente string for updating dropdown menu SQL query
 
     Dim ColorFuncStr As String
 
-    ColorFuncStr = "=BackcolorCode(""" & ControlName & """)"
+    ColorFuncStr = "=BackcolorCode(""" & FormName & """,""" & ControlName & """)"
 
     Make_ControlColor_Func = ColorFuncStr
 
 End Function
 
 '---MAKE_CONTROLUPDATE_FUNC---'
-Public Function Make_ControlUpdate_Func(ControlName As String, SelectFunc As String) As String
+Public Function Make_ControlUpdate_Func(FormName As String, ControlName As String, SelectFunc As String) As String
 'Concatente string for updating dropdown menu SQL query
 
     Dim FocusFuncStr As String
 
-    FocusFuncStr = "=UpdateDropdown(""" & ControlName & """,""" & SelectFunc & """)"
+    FocusFuncStr = "=UpdateDropdown(""" & FormName & """,""" & ControlName & """,""" & SelectFunc & """)"
 
     Make_ControlUpdate_Func = FocusFuncStr
 
 End Function
 
 '---UPDATEDROPDOWN---'
-Public Function UpdateDropdown(FormIn As Access.Form, ControlIn As String, ControlSQL As String)
+Public Function UpdateDropdown(FormName As String, ControlIn As String, ControlSQL As String)
 ' Update Combo Box object table if not Locked
 
     'dummy variables for artificial CPU wait
     Dim DumLoop As Integer
     Dim DumBool As Boolean
 
-    If FormIn(ControlIn).Locked = False Then
+    If Forms!FormName.Controls!ControlIn..Locked = False Then
 
         ' initialize DAO objects
         On Error GoTo ErrorHandler1
@@ -76,8 +76,8 @@ Public Function UpdateDropdown(FormIn As Access.Form, ControlIn As String, Contr
         Set rs = db.OpenRecordset(ControlSQL)
 
         ' Update Combo Box
-        FormIn(ControlIn).RowSourceType = "Table/Query"
-        Set FormIn(ControlIn).Recordset = rs
+        Forms!FormName.Controls!ControlIn.RowSourceType = "Table/Query"
+        Set Forms!FormName.Controls!ControlIn..Recordset = rs
 
         ' dummy loop to wait before clearing rs
         For DumLoop = 0 To 500
@@ -105,16 +105,16 @@ Public Function UpdateDropdown(FormIn As Access.Form, ControlIn As String, Contr
 End Function
 
 '---DIRTYSAVE---'
-Public Function DirtySave(FormIn as Access.Form)
+Public Function DirtySave(FormName As String)
 'Save Dirty record
 
     On Error GoTo DirtySaveErr
 
-    If FormIn.Dirty Then
-        FormIn.Dirty = False
+    If Forms!FormName.Dirty Then
+        Forms!FormName.Dirty = False
     End If
 
-    DoCmd.Save acForm, FormIn
+    DoCmd.Save acForm, Forms!FormName
 
     On Error GoTo 0
     DirtySave = True
