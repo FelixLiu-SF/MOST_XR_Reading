@@ -48,6 +48,18 @@ Public Function Make_ControlColor_Func(FormName As String, ControlName As String
 
 End Function
 
+'---MAKE_CONTROLSAVE_FUNC---'
+Public Function Make_ControlSave_Func(FormName As String) As String
+'Concatente string for updating dropdown menu SQL query
+
+    Dim SaveFuncStr As String
+
+    SaveFuncStr = "=DirtySave(""" & FormName & """)"
+
+    Make_ControlSave_Func = SaveFuncStr
+
+End Function
+
 '---MAKE_CONTROLUPDATE_FUNC---'
 Public Function Make_ControlUpdate_Func(FormName As String, ControlName As String, SelectFunc As String) As String
 'Concatente string for updating dropdown menu SQL query
