@@ -68,7 +68,7 @@ Public Function UpdateDropdown(FormName As String, ControlIn As String, ControlS
     Dim DumLoop As Integer
     Dim DumBool As Boolean
 
-    If Forms(FormName).Controls(ControlIn)..Locked = False Then
+    If Forms(FormName).Controls(ControlIn).Locked = False Then
 
         ' initialize DAO objects
         On Error GoTo ErrorHandler1
