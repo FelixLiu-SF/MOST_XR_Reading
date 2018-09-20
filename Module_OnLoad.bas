@@ -19,6 +19,7 @@ Public Function LoadForm(FormName As String)
         DoCmd.ShowToolbar "Ribbon", acToolbarNo
 
     End If
+
     'Load the DAO objects
     LoadDAO
 
@@ -30,6 +31,11 @@ Public Function LoadForm(FormName As String)
 
     ErrorHandler1:
 
+        'clear error object
+        On Error GoTo -1
+
+        On Error Goto ErrorHandler2
+
         'Maximize the form window
         DoCmd.Maximize
 
@@ -37,5 +43,15 @@ Public Function LoadForm(FormName As String)
         DoCmd.ShowToolbar "Ribbon", acToolbarNo
 
         Resume Next
+
+    ErrorHandler2:
+
+        'Load the DAO objects
+        LoadDAO
+
+        'Load EFilm Automation object
+        LoadEfilmAuto
+
+        Exit Function
 
 End Function
