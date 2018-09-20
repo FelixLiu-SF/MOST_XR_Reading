@@ -12,6 +12,9 @@ Public Function LoadForm(FormName As String)
 
     If Debug_Flag < 1 Then
 
+        'Set Focus on Form
+        Forms(FormName).SetFocus
+
         'Maximize the form window
         DoCmd.Maximize
 
@@ -58,5 +61,50 @@ Public Function LoadForm(FormName As String)
         LoadEfilmAuto
 
         Exit Function
+
+End Function
+
+
+'---LOADRECNAV---'
+Public Function LoadRecNav(FormName As String, TextBoxName As String)
+'Refresh text boxes to show current record number
+
+    Dim nCurRec As Integer
+
+    On Error GoTo ErrorHandler1
+
+      'Set Focus on Form
+      Forms(FormName).SetFocus
+
+      'Get current record number and update text box
+      nCurRec = Forms(FormName).CurrentRecord
+      Forms(FormName).Controls(TextBoxName).Value = CStr(nCurRec)
+
+      Exit Function
+
+    ErrorHandler1:
+    Exit Function
+
+End Function
+
+'---LOADMAXREC---'
+Public Function LoadMaxRec(FormName As String, TextBoxName As String)
+'Refresh text boxes to show max record number
+
+    Dim nMaxRec As Integer
+
+    On Error GoTo ErrorHandler1
+
+      'Set Focus on Form
+      Forms(FormName).SetFocus
+
+      'Get max record number and update text box
+      nMaxRec = DLookup("MaxRecord","tblProperties","RecordID = 1")
+      Forms(FormName).Controls(TextBoxName).Value = CStr(nMaxRec)
+
+      Exit Function
+
+    ErrorHandler1:
+    Exit Function
 
 End Function
