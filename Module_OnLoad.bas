@@ -20,6 +20,11 @@ Public Function LoadForm(FormName As String)
 
     End If
 
+    'clear error object
+    On Error GoTo -1
+
+    On Error Goto ErrorHandler2
+
     'Load the DAO objects
     LoadDAO
 
