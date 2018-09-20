@@ -10,7 +10,7 @@ Public Function LoadForm(FormName As String)
 
     Debug_Flag = DLookup("DebugFlag","tblDebug","RecordID = 1")
 
-    If Debug_Flag > 0 Then
+    If Debug_Flag < 1 Then
 
         'Maximize the form window
         DoCmd.Maximize
