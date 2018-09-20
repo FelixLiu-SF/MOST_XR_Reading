@@ -64,6 +64,23 @@ Public Function LoadForm(FormName As String)
 
 End Function
 
+'---UNLOADRIBBON---'
+Public Function UnloadRibbon(FormName As String)
+
+    On Error GoTo ErrorHandler1
+
+    'Set Focus on Form
+    Forms(FormName).SetFocus
+
+    'Show the Microsoft Ribbon
+    DoCmd.ShowToolbar "Ribbon", acToolbarYes
+
+    Exit Function
+
+    ErrorHandler1:
+        Exit Function
+
+End Function
 
 '---LOADRECNAV---'
 Public Function LoadRecNav(FormName As String, TextBoxName As String)
@@ -123,6 +140,7 @@ Public Function SkipSigned(FormName As String, SignVarName As String)
     'Preallocate maximum index to 1
     MaxIndex = 1
 
+    'Get properties
     Debug_Flag = DLookup("DebugFlag","tblDebug","RecordID = 1")
 
     If Debug_Flag < 1 Then
@@ -144,12 +162,12 @@ Public Function SkipSigned(FormName As String, SignVarName As String)
 
           'Loop until a record is not signed
           For Index = 1 To nMaxRec
-              If Forms(FormName).CurrentRecord < Forms(FormName).Recordset.RecordCount And Len(Nz(SignCheck, "")) > 0 Then
+              If Forms(FormName).CurrentRecord < nMaxRec And Len(Nz(SignCheck, "")) > 0 Then
 
                   DoCmd.GoToRecord , , acNext
                   SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
 
-              ElseIf Forms(FormName).CurrentRecord = Forms(FormName).Recordset.RecordCount And Len(Nz(SignCheck, "")) > 0 Then
+              ElseIf Forms(FormName).CurrentRecord = nMaxRec And Len(Nz(SignCheck, "")) > 0 Then
 
                   DoCmd.GoToRecord , , acFirst
                   SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
