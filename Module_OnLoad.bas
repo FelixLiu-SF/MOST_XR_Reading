@@ -108,3 +108,63 @@ Public Function LoadMaxRec(FormName As String, TextBoxName As String)
     Exit Function
 
 End Function
+
+'---SKIPSIGNED---'
+Public Function SkipSigned(FormName As String, SignVarName As String)
+'Skip until record without signing is reached (or EOF)
+
+    Dim SignCheck As Variant
+    Dim Index As Integer
+    Dim nMaxRec As Integer
+    Dim Debug_Flag As Integer
+
+    On Error GoTo ErrorHandler1
+
+    'Preallocate maximum index to 1
+    MaxIndex = 1
+
+    Debug_Flag = DLookup("DebugFlag","tblDebug","RecordID = 1")
+
+    If Debug_Flag < 1 Then
+
+      'Set Focus on Form
+      Forms(FormName).SetFocus
+
+      'Check the first record
+      DoCmd.GoToRecord , , acFirst
+      SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
+
+      If Len(Nz(SignCheck,"")) > 0 Then
+          'If first record is signed, move on to next records
+
+          'Try to get the maximum record index AKA last record
+          nMaxRec = DLookup("MaxRecord","tblProperties","RecordID = 1")
+          DoCmd.GoToRecord , , acFirst
+          SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
+
+          'Loop until a record is not signed
+          For Index = 1 To nMaxRec
+              If Forms(FormName).CurrentRecord < Forms(FormName).Recordset.RecordCount And Len(Nz(SignCheck, "")) > 0 Then
+
+                  DoCmd.GoToRecord , , acNext
+                  SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
+
+              ElseIf Forms(FormName).CurrentRecord = Forms(FormName).Recordset.RecordCount And Len(Nz(SignCheck, "")) > 0 Then
+
+                  DoCmd.GoToRecord , , acFirst
+                  SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
+
+              End If
+          Next
+
+      End If 'first record sign check
+
+    End If 'debugflag
+
+    On Error GoTo 0
+    Exit Function
+
+    ErrorHandler1:
+        Exit Function
+
+End Function
