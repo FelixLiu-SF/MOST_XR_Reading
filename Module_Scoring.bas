@@ -134,7 +134,7 @@ Public Function CountUnscored(FormName As String, ControlArray() As String) As I
         End If
     Next
 
-    CountScored = nUnscored
+    CountUnscored = nUnscored
 
     Exit Function
 
