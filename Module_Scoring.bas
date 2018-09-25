@@ -27,11 +27,13 @@ Public Function CountVisible(FormName As String, ControlArray() As String) As In
 
     CountVisible = nVisible
 
+    Exit Function
+
     Error Handler1:
         On Error Goto 0
         Exit Function
 
-End If
+End Function
 
 '---COUNTUNLOCKED---'
 Public Function CountUnlocked(FormName As String, ControlArray() As String) As Integer
@@ -58,11 +60,13 @@ Public Function CountUnlocked(FormName As String, ControlArray() As String) As I
 
     CountUnlocked = nUnlocked
 
+    Exit Function
+
     Error Handler1:
         On Error Goto 0
         Exit Function
 
-End If
+End Function
 
 '---COUNTSCORED---'
 Public Function CountScored(FormName As String, ControlArray() As String) As Integer
@@ -94,11 +98,13 @@ Public Function CountScored(FormName As String, ControlArray() As String) As Int
 
     CountScored = nScored
 
-    Error Handler1:
+    Exit Function
+
+    ErrorHandler1:
         On Error Goto 0
         Exit Function
 
-End If
+End Function
 
 '---COUNTUNSCORED---'
 Public Function CountUnscored(FormName As String, ControlArray() As String) As Integer
@@ -130,8 +136,10 @@ Public Function CountUnscored(FormName As String, ControlArray() As String) As I
 
     CountScored = nUnscored
 
+    Exit Function 
+
     Error Handler1:
         On Error Goto 0
         Exit Function
 
-End If
+End Function
