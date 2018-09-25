@@ -29,7 +29,7 @@ Public Function CountVisible(FormName As String, ControlArray() As String) As In
 
     Exit Function
 
-    Error Handler1:
+    ErrorHandler1:
         On Error Goto 0
         Exit Function
 
@@ -62,7 +62,7 @@ Public Function CountUnlocked(FormName As String, ControlArray() As String) As I
 
     Exit Function
 
-    Error Handler1:
+    ErrorHandler1:
         On Error Goto 0
         Exit Function
 
@@ -136,9 +136,9 @@ Public Function CountUnscored(FormName As String, ControlArray() As String) As I
 
     CountScored = nUnscored
 
-    Exit Function 
+    Exit Function
 
-    Error Handler1:
+    ErrorHandler1:
         On Error Goto 0
         Exit Function
 
