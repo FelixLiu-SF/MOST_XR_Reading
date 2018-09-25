@@ -26,13 +26,17 @@ Public Function Control_Edit_AfterUpdate(FormIn as Access.Form, ControlName As S
 End function
 
 '---CONTROL_EDIT_BINDING---'
-Public Function Control_Edit_Binding(FormIn as Access.Form, ControlName As String, ColCount As Integer,ColBind As Integer, ColWidth As String, ListWidth As String, LimitBool As Boolean)
+Public Function Control_Edit_Binding(FormIn as Access.Form, ControlName As String, ColCount As Integer,ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean)
 'Update the control binding properties
+
+    Dim TwipListWidth As Integer
+
+    TwipListWidth = Int(ComboListWidth*1400)
 
     FormIn(ControlName).ColumnCount = ColCount 'display this many columns
     FormIn(ControlName).BoundColumn = ColBind 'store the value from this column
     FormIn(ControlName).ColumnWidths = ColWidth 'text specifying column display widths
-    FormIn(ControlName).ListWidth = ListWidth 'test specifying list width 
+    FormIn(ControlName).ListWidth = TwipListWidth 'test specifying list width
     FormIn(ControlName).LimitToList = LimitBool 'only allow values from this table
 
 End Function
