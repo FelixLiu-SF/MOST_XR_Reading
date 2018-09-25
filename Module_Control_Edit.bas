@@ -26,12 +26,13 @@ Public Function Control_Edit_AfterUpdate(FormIn as Access.Form, ControlName As S
 End function
 
 '---CONTROL_EDIT_BINDING---'
-Public Function Control_Edit_Binding(FormIn as Access.Form, ControlName As String, ColCount As Integer,ColBind As Integer, ColWidth As String, LimitBool As Boolean)
+Public Function Control_Edit_Binding(FormIn as Access.Form, ControlName As String, ColCount As Integer,ColBind As Integer, ColWidth As String, ListWidth As String, LimitBool As Boolean)
 'Update the control binding properties
 
     FormIn(ControlName).ColumnCount = ColCount 'display this many columns
     FormIn(ControlName).BoundColumn = ColBind 'store the value from this column
-    FormIn(ControlName).ColumnWidths = ColWidth 'text specifying display widths
+    FormIn(ControlName).ColumnWidths = ColWidth 'text specifying column display widths
+    FormIn(ControlName).ListWidth = ListWidth 'test specifying list width 
     FormIn(ControlName).LimitToList = LimitBool 'only allow values from this table
 
 End Function
