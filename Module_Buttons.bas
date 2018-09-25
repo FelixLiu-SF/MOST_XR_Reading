@@ -13,7 +13,7 @@ Public Function ButtonNext(FormName As String, SignVarName As String)
     On Error Goto ErrorHandler1
 
     'Preallocate maximum index to 1
-    MaxIndex = 1
+    nMaxRec = 1
 
     'Get properties
     Debug_Flag = DLookup("DebugFlag","tblDebug","RecordID = 1")
