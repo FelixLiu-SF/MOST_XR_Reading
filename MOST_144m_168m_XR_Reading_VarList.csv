@@ -1,38 +1,38 @@
-VIEW, DESCRIPTION, VARIABLEROOT
-pa view, tibiofemoral kl grade, TFKLG
-pa view, tibiofemoral medial jsn, TFJSM
-pa view, tibiofemoral lateral jsn, TFJSL
-pa view, femoral medial osteophyte, FOSTM
-pa view, femoral lateral osteophyte, FOSTL
-pa view, tibial medial osteophyte, TOSTM
-pa view, tibial lateral osteophyte, TOSTL
-pa view, femoral medial sclerosis, FSCLERM
-pa view, femoral lateral sclerosis, FSCLERL
-pa view, tibial medial sclerosis, TSCLERM
-pa view, tibial lateral sclerosis, TSCLERL
-pa view, femoral medial cysts, FCYSTM
-pa view, femoral lateral cysts, FCYSTL
-pa view, tibial medial cysts, TCYSTM
-pa view, tibial lateral cysts, TCYSTL
-pa view, tibial medial attrition, TATTRM
-pa view, tibial lateral attrition, TATTRL
-pa view, medial chondrocalcinosis, CHONM
-pa view, lateral chondrocalcinosis, CHONL
-lateral view, patellofemoral kl grade, PFKLG
-lateral view, patellofemoral jsn, PFJSN
-lateral view, femorotibial medial jsn, FTJSM
-lateral view, femorotibial lateral jsn, FTJSL
-lateral view, femoral anterior osteophyte, FOSTA
-lateral view, femoral posterior osteophyte, FOSTP
-lateral view, patellar superior osteophyte, POSTS
-lateral view, patellar inferior osteophyte, POSTI
-lateral view, tibial anterior osteophyte, TOSTA
-lateral view, tibial posterior osteophyte, TOSTP
-lateral view, sclerosis, LATSCLER
-lateral view, cysts, LATCYST
-lateral view, chondrocalcinosis, LATCHON
-lateral view, joint effusion, EFFUS
-lateral view, ossification quad insertion, OSSQI
-lateral view, ossification upper patellar tendon, OSSUP
-lateral view, ossification lower patellar tendon, OSSLP
-lateral view, ossified loose bodies, OSSBO
+VIEW, DESCRIPTION, VARIABLEROOT, SASROOT
+pa view, tibiofemoral kl grade, TFKLG, KL
+pa view, tibiofemoral medial jsn, TFJSM, JSM
+pa view, tibiofemoral lateral jsn, TFJSL, JSL
+pa view, femoral medial osteophyte, FOSTM, OSFM
+pa view, femoral lateral osteophyte, FOSTL, OSFL
+pa view, tibial medial osteophyte, TOSTM, OSTM
+pa view, tibial lateral osteophyte, TOSTL, OSTL
+pa view, femoral medial sclerosis, FSCLERM, SCFM
+pa view, femoral lateral sclerosis, FSCLERL, SCFL
+pa view, tibial medial sclerosis, TSCLERM, SCTM
+pa view, tibial lateral sclerosis, TSCLERL, SCTL
+pa view, femoral medial cysts, FCYSTM, CYFM
+pa view, femoral lateral cysts, FCYSTL, CYFL
+pa view, tibial medial cysts, TCYSTM, CTYM
+pa view, tibial lateral cysts, TCYSTL, CTYL
+pa view, tibial medial attrition, TATTRM, ATTM
+pa view, tibial lateral attrition, TATTRL, ATTL
+pa view, medial chondrocalcinosis, CHONM, CHOM
+pa view, lateral chondrocalcinosis, CHONL, CHOL
+lateral view, patellofemoral kl grade, PFKLG, KL
+lateral view, patellofemoral jsn, PFJSN, JSPF
+lateral view, femorotibial medial jsn, FTJSM, JSM
+lateral view, femorotibial lateral jsn, FTJSL, JSL
+lateral view, femoral anterior osteophyte, FOSTA, OSFA
+lateral view, femoral posterior osteophyte, FOSTP, OSFP
+lateral view, patellar superior osteophyte, POSTS, OSPS
+lateral view, patellar inferior osteophyte, POSTI, OSPI
+lateral view, tibial anterior osteophyte, TOSTA, OSTA
+lateral view, tibial posterior osteophyte, TOSTP, OSTP
+lateral view, sclerosis, LATSCLER, SCPF
+lateral view, cysts, LATCYST, CYPF
+lateral view, chondrocalcinosis, LATCHON, CHON
+lateral view, joint effusion, EFFUS, JE
+lateral view, ossification quad insertion, OSSQI, OSQI
+lateral view, ossification upper patellar tendon, OSSUP, OPTU
+lateral view, ossification lower patellar tendon, OSSLP, OPTL
+lateral view, ossified loose bodies, OSSBO, OSLB
