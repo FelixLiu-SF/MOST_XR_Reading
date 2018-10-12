@@ -3,8 +3,8 @@ Option Compare Database
 Option Explicit
 
 '---CONCAT_VISITVARSIDE---'
-Public Function Concat_VisitVarSide(VisitArray() As String, VarArray() As String, SideArray() As String) As String()
-'Concatenate variable roots with visit prefix and side suffix
+Public Function Concat_VisitVarSide(VisitArray() As String, SideArray() As String, VarArray() As String) As String()
+'Concatenate variable roots with visit prefix-1 and side prefix-2
 
     Dim ControlArray() As String
     Dim VisitUB As Integer
@@ -36,7 +36,7 @@ Public Function Concat_VisitVarSide(VisitArray() As String, VarArray() As String
     For VisitIX = 0 To (VisitUB - 1)
       For VarIX = 0 To (VarUB - 1)
         For SideIX = 0 to (SideUB - 1)
-            ControlArray(Index) = CStr(VisitArray(VisitIX)) & CStr(VarArray(VarIX)) & CStr(SideArray(SideIX))
+            ControlArray(Index) = CStr(VisitArray(VisitIX)) & CStr(SideArray(SideIX)) & CStr(VarArray(VarIX))
             Index = Index + 1
         Next
       Next
@@ -48,7 +48,7 @@ End Function
 
 '---CONCAT_VISITVAR---'
 Public Function Concat_VisitVar(VisitArray() As String, VarArray() As String) As String()
-'Concatenate variable roots with visit prefix and side suffix
+'Concatenate variable roots with visit prefix
 
     Dim ControlArray() As String
     Dim VisitUB As Integer
