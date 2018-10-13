@@ -3,10 +3,25 @@ Option Compare Database
 Option Explicit
 
 Global MOST_Visits_Array As String(4)
+Global MOST_RV12_Array As String (2)
+Global MOST_RV34_Array As String(2)
 Global MOST_PAKnee_Array As String(2)
 Global MOST_LATKnee_Array As String(2)
 Global MOST_PARoot_Array As String(19)
 Global MOST_LATRoot_Array As String(18)
+
+Global MOST_RV1234_XB_Vars As String(152)
+Global MOST_RV12_XB_Vars As String(76)
+Global MOST_RV34_XB_Vars As String(76)
+
+Global MOST_RV1234_LXB_Vars As String(144)
+Global MOST_RV12_LXB_Vars As String(72)
+Global MOST_RV34_LXB_Vars As String(72)
+
+Global MOST_RV12_LXR_Vars As String(36)
+Global MOST_RV12_LXL_Vars As String(36)
+Global MOST_RV34_LXR_Vars As String(36)
+Global MOST_RV34_LXL_Vars As String(36)
 
 Public Function MOST_Load_VariableNameArrays()
 
@@ -14,6 +29,12 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_Visits_Array(1) = "RV2"
   MOST_Visits_Array(2) = "RV3"
   MOST_Visits_Array(3) = "RV4"
+
+  MOST_RV12_Array(0) = "RV1"
+  MOST_RV12_Array(1) = "RV2"
+
+  MOST_RV34_Array(0) = "RV3"
+  MOST_RV34_Array(1) = "RV4"
 
   MOST_PAKnee_Array(0) = "XR"
   MOST_PAKnee_Array(1) = "XL"
@@ -60,4 +81,18 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_LATRoot_Array(16) = "OPTL"
   MOST_LATRoot_Array(17) = "OSLB"
 
-End Function 
+  MOST_RV1234_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
+  MOST_RV12_XB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
+  MOST_RV34_XB_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
+
+  MOST_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_LATRoot_Array)
+  MOST_RV12_LXB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_PAKnee_Array, MOST_LATRoot_Array)
+  MOST_RV34_LXB_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_PAKnee_Array, MOST_LATRoot_Array)
+
+  MOST_RV12_LXR_Vars = Concat_VisitVarSide(MOST_RV12_Array, "LXR", MOST_LATRoot_Array)
+  MOST_RV12_LXL_Vars = Concat_VisitVarSide(MOST_RV12_Array, "LXL", MOST_LATRoot_Array)
+
+  MOST_RV34_LXR_Vars = Concat_VisitVarSide(MOST_RV34_Array, "LXR", MOST_LATRoot_Array)
+  MOST_RV34_LXL_Vars = Concat_VisitVarSide(MOST_RV34_Array, "LXL", MOST_LATRoot_Array)
+
+End Function
