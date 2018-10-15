@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module_Box_Visibility"
+Attribute VB_Name = "Module_Subform_Box_Visibility"
 Option Compare Database
 Option Explicit
 

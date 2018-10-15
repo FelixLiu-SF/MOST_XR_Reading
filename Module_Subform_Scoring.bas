@@ -1,4 +1,4 @@
-Attribute VB_Name = "Module_Scoring"
+Attribute VB_Name = "Module_Subform_Scoring"
 Option Compare Database
 Option Explicit
 
