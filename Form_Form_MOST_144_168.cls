@@ -31,6 +31,9 @@ Private Sub Form_Load()
     'Load default view for ComboBox Controls
     LoadView
     
+    'Set all ComboBox OnLostFocus properties to color coding
+    SetComboLostFocus
+    
     'Load initial background color scheme for ComboBox Controls
     LoadColor
     
@@ -215,9 +218,9 @@ Private Sub SetComboSelection_RV1234(FormName As String, SubFormControlName As S
     
     'Define default variables
     VisitArray(0) = "RV1"
-    VisitArray(1) = "RV1"
-    VisitArray(2) = "RV1"
-    VisitArray(3) = "RV1"
+    VisitArray(1) = "RV2"
+    VisitArray(2) = "RV3"
+    VisitArray(3) = "RV4"
     
     'Loop through visits
     Index = 0
