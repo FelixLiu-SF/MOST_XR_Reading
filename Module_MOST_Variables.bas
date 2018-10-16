@@ -23,10 +23,10 @@ Global MOST_RV12_LXL_Vars() As String
 Global MOST_RV34_LXR_Vars() As String
 Global MOST_RV34_LXL_Vars() As String
 
-Dim MOST_RLATKnee_Vars() As String
-Dim MOST_LLATKnee_Vars() As String
-
 Public Function MOST_Load_VariableNameArrays()
+
+  Dim MOST_RLATKnee_Vars() As String
+  Dim MOST_LLATKnee_Vars() As String
 
   MOST_Visits_Array(0) = "RV1"
   MOST_Visits_Array(1) = "RV2"

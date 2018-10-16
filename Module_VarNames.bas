@@ -35,7 +35,7 @@ Public Function Concat_VisitVarSide(VisitArray() As String, SideArray() As Strin
     Index = 0
     For VisitIX = 0 To (VisitUB - 1)
       For SideIX = 0 to (SideUB - 1)
-        For VarIX = 0 To (VarUB - 1)        
+        For VarIX = 0 To (VarUB - 1)
             ControlArray(Index) = CStr(VisitArray(VisitIX)) & CStr(SideArray(SideIX)) & CStr(VarArray(VarIX))
             Index = Index + 1
         Next
@@ -91,15 +91,17 @@ Public Function Concat_Prefix(PrefixStr As String, ControlArray() As String) As 
 
     Dim ArrayUB As Integer
     Dim Index As Integer
+    Dim OutputArray() As String
 
     ArrayUB = UBound(ControlArray,1)
+    ReDim OutputArray(ArrayUB) As String
 
     Index = 0
     For Index = 0 To (ArrayUB - 1)
-        ControlArray(Index) = PrefixStr & CStr(ControlArray(Index))
+        OutputArray(Index) = PrefixStr & CStr(ControlArray(Index))
     Next
 
-    Concat_Prefix = ControlArray
+    Concat_Prefix = OutputArray
 
 End Function
 
@@ -109,14 +111,16 @@ Public Function Concat_Suffix(ControlArray() As String, SuffixStr As String) As 
 
     Dim ArrayUB As Integer
     Dim Index As Integer
+    Dim OutputArray() As String
 
     ArrayUB = UBound(ControlArray,1)
+    ReDim OutputArray(ArrayUB) As String
 
     Index = 0
     For Index = 0 To (ArrayUB - 1)
-        ControlArray(Index) = CStr(ControlArray(Index)) & SuffixStr
+        OutputArray(Index) = CStr(ControlArray(Index)) & SuffixStr
     Next
 
-    Concat_Suffix = ControlArray
+    Concat_Suffix = OutputArray
 
 End Function
