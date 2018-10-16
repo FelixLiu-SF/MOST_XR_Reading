@@ -207,8 +207,194 @@ ErrorHandler_Main1:
 
 End Sub
 
+Private Sub LoadDropDown()
+'Set dropdown menus for all ComboBox controls on all subforms
 
-Private Sub SetComboSelection_RV1234(FormName As String, SubFormControlName As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean)
+    Dim DummyBoolean As Boolean
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+    
+    'Set menus on PA view subform & limit selections to menu list
+    DummyBoolean = LoadDropDown_PA("XR", True)
+    DummyBoolean = LoadDropDown_PA("XL", True)
+    
+    'Set menus on Right Lateral view subform & limit selections to menu list
+    DummyBoolean = LoadDropDown_RLat("LXR", True)
+    
+    'Set menus on Left Lateral view subform & limit selections to menu list
+    DummyBoolean = LoadDropDown_LLat("LXL", True)
+    
+    'Clear the error catching
+    On Error GoTo 0
+    
+    Exit Sub
+    
+ErrorHandler_Main1:
+    Resume Next
+
+End Sub
+
+Private Sub LoadDropDown_PA(ViewPrefix As String, MenuLimitBoolean As Boolean)
+'Set dropdown menus for ComboBox controls on PA view subform
+
+    Dim DummyBoolean As Boolean
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+    
+    'Set menu for TF KLG
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFKLG", SelectStr_TFKLG, MenuLimitBoolean)
+    
+    'Set menu for TF JSN
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSM", SelectStr_JSN, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSL", SelectStr_JSN, MenuLimitBoolean)
+    
+    'Set menu for Osteophytes
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSFM", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSFL", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSTM", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSTL", SelectStr_OS, MenuLimitBoolean)
+    
+    'Set menu for Sclerosis
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCFM", SelectStr_Sclerosis, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCFL", SelectStr_Sclerosis, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCTM", SelectStr_Sclerosis, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCTL", SelectStr_Sclerosis, MenuLimitBoolean)
+    
+    'Set menu for Cysts
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYFM", SelectStr_TFCyst, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYFL", SelectStr_TFCyst, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTM", SelectStr_TFCyst, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTL", SelectStr_TFCyst, MenuLimitBoolean)
+    
+    'Set menu for Attrition
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTM", SelectStr_MiscYN, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTL", SelectStr_MiscYN, MenuLimitBoolean)
+    
+    'Set menu for Chondrocalcinosis
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOM", SelectStr_MiscYN, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOL", SelectStr_MiscYN, MenuLimitBoolean)
+    
+    
+    'Clear the error catching
+    On Error GoTo 0
+    
+    Exit Sub
+    
+ErrorHandler_Main1:
+    Resume Next
+
+End Sub
+
+Private Sub LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boolean)
+'Set dropdown menus for ComboBox controls on Right Lateral view subform
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+    
+    'Set menu for PF KLG
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFKLG", SelectStr_PFKLG, MenuLimitBoolean)
+    
+    'Set menu for PF JSN
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFJSMN", SelectStr_JSN, MenuLimitBoolean)
+    
+    'Set menu for "FT" JSN from lateral view
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSM", SelectStr_JSN, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSL", SelectStr_JSN, MenuLimitBoolean)
+    
+    'Set menu for Osteophytes
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSFA", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSFP", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSPS", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSPI", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSTA", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSTP", SelectStr_OS, MenuLimitBoolean)
+    
+    'Set menu for Sclerosis
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "SCPF", SelectStr_Sclerosis, MenuLimitBoolean)
+    
+    'Set menu for Cysts
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CYPF", SelectStr_PFCyst, MenuLimitBoolean)
+    
+    'Set menu for Chondrocalcinosis
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CHON", SelectStr_MiscYN, MenuLimitBoolean)
+    
+    'Set menu for Joint Effusion
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "JE", SelectStr_MiscYN, MenuLimitBoolean)
+    
+    'Set menu for Ossification
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSQI", SelectStr_Ossification, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTU", SelectStr_Ossification, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTL", SelectStr_Ossification, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSLB", SelectStr_MiscYN, MenuLimitBoolean)
+    
+    
+    'Clear the error catching
+    On Error GoTo 0
+    
+    Exit Sub
+    
+ErrorHandler_Main1:
+    Resume Next
+
+End Sub
+
+Private Sub LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boolean)
+'Set dropdown menus for ComboBox controls on Left Lateral view subform
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+    
+    'Set menu for PF KLG
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFKLG", SelectStr_PFKLG, MenuLimitBoolean)
+    
+    'Set menu for PF JSN
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFJSMN", SelectStr_JSN, MenuLimitBoolean)
+    
+    'Set menu for "FT" JSN from lateral view
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "FTJSM", SelectStr_JSN, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "FTJSL", SelectStr_JSN, MenuLimitBoolean)
+    
+    'Set menu for Osteophytes
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSFA", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSFP", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSPS", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSPI", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSTA", SelectStr_OS, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSTP", SelectStr_OS, MenuLimitBoolean)
+    
+    'Set menu for Sclerosis
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "SCPF", SelectStr_Sclerosis, MenuLimitBoolean)
+    
+    'Set menu for Cysts
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CYPF", SelectStr_PFCyst, MenuLimitBoolean)
+    
+    'Set menu for Chondrocalcinosis
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CHON", SelectStr_MiscYN, MenuLimitBoolean)
+    
+    'Set menu for Joint Effusion
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "JE", SelectStr_MiscYN, MenuLimitBoolean)
+    
+    'Set menu for Ossification
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSQI", SelectStr_Ossification, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTU", SelectStr_Ossification, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTL", SelectStr_Ossification, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSLB", SelectStr_MiscYN, MenuLimitBoolean)
+    
+    
+    'Clear the error catching
+    On Error GoTo 0
+    
+    Exit Sub
+    
+ErrorHandler_Main1:
+    Resume Next
+
+End Sub
+
+
+Private Sub SetComboSelection_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean As Boolean)
 
     Dim DummyBoolean As Boolean
     Dim VisitArray(4) As String
@@ -227,7 +413,7 @@ Private Sub SetComboSelection_RV1234(FormName As String, SubFormControlName As S
     For Index = 0 To 4
     
         'Construct ComboBox Control name
-        ControlName = "Combo_" & VarNameRoot
+        ControlName = "Combo_" & ViewPrefix & VarNameRoot
         
         'Construct ComboBox selection string
         OnFocusStr = Make_ControlUpdate_Func(FormName, SubFormControlName, ControlName, SelectionStr)
