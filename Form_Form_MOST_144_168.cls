@@ -420,7 +420,7 @@ Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName
     For Index = 0 To 4
 
         'Construct ComboBox Control name
-        ControlName = "Combo_" & ViewPrefix & VarNameRoot
+        ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
 
         'Construct ComboBox selection string
         OnFocusStr = Make_ControlUpdate_Func(FormName, SubFormControlName, ControlName, SelectionStr)
