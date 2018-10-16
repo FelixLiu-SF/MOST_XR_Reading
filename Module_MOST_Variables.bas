@@ -58,7 +58,7 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_PARoot_Array(6) = "OSTL"
   MOST_PARoot_Array(7) = "SCFM"
   MOST_PARoot_Array(8) = "SCFL"
-  MOST_PARoot_Array(9) = "SCRL"
+  MOST_PARoot_Array(9) = "SCTM"
   MOST_PARoot_Array(10) = "SCTL"
   MOST_PARoot_Array(11) = "CYFM"
   MOST_PARoot_Array(12) = "CYFL"
