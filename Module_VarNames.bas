@@ -34,8 +34,8 @@ Public Function Concat_VisitVarSide(VisitArray() As String, SideArray() As Strin
 
     Index = 0
     For VisitIX = 0 To (VisitUB - 1)
-      For VarIX = 0 To (VarUB - 1)
-        For SideIX = 0 to (SideUB - 1)
+      For SideIX = 0 to (SideUB - 1)
+        For VarIX = 0 To (VarUB - 1)        
             ControlArray(Index) = CStr(VisitArray(VisitIX)) & CStr(SideArray(SideIX)) & CStr(VarArray(VarIX))
             Index = Index + 1
         Next
