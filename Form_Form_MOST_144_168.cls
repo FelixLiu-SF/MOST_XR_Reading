@@ -302,7 +302,7 @@ Private Function LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boo
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFKLG", SelectStr_PFKLG, MenuLimitBoolean)
 
     'Set menu for PF JSN
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFJSMN", SelectStr_JSN, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFJSN", SelectStr_JSN, MenuLimitBoolean)
 
     'Set menu for "FT" JSN from lateral view
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSM", SelectStr_JSN, MenuLimitBoolean)
@@ -357,7 +357,7 @@ Private Function LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boo
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFKLG", SelectStr_PFKLG, MenuLimitBoolean)
 
     'Set menu for PF JSN
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFJSMN", SelectStr_JSN, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFJSN", SelectStr_JSN, MenuLimitBoolean)
 
     'Set menu for "FT" JSN from lateral view
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "FTJSM", SelectStr_JSN, MenuLimitBoolean)
