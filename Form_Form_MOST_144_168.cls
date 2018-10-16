@@ -231,7 +231,7 @@ Private Function LoadDropDown()
     'Clear the error catching
     On Error GoTo 0
 
-    Exit Sub
+    Exit Function
 
 ErrorHandler_Main1:
     Resume Next
@@ -283,7 +283,7 @@ Private Function LoadDropDown_PA(ViewPrefix As String, MenuLimitBoolean As Boole
     'Clear the error catching
     On Error GoTo 0
 
-    Exit Sub
+    Exit Function
 
 ErrorHandler_Main1:
     Resume Next
@@ -292,6 +292,8 @@ End Function
 
 Private Function LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boolean)
 'Set dropdown menus for ComboBox controls on Right Lateral view subform
+
+    Dim DummyBoolean As Boolean
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
@@ -336,7 +338,7 @@ Private Function LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boo
     'Clear the error catching
     On Error GoTo 0
 
-    Exit Sub
+    Exit Function
 
 ErrorHandler_Main1:
     Resume Next
@@ -345,6 +347,8 @@ End Function
 
 Private Function LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boolean)
 'Set dropdown menus for ComboBox controls on Left Lateral view subform
+
+    Dim DummyBoolean As Boolean
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
@@ -389,7 +393,7 @@ Private Function LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boo
     'Clear the error catching
     On Error GoTo 0
 
-    Exit Sub
+    Exit Function
 
 ErrorHandler_Main1:
     Resume Next
@@ -426,5 +430,6 @@ Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName
 
         'Set the ComboBox dropdown menu display properties
         DummyBoolean = Control_Edit_Binding(FormName, SubFormControlName, ControlName, 4, 2, "0; 0; 0.5 in; 2 in", 3, MenuLimitBoolean)
+    Next
 
 End Function
