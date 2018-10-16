@@ -84,8 +84,8 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_LATRoot_Array(16) = "OPTL"
   MOST_LATRoot_Array(17) = "OSLB"
 
-  MOST_RLATKnee = Concat_Prefix("LXR",MOST_LATRoot_Array)
-  MOST_LLATKnee = Concat_Prefix("LXL",MOST_LATRoot_Array)
+  MOST_RLATKnee_Vars = Concat_Prefix("LXR",MOST_LATRoot_Array)
+  MOST_LLATKnee_Vars = Concat_Prefix("LXL",MOST_LATRoot_Array)
 
   MOST_RV1234_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
   MOST_RV12_XB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
@@ -95,10 +95,10 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_RV12_LXB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
   MOST_RV34_LXB_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
 
-  MOST_RV12_LXR_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_RLATKnee)
-  MOST_RV12_LXL_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_LLATKnee)
+  MOST_RV12_LXR_Vars = Concat_VisitVar(MOST_RV12_Array, MOST_RLATKnee_Vars)
+  MOST_RV12_LXL_Vars = Concat_VisitVar(MOST_RV12_Array, MOST_LLATKnee_Vars)
 
-  MOST_RV34_LXR_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_RLATKnee)
-  MOST_RV34_LXL_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_LLATKnee)
+  MOST_RV34_LXR_Vars = Concat_VisitVar(MOST_RV34_Array, MOST_RLATKnee_Vars)
+  MOST_RV34_LXL_Vars = Concat_VisitVar(MOST_RV34_Array, MOST_LLATKnee_Vars)
 
 End Function
