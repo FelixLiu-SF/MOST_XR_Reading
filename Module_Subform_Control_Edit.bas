@@ -2,9 +2,6 @@ Attribute VB_Name = "Module_Subform_Control_Edit"
 Option Compare Database
 Option Explicit
 
-'CODE NEEDS UPDATING FOR SUBFORM REFERENCE FORMAT:
-' Forms(FormName).Controls(SubformControlName).Form.Controls(ControlIn).Property
-
 '---CONTROL_EDIT_FOCUS---'
 Public Function Control_Edit_OnFocus(FormName As String, SubFormControlName As String, ControlName As String, FocusFuncStr As String)
 'Insert function into control box to be called on focus
