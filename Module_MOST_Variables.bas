@@ -9,19 +9,23 @@ Global MOST_PAKnee_Array(2) As String
 Global MOST_LATKnee_Array(2) As String
 Global MOST_PARoot_Array(19) As String
 Global MOST_LATRoot_Array(18) As String
+Global MOST_RLATKnee(0) As String
+Global MOST_LLATKnee(0) As String
 
-Global MOST_RV1234_XB_Vars(152) As String
-Global MOST_RV12_XB_Vars(76) As String
-Global MOST_RV34_XB_Vars(76) As String
+Global MOST_RV1234_XB_Vars() As String
+Global MOST_RV12_XB_Vars() As String
+Global MOST_RV34_XB_Vars() As String
 
-Global MOST_RV1234_LXB_Vars(144) As String
-Global MOST_RV12_LXB_Vars(72) As String
-Global MOST_RV34_LXB_Vars(72) As String
+Global MOST_RV1234_LXB_Vars() As String
+Global MOST_RV12_LXB_Vars() As String
+Global MOST_RV34_LXB_Vars() As String
 
-Global MOST_RV12_LXR_Vars(36) As String
-Global MOST_RV12_LXL_Vars(36) As String
-Global MOST_RV34_LXR_Vars(36) As String
-Global MOST_RV34_LXL_Vars(36) As String
+Global MOST_RV12_LXR_Vars() As String
+Global MOST_RV12_LXL_Vars() As String
+Global MOST_RV34_LXR_Vars() As String
+Global MOST_RV34_LXL_Vars() As String
+
+
 
 Public Function MOST_Load_VariableNameArrays()
 
@@ -41,6 +45,9 @@ Public Function MOST_Load_VariableNameArrays()
 
   MOST_LATKnee_Array(0) = "LXR"
   MOST_LATKnee_Array(1) = "LXL"
+
+  MOST_RLATKnee(0) = "LXR"
+  MOST_LLATKnee(0) = "LXL"
 
   MOST_PARoot_Array(0) = "TFKLG"
   MOST_PARoot_Array(1) = "TFJSM"
@@ -89,10 +96,10 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_RV12_LXB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_PAKnee_Array, MOST_LATRoot_Array)
   MOST_RV34_LXB_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_PAKnee_Array, MOST_LATRoot_Array)
 
-  MOST_RV12_LXR_Vars = Concat_VisitVarSide(MOST_RV12_Array, "LXR", MOST_LATRoot_Array)
-  MOST_RV12_LXL_Vars = Concat_VisitVarSide(MOST_RV12_Array, "LXL", MOST_LATRoot_Array)
+  MOST_RV12_LXR_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_RLATKnee, MOST_LATRoot_Array)
+  MOST_RV12_LXL_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_LLATKnee, MOST_LATRoot_Array)
 
-  MOST_RV34_LXR_Vars = Concat_VisitVarSide(MOST_RV34_Array, "LXR", MOST_LATRoot_Array)
-  MOST_RV34_LXL_Vars = Concat_VisitVarSide(MOST_RV34_Array, "LXL", MOST_LATRoot_Array)
+  MOST_RV34_LXR_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_RLATKnee, MOST_LATRoot_Array)
+  MOST_RV34_LXL_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_LLATKnee, MOST_LATRoot_Array)
 
 End Function
