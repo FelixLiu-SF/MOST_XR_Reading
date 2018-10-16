@@ -2,26 +2,26 @@ Attribute VB_Name = "Module_MOST_Variables"
 Option Compare Database
 Option Explicit
 
-Global MOST_Visits_Array As String(4)
-Global MOST_RV12_Array As String (2)
-Global MOST_RV34_Array As String(2)
-Global MOST_PAKnee_Array As String(2)
-Global MOST_LATKnee_Array As String(2)
-Global MOST_PARoot_Array As String(19)
-Global MOST_LATRoot_Array As String(18)
+Global MOST_Visits_Array(4) As String
+Global MOST_RV12_Array(2) As String
+Global MOST_RV34_Array(2) As String
+Global MOST_PAKnee_Array(2) As String
+Global MOST_LATKnee_Array(2) As String
+Global MOST_PARoot_Array(19) As String
+Global MOST_LATRoot_Array(18) As String
 
-Global MOST_RV1234_XB_Vars As String(152)
-Global MOST_RV12_XB_Vars As String(76)
-Global MOST_RV34_XB_Vars As String(76)
+Global MOST_RV1234_XB_Vars(152) As String
+Global MOST_RV12_XB_Vars(76) As String
+Global MOST_RV34_XB_Vars(76) As String
 
-Global MOST_RV1234_LXB_Vars As String(144)
-Global MOST_RV12_LXB_Vars As String(72)
-Global MOST_RV34_LXB_Vars As String(72)
+Global MOST_RV1234_LXB_Vars(144) As String
+Global MOST_RV12_LXB_Vars(72) As String
+Global MOST_RV34_LXB_Vars(72) As String
 
-Global MOST_RV12_LXR_Vars As String(36)
-Global MOST_RV12_LXL_Vars As String(36)
-Global MOST_RV34_LXR_Vars As String(36)
-Global MOST_RV34_LXL_Vars As String(36)
+Global MOST_RV12_LXR_Vars(36) As String
+Global MOST_RV12_LXL_Vars(36) As String
+Global MOST_RV34_LXR_Vars(36) As String
+Global MOST_RV34_LXL_Vars(36) As String
 
 Public Function MOST_Load_VariableNameArrays()
 
