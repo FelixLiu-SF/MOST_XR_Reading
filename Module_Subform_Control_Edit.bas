@@ -78,7 +78,7 @@ Public Function Make_ControlUpdate_Func(FormName As String, SubFormControlName A
 End Function
 
 '---UPDATEDROPDOWN---'
-Public Function UpdateDropdown(FormName As String, SubFormControlName As String, ControlIn As String, ControlSQL As String)
+Public Function UpdateDropdown(FormName As String, SubFormControlName As String, ControlName As String, ControlSQL As String)
 ' Update Combo Box object table if not Locked
 
     'dummy variables for artificial CPU wait
