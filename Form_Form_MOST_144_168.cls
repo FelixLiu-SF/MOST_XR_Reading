@@ -35,7 +35,7 @@ Private Sub Form_Load()
     SetComboLostFocus
 
     'Set all ComboBox OnFocus properties to dropdown menus
-    DummyBoolean = LoadDropDown
+    LoadDropDown
 
     'Load initial background color scheme for ComboBox Controls
     LoadColor
