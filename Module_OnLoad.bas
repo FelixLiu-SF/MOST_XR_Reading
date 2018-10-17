@@ -8,7 +8,7 @@ Public Function LoadForm(FormName As String)
 
     On Error GoTo ErrorHandler1
 
-    Debug_Flag = DLookup("DebugFlag","tblDebug","RecordID = 1")
+    Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
 
     If Debug_Flag < 1 Then
 
@@ -141,7 +141,7 @@ Public Function SkipSigned(FormName As String, SignVarName As String)
     nMaxRec = 1
 
     'Get properties
-    Debug_Flag = DLookup("DebugFlag","tblDebug","RecordID = 1")
+    Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
 
     If Debug_Flag < 1 Then
 

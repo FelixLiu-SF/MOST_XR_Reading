@@ -16,7 +16,7 @@ Public Function ButtonNext(FormName As String, SignVarName As String)
     nMaxRec = 1
 
     'Get properties
-    Debug_Flag = DLookup("DebugFlag","tblDebug","RecordID = 1")
+    Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
     nMaxRec = DLookup("MaxRecord","tblProperties","RecordID = 1")
 
     'Set Focus on Form
@@ -77,7 +77,7 @@ Public Function ButtonPrev(FormName As String, SignVarName As String)
     On Error Goto ErrorHandler1
 
     'Get properties
-    Debug_Flag = DLookup("DebugFlag","tblDebug","RecordID = 1")
+    Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
 
     'Set Focus on Form
     Forms(FormName).SetFocus
