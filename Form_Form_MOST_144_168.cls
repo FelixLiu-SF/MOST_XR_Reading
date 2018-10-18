@@ -448,15 +448,21 @@ Private Sub Command_FINISH_Click()
 
 End Sub
 
-Private Sub Command_LOAD_LL_Click()
-
-End Sub
-
 Private Sub Command_LOAD_PA_Click()
+
+    Forms("Form_MOST_144_168").Controls("Subform_PA").SetFocus
 
 End Sub
 
 Private Sub Command_LOAD_RL_Click()
+
+    Forms("Form_MOST_144_168").Controls("Subform_RLAT").SetFocus
+
+End Sub
+
+Private Sub Command_LOAD_LL_Click()
+
+    Forms("Form_MOST_144_168").Controls("Subform_LLAT").SetFocus
 
 End Sub
 
