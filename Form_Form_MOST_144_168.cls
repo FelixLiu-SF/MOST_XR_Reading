@@ -444,33 +444,57 @@ Private Sub Command_PREV_Click()
 
 End Sub
 
-Private Sub Command_FINISH_Click()
-
-End Sub
-
 Private Sub Command_LOAD_PA_Click()
 
+    'Set subform focus
     Forms("Form_MOST_144_168").Controls("Subform_PA").SetFocus
+    
+    'Get current ID, Barcode, and number of images to display
+    
+    'Load images in EFilm Workstation with API
 
 End Sub
 
 Private Sub Command_LOAD_RL_Click()
 
+    'Set subform focus
     Forms("Form_MOST_144_168").Controls("Subform_RLAT").SetFocus
+    
+    'Get current ID, Barcode, and number of images to display
+    
+    'Load images in EFilm Workstation with API
 
 End Sub
 
 Private Sub Command_LOAD_LL_Click()
 
+    'Set subform focus
     Forms("Form_MOST_144_168").Controls("Subform_LLAT").SetFocus
-
-End Sub
-
-Private Sub Command_QUIT_Click()
+    
+    'Get current ID, Barcode, and number of images to display
+    
+    'Load images in EFilm Workstation with API
 
 End Sub
 
 Private Sub Command_SUBMIT_Click()
+
+    'Call for DirtySave
+
+    'Check for reader name
+    
+    'Check for empty scoring boxes
+    
+    'Sign the record
+    
+
+End Sub
+
+Private Sub Command_FINISH_Click()
+
+End Sub
+
+Private Sub Command_QUIT_Click()
 
 End Sub
 
