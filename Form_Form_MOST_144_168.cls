@@ -10,6 +10,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 Option Explicit
 
+
 Private Sub Form_Load()
 ' Load various modules when this scoresheet is opened
 
@@ -20,31 +21,31 @@ Private Sub Form_Load()
 
     'Load the dataset objects for combo box dropdown menus
     LoadDAO
-
+    
     'Load the EFilm Automation object to link with EFilm Workstation
     LoadEFilmAuto
-
+    
     'Load MOST global variable names and SQL selection strings
     DummyBoolean = MOST_Load_SelectStr
     DummyBoolean = MOST_Load_VariableNameArrays
-
+    
     'Load default view for ComboBox Controls
     LoadView
-
+    
     'Set all ComboBox OnLostFocus properties to color coding
     SetComboLostFocus
-
-    'Set all ComboBox OnFocus properties to dropdown menus
+    
+    'Set all Combobox OnFocus properties to dropdown menus
     LoadDropDown
-
+    
     'Load initial background color scheme for ComboBox Controls
     LoadColor
-
+    
     'Clear the error catching
     On Error GoTo 0
-
+    
     Exit Sub
-
+    
 ErrorHandler_Main1:
     Resume Next
 
@@ -62,42 +63,42 @@ Private Sub LoadView()
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
-
+    
     'Construct ComboBox Control Names from preloaded MOST variable root names
     ControlName_RV12_PA = Concat_Prefix("Combo_", MOST_RV12_XB_Vars)
     ControlName_RV12_RLAT = Concat_Prefix("Combo_", MOST_RV12_LXR_Vars)
     ControlName_RV12_LLAT = Concat_Prefix("Combo_", MOST_RV12_LXL_Vars)
     ControlName_RV34_RLAT = Concat_Prefix("Combo_", MOST_RV34_LXR_Vars)
     ControlName_RV34_LLAT = Concat_Prefix("Combo_", MOST_RV34_LXL_Vars)
-
+    
     'Lock the RV1 & RV2 PA variables on PA subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, True)
-
+    
     'Lock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, True)
-
+    
     'Lock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, True)
-
+    
     'Lock & Hide all of the LEFT knee variables on RIGHT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, True)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, True)
-
+    
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, True)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, True)
-
+    
     'Lock & Hide all of the RIGHT knee variables on LEFT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, True)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, True)
-
+    
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, True)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, True)
-
+    
     'Clear the error catching
     On Error GoTo 0
-
+    
     Exit Sub
-
+    
 ErrorHandler_Main1:
     Resume Next
 
@@ -114,39 +115,39 @@ Private Sub LoadColor()
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
-
+    
     'Loop through preloaded PA view variable name array on PA subform
     Index = 0
     Upper = UBound(MOST_RV1234_XB_Vars, 1) - 1
-
+    
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
         DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_PA", ControlName)
     Next
-
+    
     'Loop through preloaded Lateral View variable name array on Right Lat subform
     Index = 0
     Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-
+    
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
         DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_RLAT", ControlName)
     Next
-
+    
     'Loop through preloaded Lateral View variable name array on Left Lat subform
     Index = 0
     Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-
+    
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
         DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_LLAT", ControlName)
     Next
-
+    
     'Clear the error catching
     On Error GoTo 0
-
+    
     Exit Sub
-
+    
 ErrorHandler_Main1:
     Resume Next
 
@@ -163,48 +164,48 @@ Private Sub SetComboLostFocus()
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
-
+    
     'Loop through preloaded PA view variable name array on PA subform
     Index = 0
     Upper = UBound(MOST_RV1234_XB_Vars, 1) - 1
-
+    
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
-
+        
         LostFocusStr = Make_ControlColor_Func("Form_MOST_144_168", "Subform_PA", ControlName)
-
+        
         DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_PA", ControlName, LostFocusStr)
     Next
-
+    
     'Loop through preloaded Lateral View variable name array on Right Lat subform
     Index = 0
     Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-
+    
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
-
+        
         LostFocusStr = Make_ControlColor_Func("Form_MOST_144_168", "Subform_RLAT", ControlName)
-
+        
         DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_RLAT", ControlName, LostFocusStr)
     Next
-
+    
     'Loop through preloaded Lateral View variable name array on Left Lat subform
     Index = 0
     Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-
+    
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
-
+        
         LostFocusStr = Make_ControlColor_Func("Form_MOST_144_168", "Subform_LLAT", ControlName)
-
+        
         DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_LLAT", ControlName, LostFocusStr)
     Next
-
+    
     'Clear the error catching
     On Error GoTo 0
-
+    
     Exit Sub
-
+    
 ErrorHandler_Main1:
     Resume Next
 
@@ -433,3 +434,40 @@ Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName
     Next
 
 End Function
+
+
+Private Sub Command_NEXT_Click()
+
+End Sub
+
+Private Sub Command_PREV_Click()
+
+End Sub
+
+Private Sub Command_FINISH_Click()
+
+End Sub
+
+Private Sub Command_LOAD_LL_Click()
+
+End Sub
+
+Private Sub Command_LOAD_PA_Click()
+
+End Sub
+
+Private Sub Command_LOAD_RL_Click()
+
+End Sub
+
+Private Sub Command_QUIT_Click()
+
+End Sub
+
+Private Sub Command_SUBMIT_Click()
+
+End Sub
+
+Private Sub Command_UNDO_Click()
+
+End Sub
