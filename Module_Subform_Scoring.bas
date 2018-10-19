@@ -143,3 +143,67 @@ Public Function CountUnscored(FormName As String, SubFormControlName As String, 
         Exit Function
 
 End Function
+
+'---INSERTSCORE---'
+Public Function InsertScore(FormName As String, SubFormControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName As String, FilterValue As String)
+
+  Dim SQLText as String
+  Dim ScoreValue As String
+  Dim SQLValue As String
+
+  Set db = DBEnginer(0)(0)
+
+  'Get the score value
+  ScoreValue = Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value,"")
+  If Len(ScoreValue) < 1 Then
+    SQLValue = "NULL"
+  Else
+    SQLValue = ScoreValue
+  End If
+
+  'Construct SQL code for insert updated score value
+  SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName " = " & " WHERE ((" & TableName & "." & FilterName & ")=" & FilterValue & ");"
+
+  'Execute SQL update code
+  DoCmd.SetWarnings False
+
+  db.Execute SQLText
+  db.Close
+
+  DoCmd.SetWarnings True
+
+  Set db = Nothing
+
+End Function
+
+'---INSERTSCORE2---'
+Public Function InsertScore2(FormName As String, SubFormControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FileValue2 As String)
+
+  Dim SQLText as String
+  Dim ScoreValue As String
+  Dim SQLValue As String
+
+  Set db = DBEnginer(0)(0)
+
+  'Get the score value
+  ScoreValue = Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value,"")
+  If Len(ScoreValue) < 1 Then
+    SQLValue = "NULL"
+  Else
+    SQLValue = ScoreValue
+  End If
+
+  'Construct SQL code for insert updated score value
+  SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName " = " & " WHERE (((" & TableName & "." & FilterName1 & ")=" & FilterValue1 & ") AND (" & TableName & "." & FilterName2 & ")=" & FilterValue2 & "));"
+
+  'Execute SQL update code
+  DoCmd.SetWarnings False
+
+  db.Execute SQLText
+  db.Close
+
+  DoCmd.SetWarnings True
+
+  Set db = Nothing
+
+End Function
