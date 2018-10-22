@@ -51,6 +51,26 @@ ErrorHandler_Main1:
 
 End Sub
 
+Private Sub Form_Current()
+' Reload view for current record/participant ID
+
+    Dim DummyBoolean As Boolean
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+    
+    'Set the ComboBox After Updates
+    
+'Clear the error catching
+    On Error GoTo 0
+    
+    Exit Sub
+    
+ErrorHandler_Main1:
+    Resume Next
+
+End Sub
+
 Private Sub LoadView()
 ' Show/Hide/Lock/Unlock the ComboBoxes for default view on all subforms
 
@@ -59,20 +79,20 @@ Private Sub LoadView()
     Dim ControlName_RV12_LLAT() As String
     Dim ControlName_RV34_RLAT() As String
     Dim ControlName_RV34_LLAT() As String
-    Dim AdjFlag As Integer
-    Dim AdjBoolean As Boolean
+    Dim DebugFlag As Integer
+    Dim DebugBoolean As Boolean
     Dim DummyBoolean As Boolean
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
     
     'Get AdjudicationFlag
-    AdjFlag = DLookup("AdjudicationFlag", "tblProperties", "RecordID = 1")
-    If Len(Nz(AdjFlag, "")) > 0 Then
-        If AdjFlag > 0 Then
-            AdjBoolean = False
+    DebugFlag = DLookup("DebugFlag", "tblProperties", "RecordID = 1")
+    If Len(Nz(DebugFlag, "")) > 0 Then
+        If DebugFlag > 0 Then
+            DebugBoolean = False
         Else
-            AdjBoolean = True
+            DebugBoolean = True
         End If
         
     Else
@@ -87,27 +107,27 @@ Private Sub LoadView()
     ControlName_RV34_LLAT = Concat_Prefix("Combo_", MOST_RV34_LXL_Vars)
     
     'Lock the RV1 & RV2 PA variables on PA subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, AdjBoolean)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, DebugBoolean)
     
     'Lock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, AdjBoolean)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, DebugBoolean)
     
     'Lock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, AdjBoolean)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, DebugBoolean)
     
     'Lock & Hide all of the LEFT knee variables on RIGHT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, AdjBoolean)
-    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, AdjBoolean)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, DebugBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, DebugBoolean)
     
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, AdjBoolean)
-    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, AdjBoolean)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, DebugBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, DebugBoolean)
     
     'Lock & Hide all of the RIGHT knee variables on LEFT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, AdjBoolean)
-    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, AdjBoolean)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, DebugBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, DebugBoolean)
     
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, AdjBoolean)
-    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, AdjBoolean)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, DebugBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, DebugBoolean)
     
     'Clear the error catching
     On Error GoTo 0
@@ -230,19 +250,62 @@ Private Function LoadDropDown()
 'Set dropdown menus for all ComboBox controls on all subforms
 
     Dim DummyBoolean As Boolean
+    Dim AdjFlag As Integer
+    Dim AdjBoolean As Boolean
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+    
+    'Get AdjudicationFlag
+    AdjFlag = DLookup("AdjudicationFlag", "tblProperties", "RecordID = 1")
+    If Len(Nz(AdjFlag, "")) > 0 Then
+        If AdjFlag > 0 Then
+            AdjBoolean = False
+        Else
+            AdjBoolean = True
+        End If
+        
+    Else
+        AdjBoolean = True
+    End If
+
+    'Set menus on PA view subform & limit selections to menu list
+    DummyBoolean = LoadDropDown_PA("XR", AdjBoolean)
+    DummyBoolean = LoadDropDown_PA("XL", AdjBoolean)
+
+    'Set menus on Right Lateral view subform & limit selections to menu list
+    DummyBoolean = LoadDropDown_RLat("LXR", AdjBoolean)
+
+    'Set menus on Left Lateral view subform & limit selections to menu list
+    DummyBoolean = LoadDropDown_LLat("LXL", AdjBoolean)
+
+    'Clear the error catching
+    On Error GoTo 0
+
+    Exit Function
+
+ErrorHandler_Main1:
+    Resume Next
+
+End Function
+
+Private Function LoadAfterUpdate()
+'Set dropdown menus for all ComboBox controls on all subforms
+
+    Dim DummyBoolean As Boolean
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
     'Set menus on PA view subform & limit selections to menu list
-    DummyBoolean = LoadDropDown_PA("XR", True)
-    DummyBoolean = LoadDropDown_PA("XL", True)
+    DummyBoolean = LoadAfterUpdate_PA("XR")
+    DummyBoolean = LoadAfterUpdate_PA("XL")
 
     'Set menus on Right Lateral view subform & limit selections to menu list
-    DummyBoolean = LoadDropDown_RLat("LXR", True)
+    DummyBoolean = LoadAfterUpdate_RLat("LXR")
 
     'Set menus on Left Lateral view subform & limit selections to menu list
-    DummyBoolean = LoadDropDown_LLat("LXL", True)
+    DummyBoolean = LoadAfterUpdate_LLat("LXL")
 
     'Clear the error catching
     On Error GoTo 0
@@ -430,7 +493,7 @@ Private Function LoadAfterUpdate_PA(ViewPrefix As String)
     FilterName1 = "READINGID"
     
     'Get READINGID from current record
-    FilterValue1 = Me.Recordset.Field("READINGID").Value
+    FilterValue1 = Me.Recordset.Fields("READINGID").Value
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
@@ -492,7 +555,7 @@ Private Function LoadAfterUpdate_RLat(ViewPrefix As String)
     FilterName1 = "READINGID"
     
     'Get READINGID from current record
-    FilterValue1 = Me.Recordset.Field("READINGID").Value
+    FilterValue1 = Me.Recordset.Fields("READINGID").Value
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
@@ -557,7 +620,7 @@ Private Function LoadAfterUpdate_LLat(ViewPrefix As String)
     FilterName1 = "READINGID"
     
     'Get READINGID from current record
-    FilterValue1 = Me.Recordset.Field("READINGID").Value
+    FilterValue1 = Me.Recordset.Fields("READINGID").Value
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
