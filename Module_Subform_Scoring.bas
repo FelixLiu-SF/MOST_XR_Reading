@@ -151,7 +151,7 @@ Public Function InsertScore(FormName As String, SubFormControlName As String, Co
   Dim ScoreValue As String
   Dim SQLValue As String
 
-  Set db = DBEnginer(0)(0)
+  Set db = DBEngine(0)(0)
 
   'Get the score value
   ScoreValue = Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value,"")
@@ -183,7 +183,7 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   Dim ScoreValue As String
   Dim SQLValue As String
 
-  Set db = DBEnginer(0)(0)
+  Set db = DBEngine(0)(0)
 
   'Get the score value
   ScoreValue = Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value,"")
