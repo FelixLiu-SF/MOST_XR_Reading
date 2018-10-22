@@ -194,7 +194,7 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   End If
 
   'Construct SQL code for insert updated score value
-  SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName & " = " & SQLValue  & " WHERE (((" & TableName & "." & FilterName1 & ")=" & FilterValue1 & ") AND (" & TableName & "." & FilterName2 & ")=" & FilterValue2 & "));"
+  SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName & " = " & SQLValue  & " WHERE (((" & TableName & "." & FilterName1 & ")=""" & FilterValue1 & """) AND ((" & TableName & "." & FilterName2 & ")=""" & FilterValue2 & """));"
 
   'Execute SQL update code
   DoCmd.SetWarnings False
