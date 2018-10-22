@@ -59,10 +59,28 @@ Private Sub LoadView()
     Dim ControlName_RV12_LLAT() As String
     Dim ControlName_RV34_RLAT() As String
     Dim ControlName_RV34_LLAT() As String
+    Dim AdjFlag As Integer
+    Dim AdjBoolean As Boolean
     Dim DummyBoolean As Boolean
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
+    
+    'Get AdjudicationFlag
+    AdjFlag = DLookup("AdjudicationFlag", "tblProperties", "RecordID = 1")
+    If Len(Nz(AdjFlag, "")) > 0 Then
+        If AdjFlag > 0 Then
+            AdjBoolean = False
+        Else
+            AdjBoolean = True
+        End If
+        
+    Else
+        AdjBoolean = True
+    End If
+    
+    
+    
     
     'Construct ComboBox Control Names from preloaded MOST variable root names
     ControlName_RV12_PA = Concat_Prefix("Combo_", MOST_RV12_XB_Vars)
@@ -72,27 +90,27 @@ Private Sub LoadView()
     ControlName_RV34_LLAT = Concat_Prefix("Combo_", MOST_RV34_LXL_Vars)
     
     'Lock the RV1 & RV2 PA variables on PA subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, True)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, AdjBoolean)
     
     'Lock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, True)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, AdjBoolean)
     
     'Lock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, True)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, AdjBoolean)
     
     'Lock & Hide all of the LEFT knee variables on RIGHT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, True)
-    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, True)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, AdjBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, AdjBoolean)
     
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, True)
-    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, True)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, AdjBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, AdjBoolean)
     
     'Lock & Hide all of the RIGHT knee variables on LEFT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, True)
-    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, True)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, AdjBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, AdjBoolean)
     
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, True)
-    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, True)
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, AdjBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, AdjBoolean)
     
     'Clear the error catching
     On Error GoTo 0
