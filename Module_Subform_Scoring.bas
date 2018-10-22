@@ -177,7 +177,7 @@ Public Function InsertScore(FormName As String, SubFormControlName As String, Co
 End Function
 
 '---INSERTSCORE2---'
-Public Function InsertScore2(FormName As String, SubFormControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FileValue2 As String)
+Public Function InsertScore2(FormName As String, SubFormControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String)
 
   Dim SQLText as String
   Dim ScoreValue As String
@@ -205,5 +205,17 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   DoCmd.SetWarnings True
 
   Set db = Nothing
+
+End Function
+
+'---MAKE_CONTROLAFTERUPDATE_FUNC---'
+Public Function Make_ControlAfterUpdate_Func(FormName As String, SubFormControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String) As String
+'Concatente string for updating dropdown menu SQL query
+
+    Dim AfterFuncStr As String
+
+    AfterFuncStr = "=InsertScore2(""" & FormName & """,""" & SubFormControlName & """,""" & ControlName & """,""" & VariableName & """,""" & TableName & """,""" & FilterName1 & """,""" & FilterValue1 & """,""" & FilterName2 & """,""" & FilterValue2 & """)"
+
+    Make_ControlAfterUpdate_Func = AfterFuncStr
 
 End Function
