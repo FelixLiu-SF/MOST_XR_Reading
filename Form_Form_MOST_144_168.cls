@@ -79,9 +79,6 @@ Private Sub LoadView()
         AdjBoolean = True
     End If
     
-    
-    
-    
     'Construct ComboBox Control Names from preloaded MOST variable root names
     ControlName_RV12_PA = Concat_Prefix("Combo_", MOST_RV12_XB_Vars)
     ControlName_RV12_RLAT = Concat_Prefix("Combo_", MOST_RV12_LXR_Vars)
@@ -420,6 +417,199 @@ ErrorHandler_Main1:
 End Function
 
 
+Private Function LoadAfterUpdate_PA(ViewPrefix As String)
+'Set table SQL insertion for ComboBox controls on PA view subform
+
+    Dim DummyBoolean As Boolean
+    Dim TableName As String
+    Dim FilterName1 As String
+    Dim FilterValue1 As String
+    
+    'Default filter values
+    TableName = "tblScores"
+    FilterName1 = "READINGID"
+    
+    'Get READINGID from current record
+    FilterValue1 = Me.Recordset.Field("READINGID").Value
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+
+    'Set menu for TF KLG
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFKLG", TableName, FilterName1, FilterValue1)
+
+    'Set menu for TF JSN
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSL", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Osteophytes
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSTL", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Sclerosis
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCTL", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Cysts
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTL", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Attrition
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTL", TableName, FilterName1, FilterValue1)
+
+
+    'Set menu for Chondrocalcinosis
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOL", TableName, FilterName1, FilterValue1)
+
+    'Clear the error catching
+    On Error GoTo 0
+
+    Exit Function
+
+ErrorHandler_Main1:
+    Resume Next
+
+End Function
+
+Private Function LoadAfterUpdate_RLat(ViewPrefix As String)
+'Set table SQL insertion for ComboBox controls on Right Lateral view subform
+
+    Dim DummyBoolean As Boolean
+    Dim TableName As String
+    Dim FilterName1 As String
+    Dim FilterValue1 As String
+    
+    'Default filter values
+    TableName = "tblScores"
+    FilterName1 = "READINGID"
+    
+    'Get READINGID from current record
+    FilterValue1 = Me.Recordset.Field("READINGID").Value
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+
+    'Set menu for PF KLG
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
+
+    'Set menu for PF JSN
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
+
+    'Set menu for "FT" JSN from lateral view
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Osteophytes
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSPI", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Sclerosis
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Cysts
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Chondrocalcinosis
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Joint Effusion
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Ossification
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
+
+
+    'Clear the error catching
+    On Error GoTo 0
+
+    Exit Function
+
+ErrorHandler_Main1:
+    Resume Next
+
+End Function
+
+Private Function LoadAfterUpdate_LLat(ViewPrefix As String)
+'Set table SQL insertion ComboBox controls on Left Lateral view subform
+
+    Dim DummyBoolean As Boolean
+    Dim TableName As String
+    Dim FilterName1 As String
+    Dim FilterValue1 As String
+    
+    'Default filter values
+    TableName = "tblScores"
+    FilterName1 = "READINGID"
+    
+    'Get READINGID from current record
+    FilterValue1 = Me.Recordset.Field("READINGID").Value
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+
+    'Set menu for PF KLG
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
+
+    'Set menu for PF JSN
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
+
+    'Set menu for "FT" JSN from lateral view
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Osteophytes
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSPI", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Sclerosis
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Cysts
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Chondrocalcinosis
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Joint Effusion
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
+
+    'Set menu for Ossification
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
+
+
+    'Clear the error catching
+    On Error GoTo 0
+
+    Exit Function
+
+ErrorHandler_Main1:
+    Resume Next
+
+End Function
+
+
 Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean As Boolean)
 
     Dim DummyBoolean As Boolean
@@ -454,13 +644,53 @@ Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName
 End Function
 
 
-Private Sub Command_NEXT_Click()
+Private Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
 
-End Sub
+    Dim DummyBoolean As Boolean
+    Dim VisitArray(4) As String
+    Dim VisitNum(4) As Integer
+    Dim ControlName As String
+    Dim VariableName As String
+    Dim FilterName2 As String
+    Dim FilterValue2 As String
+    Dim AfterUpdateStr As String
+    Dim Index As Integer
 
-Private Sub Command_PREV_Click()
+    'Define default variables
+    VisitArray(0) = "RV1"
+    VisitArray(1) = "RV2"
+    VisitArray(2) = "RV3"
+    VisitArray(3) = "RV4"
+    
+    VisitNum(0) = 1
+    VisitNum(1) = 2
+    VisitNum(2) = 3
+    VisitNum(3) = 4
 
-End Sub
+    'Loop through visits
+    Index = 0
+    For Index = 0 To 4
+    
+        'Construct Variable name
+        VariableName = ViewPrefix & VarNameRoot
+
+        'Construct ComboBox Control name
+        ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
+        
+        'Construct visit filters
+        FilterName2 = "RVNUM"
+        FilterValue2 = CStr(VisitNum(Index))
+
+        'Construct ComboBox selection string
+        AfterUpdateStr = Make_ControlAfterUpdate_Func(FormName, SubFormControlName, ControlName, VariableName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+
+        'Set the after update string to the OnFocus property of the ComboBox
+        DummyBoolean = Control_Edit_AfterUpdate(FormName, SubFormControlName, ControlName, AfterUpdateStr)
+
+    Next
+
+End Function
+
 
 Private Sub Command_LOAD_PA_Click()
 
@@ -508,14 +738,3 @@ Private Sub Command_SUBMIT_Click()
 
 End Sub
 
-Private Sub Command_FINISH_Click()
-
-End Sub
-
-Private Sub Command_QUIT_Click()
-
-End Sub
-
-Private Sub Command_UNDO_Click()
-
-End Sub
