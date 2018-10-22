@@ -183,6 +183,10 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   Dim ScoreValue As String
   Dim SQLValue As String
 
+  On Error GoTo ScoreErr
+
+  DirtySave(FormName)
+
   Set db = DBEngine(0)(0)
 
   'Get the score value
@@ -205,6 +209,13 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   DoCmd.SetWarnings True
 
   Set db = Nothing
+
+  On Error GoTo 0
+  Exit Function
+
+  ScoreErr:
+  Set db = Nothing
+  Resume Next
 
 End Function
 
