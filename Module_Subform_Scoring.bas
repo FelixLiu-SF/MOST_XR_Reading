@@ -242,7 +242,7 @@ Public Function MyLookup2(TableName As String, VariableName As String, FilterNam
   On Error GoTo LookupErr
 
   'Construct strings for DLookup query
-  VariableIn = "[" & Variable Name & "]"
+  VariableIn = "[" & VariableName & "]"
   FilterIn = "[" & FilterName1 & "] = """ & FilterValue1 & """ AND [" & FilterName2 & "] = """ & FilterValue2 & """"
 
   'Query for value and return it
