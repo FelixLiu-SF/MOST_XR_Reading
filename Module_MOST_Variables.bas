@@ -84,8 +84,8 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_LATRoot_Array(16) = "OPTL"
   MOST_LATRoot_Array(17) = "OSLB"
 
-  MOST_RLATKnee_Vars = Concat_Prefix("LXR",MOST_LATRoot_Array)
-  MOST_LLATKnee_Vars = Concat_Prefix("LXL",MOST_LATRoot_Array)
+  MOST_RLATKnee_Vars = Concat_Prefix("LXR", MOST_LATRoot_Array)
+  MOST_LLATKnee_Vars = Concat_Prefix("LXL", MOST_LATRoot_Array)
 
   MOST_RV1234_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
   MOST_RV12_XB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
@@ -100,5 +100,51 @@ Public Function MOST_Load_VariableNameArrays()
 
   MOST_RV34_LXR_Vars = Concat_VisitVar(MOST_RV34_Array, MOST_RLATKnee_Vars)
   MOST_RV34_LXL_Vars = Concat_VisitVar(MOST_RV34_Array, MOST_LLATKnee_Vars)
+
+End Function
+
+'---SETCOMBOVALUE_RV1234----'
+Public Function SetComboValue_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
+
+    Dim DummyBoolean As Boolean
+    Dim VisitArray(4) As String
+    Dim VisitNum(4) As Integer
+    Dim ControlName As String
+    Dim VariableName As String
+    Dim FilterName2 As String
+    Dim FilterValue2 As String
+    Dim AfterUpdateStr As String
+    Dim Index As Integer
+    Dim DummyBoolean As Boolean
+
+    'Define default variables
+    VisitArray(0) = "RV1"
+    VisitArray(1) = "RV2"
+    VisitArray(2) = "RV3"
+    VisitArray(3) = "RV4"
+    
+    VisitNum(0) = 1
+    VisitNum(1) = 2
+    VisitNum(2) = 3
+    VisitNum(3) = 4
+
+    'Loop through visits
+    Index = 0
+    For Index = 0 To 4
+    
+        'Construct Variable name
+        VariableName = ViewPrefix & VarNameRoot
+
+        'Construct ComboBox Control name
+        ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
+        
+        'Construct visit filters
+        FilterName2 = "RVNUM"
+        FilterValue2 = CStr(VisitNum(Index))
+
+        'Insert value from table into ComboBox
+        DummyBoolean = SetComboValue(FormName, SubFormControlName, ControlName, VariableName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+
+    Next
 
 End Function
