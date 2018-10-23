@@ -268,7 +268,7 @@ Public Function SetComboValue(FormName As String, SubFormControlName As String, 
 
   'Update ComboBox value if value is not null
   If Len(TableValue)>0 Then
-    Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value = TableValue = TableValue
+    Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value = TableValue
   End If
 
 End Function
