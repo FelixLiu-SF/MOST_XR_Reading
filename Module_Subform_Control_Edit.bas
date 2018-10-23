@@ -26,7 +26,7 @@ Public Function Control_Edit_AfterUpdate(FormName As String, SubFormControlName 
 End function
 
 '---CONTROL_EDIT_BINDING---'
-Public Function Control_Edit_Binding(FormName As String, SubFormControlName As String, ControlName As String, ColCount As Integer,ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean)
+Public Function Control_Edit_Binding(FormName As String, SubFormControlName As String, ControlName As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean)
 'Update the control binding properties
 
     Dim TwipListWidth As Integer
@@ -66,19 +66,27 @@ Public Function Make_ControlSave_Func(FormName As String) As String
 End Function
 
 '---MAKE_CONTROLUPDATE_FUNC---'
-Public Function Make_ControlUpdate_Func(FormName As String, SubFormControlName As String, ControlName As String, SelectFunc As String) As String
+Public Function Make_ControlUpdate_Func(FormName As String, SubFormControlName As String, ControlName As String, SelectFunc As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean) As String
 'Concatente string for updating dropdown menu SQL query
 
     Dim FocusFuncStr As String
+    Dim BoolStr As String
 
-    FocusFuncStr = "=UpdateDropdown(""" & FormName & """,""" & SubFormControlName & """,""" & ControlName & """,""" & SelectFunc & """)"
+    'Set the Boolean string
+    If LimitBool Then
+      BoolStr = "TRUE"
+    Else
+      BoolStr = "FALSE"
+    End If
+
+    FocusFuncStr = "=UpdateDropdown(""" & FormName & """,""" & SubFormControlName & """,""" & ControlName & """,""" & SelectFunc & """,""" & CStr(ColCount) & """,""" & CStr(ColBind) & """,""" & ColWidth & """,""" & CStr(ComboListWidth) & """,""" & BoolStr & """)"
 
     Make_ControlUpdate_Func = FocusFuncStr
 
 End Function
 
 '---UPDATEDROPDOWN---'
-Public Function UpdateDropdown(FormName As String, SubFormControlName As String, ControlName As String, ControlSQL As String, ColCount As Integer,ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean)
+Public Function UpdateDropdown(FormName As String, SubFormControlName As String, ControlName As String, ControlSQL As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean)
 ' Update Combo Box object table if not Locked
 
     'dummy variables for artificial CPU wait
