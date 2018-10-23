@@ -11,9 +11,8 @@ Option Compare Database
 
 Private Sub Form_Current()
 
-    'Load visit text
-    
-    'Load visit study date
+    'Load visit & study date text
+    LoadVisitDates
     
     'Load ComboBox Values
     LoadValues_PA ("XR")
@@ -83,3 +82,35 @@ ErrorHandler_Main1:
     Resume Next
 
 End Function
+
+Private Sub LoadVisitDates()
+
+    Dim VisitStrs(4) As String
+    Dim DateStrs(4) As String
+
+    'Get time points from current record
+    VisitStrs(0) = Forms("Form_MOST_144_168").Recordset.Fields("RV1TP").Value
+    VisitStrs(1) = Forms("Form_MOST_144_168").Recordset.Fields("RV2TP").Value
+    VisitStrs(2) = Forms("Form_MOST_144_168").Recordset.Fields("RV3TP").Value
+    VisitStrs(3) = Forms("Form_MOST_144_168").Recordset.Fields("RV4TP").Value
+    
+    'Get exam dates from current record
+    DateStrs(0) = Forms("Form_MOST_144_168").Recordset.Fields("RV1DATE").Value
+    DateStrs(1) = Forms("Form_MOST_144_168").Recordset.Fields("RV2DATE").Value
+    DateStrs(2) = Forms("Form_MOST_144_168").Recordset.Fields("RV3DATE").Value
+    DateStrs(3) = Forms("Form_MOST_144_168").Recordset.Fields("RV4DATE").Value
+    
+    'Set time point strings
+    Forms("Form_MOST_144_168").Controls("Subform_PA").Form.Controls("Label_RV1TP").Caption = VisitStrs(0)
+    Forms("Form_MOST_144_168").Controls("Subform_PA").Form.Controls("Label_RV2TP").Caption = VisitStrs(1)
+    Forms("Form_MOST_144_168").Controls("Subform_PA").Form.Controls("Label_RV3TP").Caption = VisitStrs(2)
+    Forms("Form_MOST_144_168").Controls("Subform_PA").Form.Controls("Label_RV4TP").Caption = VisitStrs(3)
+    
+    'Set exam date strings
+    Forms("Form_MOST_144_168").Controls("Subform_PA").Form.Controls("Text_RV1DATE").Value = DateStrs(0)
+    Forms("Form_MOST_144_168").Controls("Subform_PA").Form.Controls("Text_RV2DATE").Value = DateStrs(1)
+    Forms("Form_MOST_144_168").Controls("Subform_PA").Form.Controls("Text_RV3DATE").Value = DateStrs(2)
+    Forms("Form_MOST_144_168").Controls("Subform_PA").Form.Controls("Text_RV4DATE").Value = DateStrs(3)
+
+End Sub
+
