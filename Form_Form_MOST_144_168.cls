@@ -10,7 +10,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 Option Explicit
 
-
+'---FORM_LOAD---'
 Private Sub Form_Load()
 ' Load various modules when this scoresheet is opened
 
@@ -51,6 +51,7 @@ ErrorHandler_Main1:
 
 End Sub
 
+'---FORM_CURRENT---'
 Private Sub Form_Current()
 ' Reload view for current record/participant ID
 
@@ -60,6 +61,7 @@ Private Sub Form_Current()
     On Error GoTo ErrorHandler_Main1
     
     'Set the ComboBox After Updates
+    LoadAfterUpdate
     
 'Clear the error catching
     On Error GoTo 0
@@ -71,6 +73,7 @@ ErrorHandler_Main1:
 
 End Sub
 
+'---LOADVIEW---'
 Private Sub LoadView()
 ' Show/Hide/Lock/Unlock the ComboBoxes for default view on all subforms
 
@@ -139,7 +142,7 @@ ErrorHandler_Main1:
 
 End Sub
 
-
+'---LOADCOLOR---'
 Private Sub LoadColor()
 ' Reload all of the combo box background colors
 
@@ -188,6 +191,7 @@ ErrorHandler_Main1:
 
 End Sub
 
+'---SETCOMBOLOSTFOCUS---'
 Private Sub SetComboLostFocus()
 ' Set all of the combo box background colors to update after focus is lost
 
@@ -246,6 +250,7 @@ ErrorHandler_Main1:
 
 End Sub
 
+'---LOADDROPDOWN---'
 Private Function LoadDropDown()
 'Set dropdown menus for all ComboBox controls on all subforms
 
@@ -289,6 +294,7 @@ ErrorHandler_Main1:
 
 End Function
 
+'---LOADAFTERUPDATE---'
 Private Function LoadAfterUpdate()
 'Set dropdown menus for all ComboBox controls on all subforms
 
@@ -317,6 +323,7 @@ ErrorHandler_Main1:
 
 End Function
 
+'---LOADDROPDOWN_PA---'
 Private Function LoadDropDown_PA(ViewPrefix As String, MenuLimitBoolean As Boolean)
 'Set dropdown menus for ComboBox controls on PA view subform
 
@@ -369,6 +376,7 @@ ErrorHandler_Main1:
 
 End Function
 
+'---LOADDROPDOWN_RLAT---'
 Private Function LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boolean)
 'Set dropdown menus for ComboBox controls on Right Lateral view subform
 
@@ -424,6 +432,7 @@ ErrorHandler_Main1:
 
 End Function
 
+'---LOADDROPDOWN_LLAT---'
 Private Function LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boolean)
 'Set dropdown menus for ComboBox controls on Left Lateral view subform
 
@@ -479,7 +488,7 @@ ErrorHandler_Main1:
 
 End Function
 
-
+'---LOADAFTERUPDATE_PA---'
 Private Function LoadAfterUpdate_PA(ViewPrefix As String)
 'Set table SQL insertion for ComboBox controls on PA view subform
 
@@ -542,6 +551,7 @@ ErrorHandler_Main1:
 
 End Function
 
+'---LOADAFTERUPDATE_RLAT---'
 Private Function LoadAfterUpdate_RLat(ViewPrefix As String)
 'Set table SQL insertion for ComboBox controls on Right Lateral view subform
 
@@ -607,6 +617,7 @@ ErrorHandler_Main1:
 
 End Function
 
+'---LOADAFTERUPDATE_LLAT---'
 Private Function LoadAfterUpdate_LLat(ViewPrefix As String)
 'Set table SQL insertion ComboBox controls on Left Lateral view subform
 
@@ -672,7 +683,7 @@ ErrorHandler_Main1:
 
 End Function
 
-
+'---SETCOMBOSELECTION_RV1234---'
 Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean As Boolean)
 
     Dim DummyBoolean As Boolean
@@ -706,7 +717,7 @@ Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName
 
 End Function
 
-
+'---SETCOMBOUPDATE_RV1234----'
 Private Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
 
     Dim DummyBoolean As Boolean
@@ -754,7 +765,7 @@ Private Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As
 
 End Function
 
-
+'---COMMAND_LOAD_PA_CLICK---'
 Private Sub Command_LOAD_PA_Click()
 
     'Set subform focus
@@ -766,6 +777,7 @@ Private Sub Command_LOAD_PA_Click()
 
 End Sub
 
+'---COMMAND_LOAD_RL_CLICK---'
 Private Sub Command_LOAD_RL_Click()
 
     'Set subform focus
@@ -777,6 +789,7 @@ Private Sub Command_LOAD_RL_Click()
 
 End Sub
 
+'---COMMAND_LOAD_LL_CLICK---'
 Private Sub Command_LOAD_LL_Click()
 
     'Set subform focus
@@ -788,6 +801,7 @@ Private Sub Command_LOAD_LL_Click()
 
 End Sub
 
+'---COMMAND_SUBMIT_CLICK---'
 Private Sub Command_SUBMIT_Click()
 
     'Call for DirtySave
