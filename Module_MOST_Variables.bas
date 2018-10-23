@@ -126,13 +126,11 @@ Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName
         ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
 
         'Construct ComboBox selection string
-        OnFocusStr = Make_ControlUpdate_Func(FormName, SubFormControlName, ControlName, SelectionStr)
+        OnFocusStr = Make_ControlUpdate_Func(FormName, SubFormControlName, ControlName, SelectionStr, 4, 2, "0; 0; 0.5 in; 2 in", 3, MenuLimitBoolean)
 
         'Set the selection string to the OnFocus property of the ComboBox
         DummyBoolean = Control_Edit_OnFocus(FormName, SubFormControlName, ControlName, OnFocusStr)
 
-        'Set the ComboBox dropdown menu display properties
-        DummyBoolean = Control_Edit_Binding(FormName, SubFormControlName, ControlName, 4, 2, "0; 0; 0.5 in; 2 in", 3, MenuLimitBoolean)
     Next
 
 End Function
