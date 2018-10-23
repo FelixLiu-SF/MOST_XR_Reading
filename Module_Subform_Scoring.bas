@@ -267,7 +267,7 @@ Public Function SetComboValue(FormName As String, SubFormControlName As String, 
   TableValue = Nz(MyLookup2(TableName, VariableName, FilterName1, FilterValue1, FilterName2, FilterValue2),"")
 
   'Update ComboBox value if value is not null
-  If Len(TableValue > 0 ) Then
+  If Len(TableValue)>0 Then
     Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value = TableValue = TableValue
   End If
 
