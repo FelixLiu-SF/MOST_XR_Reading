@@ -162,6 +162,7 @@ Public Function InsertScore(FormName As String, SubFormControlName As String, Co
   Else
     SQLValue = ScoreValue
   End If
+  SQLValue = Trim(SQLValue)
 
   'Construct SQL code for insert updated score value
   SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName & " = " & SQLValue & " WHERE ((" & TableName & "." & FilterName & ")=" & FilterValue & ");"
@@ -199,6 +200,7 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   Else
     SQLValue = ScoreValue
   End If
+  SQLValue = Trim(SQLValue)
 
   'Construct SQL code for insert updated score value
   SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName & " = " & SQLValue  & " WHERE (((" & TableName & "." & FilterName1 & ")=""" & FilterValue1 & """) AND ((" & TableName & "." & FilterName2 & ")=""" & FilterValue2 & """));"
@@ -227,5 +229,46 @@ Public Function Make_ControlAfterUpdate_Func(FormName As String, SubFormControlN
     AfterFuncStr = "=InsertScore2(""" & FormName & """,""" & SubFormControlName & """,""" & ControlName & """,""" & VariableName & """,""" & TableName & """,""" & FilterName1 & """,""" & FilterValue1 & """,""" & FilterName2 & """,""" & FilterValue2 & """)"
 
     Make_ControlAfterUpdate_Func = AfterFuncStr
+
+End Function
+
+'---MYLOOKUP2---'
+Public Function MyLookup2(TableName As String, VariableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String) As String
+'Look up value from Access table using 2 string filter criteria
+  Dim TableValue As String
+  Dim VariableIn As String
+  Dim FilterIn As String
+
+  On Error GoTo LookupErr
+
+  'Construct strings for DLookup query
+  VariableIn = "[" & Variable Name & "]"
+  FilterIn = "[" & FilterName1 & "] = """ & FilterValue1 & """ AND [" & FilterName2 & "] = """ & FilterValue2 & """"
+
+  'Query for value and return it
+  TableValue = DLookup(VariableIn, TableName, FilterIn)
+
+  MyLookup2 = TableValue
+
+  On Error GoTo 0
+  Exit Function
+
+LookupErr:
+  Resume Next
+
+End Function
+
+'---SETCOMBOVALUE---'
+Public Function SetComboValue(FormName As String, SubFormControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String)
+
+  Dim TableValue As String
+
+  'Get value from table
+  TableValue = Nz(MyLookup2(TableName, VariableName, FilterName1, FilterValue1, FilterName2, FilterValue2),"")
+
+  'Update ComboBox value if value is not null
+  If Len(TableValue > 0 ) Then
+    Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value = TableValue = TableValue
+  End If
 
 End Function
