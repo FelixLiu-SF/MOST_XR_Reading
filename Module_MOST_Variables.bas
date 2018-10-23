@@ -104,7 +104,7 @@ Public Function MOST_Load_VariableNameArrays()
 End Function
 
 '---SETCOMBOSELECTION_RV1234---'
-Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean As Boolean)
+Public Function SetComboSelection_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean As Boolean)
 
     Dim DummyBoolean As Boolean
     Dim VisitArray(4) As String
@@ -136,7 +136,7 @@ Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName
 End Function
 
 '---SETCOMBOUPDATE_RV1234----'
-Private Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
+Public Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
 
     Dim DummyBoolean As Boolean
     Dim VisitArray(4) As String
@@ -195,7 +195,6 @@ Public Function SetComboValue_RV1234(FormName As String, SubFormControlName As S
     Dim FilterValue2 As String
     Dim AfterUpdateStr As String
     Dim Index As Integer
-    Dim DummyBoolean As Boolean
 
     'Define default variables
     VisitArray(0) = "RV1"
