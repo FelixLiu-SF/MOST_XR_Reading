@@ -78,7 +78,7 @@ Public Function Make_ControlUpdate_Func(FormName As String, SubFormControlName A
 End Function
 
 '---UPDATEDROPDOWN---'
-Public Function UpdateDropdown(FormName As String, SubFormControlName As String, ControlName As String, ControlSQL As String)
+Public Function UpdateDropdown(FormName As String, SubFormControlName As String, ControlName As String, ControlSQL As String, ColCount As Integer,ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean)
 ' Update Combo Box object table if not Locked
 
     'dummy variables for artificial CPU wait
@@ -106,7 +106,7 @@ Public Function UpdateDropdown(FormName As String, SubFormControlName As String,
         Set db = Nothing
 
         'Set Combo Box binding
-        DumBool = Control_Edit_Binding(FormName,SubFormControlName,ControlName,4,2,"0; 0; 0.5 in; 2 in",3, True)
+        DumBool = Control_Edit_Binding(FormName,SubFormControlName,ControlName,ColCount,ColBind,ColWidth,ComboListWidth, LimitBool)
 
         UpdateDropdown = True
 
