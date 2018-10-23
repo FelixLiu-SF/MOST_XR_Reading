@@ -41,6 +41,10 @@ Private Sub Form_Load()
     'Load initial background color scheme for ComboBox Controls
     LoadColor
     
+    'Load the record numbers
+    DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
+    DummyBoolean = LoadMaxRec("Form_MOST_144_168", "Text_MaxRecord")
+    
     'Clear the error catching
     On Error GoTo 0
     
@@ -62,6 +66,9 @@ Private Sub Form_Current()
     
     'Set the ComboBox After Updates
     LoadAfterUpdate
+    
+    'Reload the current record number
+    DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
     
 'Clear the error catching
     On Error GoTo 0
