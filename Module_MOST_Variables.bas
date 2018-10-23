@@ -103,6 +103,88 @@ Public Function MOST_Load_VariableNameArrays()
 
 End Function
 
+'---SETCOMBOSELECTION_RV1234---'
+Private Function SetComboSelection_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean As Boolean)
+
+    Dim DummyBoolean As Boolean
+    Dim VisitArray(4) As String
+    Dim ControlName As String
+    Dim OnFocusStr As String
+    Dim Index As Integer
+
+    'Define default variables
+    VisitArray(0) = "RV1"
+    VisitArray(1) = "RV2"
+    VisitArray(2) = "RV3"
+    VisitArray(3) = "RV4"
+
+    'Loop through visits
+    Index = 0
+    For Index = 0 To 4
+
+        'Construct ComboBox Control name
+        ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
+
+        'Construct ComboBox selection string
+        OnFocusStr = Make_ControlUpdate_Func(FormName, SubFormControlName, ControlName, SelectionStr)
+
+        'Set the selection string to the OnFocus property of the ComboBox
+        DummyBoolean = Control_Edit_OnFocus(FormName, SubFormControlName, ControlName, OnFocusStr)
+
+        'Set the ComboBox dropdown menu display properties
+        DummyBoolean = Control_Edit_Binding(FormName, SubFormControlName, ControlName, 4, 2, "0; 0; 0.5 in; 2 in", 3, MenuLimitBoolean)
+    Next
+
+End Function
+
+'---SETCOMBOUPDATE_RV1234----'
+Private Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
+
+    Dim DummyBoolean As Boolean
+    Dim VisitArray(4) As String
+    Dim VisitNum(4) As Integer
+    Dim ControlName As String
+    Dim VariableName As String
+    Dim FilterName2 As String
+    Dim FilterValue2 As String
+    Dim AfterUpdateStr As String
+    Dim Index As Integer
+
+    'Define default variables
+    VisitArray(0) = "RV1"
+    VisitArray(1) = "RV2"
+    VisitArray(2) = "RV3"
+    VisitArray(3) = "RV4"
+    
+    VisitNum(0) = 1
+    VisitNum(1) = 2
+    VisitNum(2) = 3
+    VisitNum(3) = 4
+
+    'Loop through visits
+    Index = 0
+    For Index = 0 To 4
+    
+        'Construct Variable name
+        VariableName = ViewPrefix & VarNameRoot
+
+        'Construct ComboBox Control name
+        ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
+        
+        'Construct visit filters
+        FilterName2 = "RVNUM"
+        FilterValue2 = CStr(VisitNum(Index))
+
+        'Construct ComboBox selection string
+        AfterUpdateStr = Make_ControlAfterUpdate_Func(FormName, SubFormControlName, ControlName, VariableName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+
+        'Set the after update string to the OnFocus property of the ComboBox
+        DummyBoolean = Control_Edit_AfterUpdate(FormName, SubFormControlName, ControlName, AfterUpdateStr)
+
+    Next
+
+End Function
+
 '---SETCOMBOVALUE_RV1234----'
 Public Function SetComboValue_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
 
