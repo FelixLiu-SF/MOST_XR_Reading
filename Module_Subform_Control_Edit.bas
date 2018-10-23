@@ -92,7 +92,7 @@ Public Function UpdateDropdown(FormName As String, SubFormControlName As String,
         Set db = DBEngine(0)(0)
         Set rs = db.OpenRecordset(ControlSQL)
 
-        ' Update Combo Box
+        ' Update Combo Box query
         Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).RowSourceType = "Table/Query"
         Set Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Recordset = rs
 
@@ -104,6 +104,9 @@ Public Function UpdateDropdown(FormName As String, SubFormControlName As String,
         ' clear the DAO objects
         Set rs = Nothing
         Set db = Nothing
+
+        'Set Combo Box binding
+        DumBool = Control_Edit_Binding(FormName,SubFormControlName,ControlName,4,2,"0; 0; 0.5 in; 2 in",3, True)
 
         UpdateDropdown = True
 
