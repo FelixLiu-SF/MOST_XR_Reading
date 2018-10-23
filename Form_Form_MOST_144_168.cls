@@ -96,7 +96,7 @@ Private Sub LoadView()
         End If
         
     Else
-        AdjBoolean = True
+        DebugBoolean = True
     End If
     
     'Construct ComboBox Control Names from preloaded MOST variable root names
