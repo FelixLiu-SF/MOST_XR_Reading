@@ -1,0 +1,20 @@
+VERSION 1.0 CLASS
+BEGIN
+  MultiUse = -1  'True
+END
+Attribute VB_Name = "Form_Subform_MOST_RLAT_Views"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Compare Database
+
+Private Sub Form_Current()
+
+    'Load visit text
+    
+    'Load visit study date
+    
+    'Load ComboBox Values
+
+End Sub
