@@ -802,13 +802,63 @@ End Sub
 '---COMMAND_SUBMIT_CLICK---'
 Private Sub Command_SUBMIT_Click()
 
+    Dim CUR_DATE As String
+    Dim CUR_TIME As String
+    Dim CUR_READER As Variant
+
+    Dim ComboNames_XB() As String
+    Dim ComboNames_LXB() As String
+    Dim nUnlocked_XB As Integer
+    Dim nUnlocked_LXR As Integer
+    Dim nUnlocked_LXL As Integer
+    Dim nScored_XB As Integer
+    Dim nScored_LXR As Integer
+    Dim nScored_LXL As Integer
+
+    Dim DummyBoolean As Boolean
+    Dim MsgResponse As Integer
+    Dim MsgExtra As Integer
+
+    On Error GoTo ErrorHandler1
+
+    'Get the current date and time
+    CUR_DATE = Format(Now, "yyyymmdd")
+    CUR_TIME = Format(Now, "hh:mm:ss")
+
     'Call for DirtySave
+    DummyBoolean = DirtySave("Form_MOST_144_168")
 
     'Check for reader name
+    CUR_READER = Me("Combo_HeaderREADER").Value
+    If Len(Nz(CUR_READER, "")) < 1 Then
+        MsgExtra = MsgBox("Please select reader name before signing the scoresheet.", vbOKOnly, "No Reader selected")
+        Exit Sub
+    End If
 
     'Check for empty scoring boxes
+    ComboNames_XB = Concat_Prefix("Combo_", MOST_RV1234_XB_Vars)
+    ComboNames_LXB = Concat_Prefix("Combo_", MOST_RV1234_LXB_Vars)
+
+    nUnlocked_XB = CountUnlocked("Form_MOST_144_168","Subform_PA",ComboNames_XB)
+    nUnlocked_LXR = CountUnlocked("Form_MOST_144_168","Subform_RLAT",ComboNames_LXB)
+    nUnlocked_LXL = CountUnlocked("Form_MOST_144_168","Subform_LLAT",ComboNames_LXB)
+
+    nScored_XB = CountScored("Form_MOST_144_168","Subform_PA",ComboNames_XB)
+    nScored_LXR = CountScored("Form_MOST_144_168","Subform_RLAT",ComboNames_LXB)
+    nScored_LXL = CountScored("Form_MOST_144_168","Subform_LLAT",ComboNames_LXB)
+
+    'for debugging
+    MsgResponse = MsgBox(CStr(nUnlocked_XB) & " " & CStr(nUnlocked_LXR) " " & CStr(nUnlocked_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+    MsgResponse = MsgBox(CStr(nScored_XB) & " " & CStr(nScored_LXR) " " & CStr(nScored_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
 
     'Sign the record
 
+
+    'Exit the Sub
+    On Error GoTo 0
+    Exit Sub
+
+ErrorHandler1:
+    Exit Sub
 
 End Sub
