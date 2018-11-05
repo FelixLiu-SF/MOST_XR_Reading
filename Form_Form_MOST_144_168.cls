@@ -21,35 +21,35 @@ Private Sub Form_Load()
 
     'Load the dataset objects for combo box dropdown menus
     LoadDAO
-    
+
     'Load the EFilm Automation object to link with EFilm Workstation
     LoadEFilmAuto
-    
+
     'Load MOST global variable names and SQL selection strings
     DummyBoolean = MOST_Load_SelectStr
     DummyBoolean = MOST_Load_VariableNameArrays
-    
+
     'Load default view for ComboBox Controls
     LoadView
-    
+
     'Set all ComboBox OnLostFocus properties to color coding
     SetComboLostFocus
-    
+
     'Set all Combobox OnFocus properties to dropdown menus
     LoadDropDown
-    
+
     'Load initial background color scheme for ComboBox Controls
     LoadColor
-    
+
     'Load the record numbers
     DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
     DummyBoolean = LoadMaxRec("Form_MOST_144_168", "Text_MaxRecord")
-    
+
     'Clear the error catching
     On Error GoTo 0
-    
+
     Exit Sub
-    
+
 ErrorHandler_Main1:
     Resume Next
 
@@ -63,18 +63,18 @@ Private Sub Form_Current()
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
-    
+
     'Set the ComboBox After Updates
     LoadAfterUpdate
-    
+
     'Reload the current record number
     DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
-    
+
 'Clear the error catching
     On Error GoTo 0
-    
+
     Exit Sub
-    
+
 ErrorHandler_Main1:
     Resume Next
 
@@ -95,7 +95,7 @@ Private Sub LoadView()
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
-    
+
     'Get AdjudicationFlag
     DebugFlag = DLookup("DebugFlag", "tblProperties", "RecordID = 1")
     If Len(Nz(DebugFlag, "")) > 0 Then
@@ -104,46 +104,46 @@ Private Sub LoadView()
         Else
             DebugBoolean = True
         End If
-        
+
     Else
         DebugBoolean = True
     End If
-    
+
     'Construct ComboBox Control Names from preloaded MOST variable root names
     ControlName_RV12_PA = Concat_Prefix("Combo_", MOST_RV12_XB_Vars)
     ControlName_RV12_RLAT = Concat_Prefix("Combo_", MOST_RV12_LXR_Vars)
     ControlName_RV12_LLAT = Concat_Prefix("Combo_", MOST_RV12_LXL_Vars)
     ControlName_RV34_RLAT = Concat_Prefix("Combo_", MOST_RV34_LXR_Vars)
     ControlName_RV34_LLAT = Concat_Prefix("Combo_", MOST_RV34_LXL_Vars)
-    
+
     'Lock the RV1 & RV2 PA variables on PA subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, DebugBoolean)
-    
+
     'Lock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, DebugBoolean)
-    
+
     'Lock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, DebugBoolean)
-    
+
     'Lock & Hide all of the LEFT knee variables on RIGHT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, DebugBoolean)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, DebugBoolean)
-    
+
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, DebugBoolean)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV34_LLAT, DebugBoolean)
-    
+
     'Lock & Hide all of the RIGHT knee variables on LEFT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, DebugBoolean)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_RLAT, DebugBoolean)
-    
+
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, DebugBoolean)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, DebugBoolean)
-    
+
     'Clear the error catching
     On Error GoTo 0
-    
+
     Exit Sub
-    
+
 ErrorHandler_Main1:
     Resume Next
 
@@ -160,39 +160,39 @@ Private Sub LoadColor()
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
-    
+
     'Loop through preloaded PA view variable name array on PA subform
     Index = 0
     Upper = UBound(MOST_RV1234_XB_Vars, 1) - 1
-    
+
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
         DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_PA", ControlName)
     Next
-    
+
     'Loop through preloaded Lateral View variable name array on Right Lat subform
     Index = 0
     Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-    
+
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
         DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_RLAT", ControlName)
     Next
-    
+
     'Loop through preloaded Lateral View variable name array on Left Lat subform
     Index = 0
     Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-    
+
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
         DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_LLAT", ControlName)
     Next
-    
+
     'Clear the error catching
     On Error GoTo 0
-    
+
     Exit Sub
-    
+
 ErrorHandler_Main1:
     Resume Next
 
@@ -210,48 +210,48 @@ Private Sub SetComboLostFocus()
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
-    
+
     'Loop through preloaded PA view variable name array on PA subform
     Index = 0
     Upper = UBound(MOST_RV1234_XB_Vars, 1) - 1
-    
+
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
-        
+
         LostFocusStr = Make_ControlColor_Func("Form_MOST_144_168", "Subform_PA", ControlName)
-        
+
         DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_PA", ControlName, LostFocusStr)
     Next
-    
+
     'Loop through preloaded Lateral View variable name array on Right Lat subform
     Index = 0
     Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-    
+
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
-        
+
         LostFocusStr = Make_ControlColor_Func("Form_MOST_144_168", "Subform_RLAT", ControlName)
-        
+
         DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_RLAT", ControlName, LostFocusStr)
     Next
-    
+
     'Loop through preloaded Lateral View variable name array on Left Lat subform
     Index = 0
     Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-    
+
     For Index = 0 To Upper
         ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
-        
+
         LostFocusStr = Make_ControlColor_Func("Form_MOST_144_168", "Subform_LLAT", ControlName)
-        
+
         DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_LLAT", ControlName, LostFocusStr)
     Next
-    
+
     'Clear the error catching
     On Error GoTo 0
-    
+
     Exit Sub
-    
+
 ErrorHandler_Main1:
     Resume Next
 
@@ -267,7 +267,7 @@ Private Function LoadDropDown()
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
-    
+
     'Get AdjudicationFlag
     AdjFlag = DLookup("AdjudicationFlag", "tblProperties", "RecordID = 1")
     If Len(Nz(AdjFlag, "")) > 0 Then
@@ -276,7 +276,7 @@ Private Function LoadDropDown()
         Else
             AdjBoolean = True
         End If
-        
+
     Else
         AdjBoolean = True
     End If
@@ -503,11 +503,11 @@ Private Function LoadAfterUpdate_PA(ViewPrefix As String)
     Dim TableName As String
     Dim FilterName1 As String
     Dim FilterValue1 As String
-    
+
     'Default filter values
     TableName = "tblScores"
     FilterName1 = "READINGID"
-    
+
     'Get READINGID from current record
     FilterValue1 = Me.Recordset.Fields("READINGID").Value
 
@@ -566,11 +566,11 @@ Private Function LoadAfterUpdate_RLat(ViewPrefix As String)
     Dim TableName As String
     Dim FilterName1 As String
     Dim FilterValue1 As String
-    
+
     'Default filter values
     TableName = "tblScores"
     FilterName1 = "READINGID"
-    
+
     'Get READINGID from current record
     FilterValue1 = Me.Recordset.Fields("READINGID").Value
 
@@ -632,11 +632,11 @@ Private Function LoadAfterUpdate_LLat(ViewPrefix As String)
     Dim TableName As String
     Dim FilterName1 As String
     Dim FilterValue1 As String
-    
+
     'Default filter values
     TableName = "tblScores"
     FilterName1 = "READINGID"
-    
+
     'Get READINGID from current record
     FilterValue1 = Me.Recordset.Fields("READINGID").Value
 
@@ -694,36 +694,108 @@ End Function
 '---COMMAND_LOAD_PA_CLICK---'
 Private Sub Command_LOAD_PA_Click()
 
+    Dim PATID_in As String
+    Dim PATACC_in As String
+    Dim NUMXR_var As Variant
+    Dim NUMXR_in As Integer
+    Dim DummyBoolean As Boolean
+
+    On Error GoTo ErrorHandler1
+
     'Set subform focus
     Forms("Form_MOST_144_168").Controls("Subform_PA").SetFocus
-    
+
     'Get current ID, Barcode, and number of images to display
-    
+    PATID_in = Me.Recordset("READINGID").Value
+    PATACC_in = Me.Recordset("XBBARCDBU").Value
+    NUMXR_var = Me.Recordset("NUMPA").Value
+
+    If Len(Nz(NUMXR_var, "")) > 0 Then
+        NUMXR_in = NUMXR_var
+    Else
+        NUMXR_in = 4
+    End If
+
     'Load images in EFilm Workstation with API
+    DummyBoolean = VBA_OpenStudy(PATID_in, PATACC_in, NUMXR_in)
+
+    On Error GoTo 0
+    Exit Sub
+
+ErrorHandler1:
+    Exit Sub
 
 End Sub
 
 '---COMMAND_LOAD_RL_CLICK---'
 Private Sub Command_LOAD_RL_Click()
 
+    Dim PATID_in As String
+    Dim PATACC_in As String
+    Dim NUMXR_var As Variant
+    Dim NUMXR_in As Integer
+    Dim DummyBoolean As Boolean
+
+    On Error GoTo ErrorHandler1
+
     'Set subform focus
     Forms("Form_MOST_144_168").Controls("Subform_RLAT").SetFocus
-    
+
     'Get current ID, Barcode, and number of images to display
-    
+    PATID_in = Me.Recordset("READINGID").Value
+    PATACC_in = Me.Recordset("LXRBARCDBU").Value
+    NUMXR_var = Me.Recordset("NUMRL").Value
+
+    If Len(Nz(NUMXR_var, "")) > 0 Then
+        NUMXR_in = NUMXR_var
+    Else
+        NUMXR_in = 4
+    End If
+
     'Load images in EFilm Workstation with API
+    DummyBoolean = VBA_OpenStudy(PATID_in, PATACC_in, NUMXR_in)
+
+    On Error GoTo 0
+    Exit Sub
+
+ErrorHandler1:
+    Exit Sub
 
 End Sub
 
 '---COMMAND_LOAD_LL_CLICK---'
 Private Sub Command_LOAD_LL_Click()
 
+    Dim PATID_in As String
+    Dim PATACC_in As String
+    Dim NUMXR_var As Variant
+    Dim NUMXR_in As Integer
+    Dim DummyBoolean As Boolean
+
+    On Error GoTo ErrorHandler1
+
     'Set subform focus
     Forms("Form_MOST_144_168").Controls("Subform_LLAT").SetFocus
-    
+
     'Get current ID, Barcode, and number of images to display
-    
+    PATID_in = Me.Recordset("READINGID").Value
+    PATACC_in = Me.Recordset("LXLBARCDBU").Value
+    NUMXR_var = Me.Recordset("NUMLL").Value
+
+    If Len(Nz(NUMXR_var, "")) > 0 Then
+        NUMXR_in = NUMXR_var
+    Else
+        NUMXR_in = 4
+    End If
+
     'Load images in EFilm Workstation with API
+    DummyBoolean = VBA_OpenStudy(PATID_in, PATACC_in, NUMXR_in)
+
+    On Error GoTo 0
+    Exit Sub
+
+ErrorHandler1:
+    Exit Sub
 
 End Sub
 
@@ -733,11 +805,10 @@ Private Sub Command_SUBMIT_Click()
     'Call for DirtySave
 
     'Check for reader name
-    
+
     'Check for empty scoring boxes
-    
+
     'Sign the record
-    
+
 
 End Sub
-
