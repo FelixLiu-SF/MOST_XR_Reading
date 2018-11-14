@@ -96,20 +96,20 @@ Public Function ButtonPrev(FormName As String, SignVarName As String)
             'not signed - ask user for confirmation
             MsgResponse = MsgBox("Current record is not saved. Are you sure you want to switch records?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
             If Forms(FormName).CurrentRecord <> 1 And MsgResponse = vbYes Then
-                'answer is yes and not at max index - go to next
+                'answer is yes and not at max index - go to previous
                 DoCmd.GoToRecord , , acPrevious
 
             Else
-                'do not go to next record
+                'do not go to previous record
                 Exit Function
             End If
         Else
-            ' do not go to next record
+            ' do not go to previous record
             Exit Function
         End If
 
     Else
-    ' debug mode, just go to next record if not at max index
+    ' debug mode, just go to previous record if not at first index
 
         If Forms(FormName).CurrentRecord <> 1 Then
             DoCmd.GoToRecord , , acPrevious
