@@ -126,3 +126,65 @@ Public Function ButtonPrev(FormName As String, SignVarName As String)
       Exit Function
 
 End Function
+
+Public Function QuitRequest(FormName As String, SignVarName As String)
+
+    Dim SignCheck As Variant
+    Dim Debug_Flag As Integer
+    Dim MsgResponse As Integer
+
+    On Error Goto ErrorHandler1
+
+    'Get properties
+    Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
+
+    'Set Focus on Form
+    Forms(FormName).SetFocus
+
+    If Debug_Flag < 1 Then
+    'no debug - proceed as normal
+
+        'check if current record is signed
+        SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
+
+        If Len(Nz(SignCheck, "")) > 0 Then
+            'signed record - continue with quitting
+
+            'ADD PRE-QUIT CODE HERE
+            QuitRequest = True
+
+        ElseIf Len(Nz(SignCheck,"")) < 1 Then
+            'not signed - ask user for confirmation
+            MsgResponse = MsgBox("Current record is not saved. Are you sure you want to quit?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
+            If MsgResponse = vbYes Then
+                'answer is yes - continue with quitting
+
+                'ADD PRE-QUIT CODE HERE
+                QuitRequest = True
+
+            Else
+                'do not quit
+                QuitRequest = False
+                Exit Function
+            End If
+        Else
+            'do not quit
+            QuitRequest = False
+            Exit Function
+        End If
+
+    Else
+    ' debug mode, continue with quitting 
+
+        'ADD PRE-QUIT CODE HERE
+        QuitRequest = True
+
+    End If
+
+    On Error GoTo 0
+    Exit Function
+
+    ErrorHandler1:
+      Exit Function
+
+End Function
