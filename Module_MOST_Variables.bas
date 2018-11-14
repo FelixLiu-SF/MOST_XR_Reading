@@ -8,7 +8,7 @@ Global MOST_RV34_Array(2) As String
 Global MOST_PAKnee_Array(2) As String
 Global MOST_LATKnee_Array(2) As String
 Global MOST_PARoot_Array(19) As String
-Global MOST_LATRoot_Array(18) As String
+Global MOST_LATRoot_Array(19) As String
 
 Global MOST_RV1234_XB_Vars() As String
 Global MOST_RV12_XB_Vars() As String
@@ -83,6 +83,7 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_LATRoot_Array(15) = "OPTU"
   MOST_LATRoot_Array(16) = "OPTL"
   MOST_LATRoot_Array(17) = "OSLB"
+  MOST_LATRoot_Array(18) = "PFOA"
 
   MOST_RLATKnee_Vars = Concat_Prefix("LXR", MOST_LATRoot_Array)
   MOST_LLATKnee_Vars = Concat_Prefix("LXL", MOST_LATRoot_Array)
@@ -153,7 +154,7 @@ Public Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As 
     VisitArray(1) = "RV2"
     VisitArray(2) = "RV3"
     VisitArray(3) = "RV4"
-    
+
     VisitNum(0) = 1
     VisitNum(1) = 2
     VisitNum(2) = 3
@@ -162,13 +163,13 @@ Public Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As 
     'Loop through visits
     Index = 0
     For Index = 0 To 4
-    
+
         'Construct Variable name
         VariableName = ViewPrefix & VarNameRoot
 
         'Construct ComboBox Control name
         ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
-        
+
         'Construct visit filters
         FilterName2 = "RVNUM"
         FilterValue2 = CStr(VisitNum(Index))
@@ -201,7 +202,7 @@ Public Function SetComboValue_RV1234(FormName As String, SubFormControlName As S
     VisitArray(1) = "RV2"
     VisitArray(2) = "RV3"
     VisitArray(3) = "RV4"
-    
+
     VisitNum(0) = 1
     VisitNum(1) = 2
     VisitNum(2) = 3
@@ -210,13 +211,13 @@ Public Function SetComboValue_RV1234(FormName As String, SubFormControlName As S
     'Loop through visits
     Index = 0
     For Index = 0 To 4
-    
+
         'Construct Variable name
         VariableName = ViewPrefix & VarNameRoot
 
         'Construct ComboBox Control name
         ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
-        
+
         'Construct visit filters
         FilterName2 = "RVNUM"
         FilterValue2 = CStr(VisitNum(Index))
