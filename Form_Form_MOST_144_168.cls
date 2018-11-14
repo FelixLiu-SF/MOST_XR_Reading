@@ -518,37 +518,37 @@ Private Function LoadAfterUpdate_PA(ViewPrefix As String)
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Set menu for TF KLG
+    'Set update for TF KLG
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFKLG", TableName, FilterName1, FilterValue1)
 
-    'Set menu for TF JSN
+    'Set update for TF JSN
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSL", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Osteophytes
+    'Set update for Osteophytes
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSFM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSFL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSTM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSTL", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Sclerosis
+    'Set update for Sclerosis
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCFM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCFL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCTM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCTL", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Cysts
+    'Set update for Cysts
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYFM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYFL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTL", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Attrition
+    'Set update for Attrition
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTL", TableName, FilterName1, FilterValue1)
 
 
-    'Set menu for Chondrocalcinosis
+    'Set update for Chondrocalcinosis
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOL", TableName, FilterName1, FilterValue1)
 
@@ -581,17 +581,17 @@ Private Function LoadAfterUpdate_RLat(ViewPrefix As String)
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Set menu for PF KLG
+    'Set update for PF KLG
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
 
-    'Set menu for PF JSN
+    'Set update for PF JSN
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
 
-    'Set menu for "FT" JSN from lateral view
+    'Set update for "FT" JSN from lateral view
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Osteophytes
+    'Set update for Osteophytes
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
@@ -599,25 +599,25 @@ Private Function LoadAfterUpdate_RLat(ViewPrefix As String)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Sclerosis
+    'Set update for Sclerosis
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Cysts
+    'Set update for Cysts
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Chondrocalcinosis
+    'Set update for Chondrocalcinosis
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Joint Effusion
+    'Set update for Joint Effusion
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Ossification
+    'Set update for Ossification
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
 
-    'Set menu for PF OA
+    'Set update for PF OA
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFOA", TableName, FilterName1, FilterValue1)
 
     'Clear the error catching
@@ -649,17 +649,17 @@ Private Function LoadAfterUpdate_LLat(ViewPrefix As String)
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Set menu for PF KLG
+    'Set update for PF KLG
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
 
-    'Set menu for PF JSN
+    'Set update for PF JSN
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
 
-    'Set menu for "FT" JSN from lateral view
+    'Set update for "FT" JSN from lateral view
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Osteophytes
+    'Set update for Osteophytes
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
@@ -667,25 +667,25 @@ Private Function LoadAfterUpdate_LLat(ViewPrefix As String)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Sclerosis
+    'Set update for Sclerosis
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Cysts
+    'Set update for Cysts
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Chondrocalcinosis
+    'Set update for Chondrocalcinosis
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Joint Effusion
+    'Set update for Joint Effusion
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Ossification
+    'Set update for Ossification
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
 
-    'Set menu for PF OA
+    'Set update for PF OA
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFOA", TableName, FilterName1, FilterValue1)
 
     'Clear the error catching

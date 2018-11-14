@@ -38,17 +38,17 @@ Private Function LoadValues_RLat(ViewPrefix As String)
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Set menu for PF KLG
+    'Set value for PF KLG
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
 
-    'Set menu for PF JSN
+    'Set value for PF JSN
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
 
-    'Set menu for "FT" JSN from lateral view
+    'Set value for "FT" JSN from lateral view
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Osteophytes
+    'Set value for Osteophytes
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
@@ -56,25 +56,25 @@ Private Function LoadValues_RLat(ViewPrefix As String)
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Sclerosis
+    'Set value for Sclerosis
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Cysts
+    'Set value for Cysts
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Chondrocalcinosis
+    'Set value for Chondrocalcinosis
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Joint Effusion
+    'Set value for Joint Effusion
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
 
-    'Set menu for Ossification
+    'Set value for Ossification
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
 
-    'Set menu for PF OA
+    'Set value for PF OA
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFOA", TableName, FilterName1, FilterValue1)
 
     'Clear the error catching
