@@ -831,6 +831,8 @@ Private Sub Command_UnlockV1V2_Click()
     'Unlock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, False)
 
+    'Reload background color scheme for ComboBox Controls
+    LoadColor
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
@@ -841,6 +843,8 @@ Private Sub Command_UnlockV1V2_Click()
     Exit Sub
 
 ErrorHandler_Main1:
+  'Reload background color scheme for ComboBox Controls
+  LoadColor
     Resume Next
 
 End Sub
