@@ -807,6 +807,44 @@ ErrorHandler1:
 
 End Sub
 
+'---COMMAND_UNLOCKV1V2_CLICK---'
+Private Sub Command_UnlockV1V2_Click()
+' Show/Unlock the V1 and V2 ComboBoxes to Reader for score updates
+
+    Dim ControlName_RV12_PA() As String
+    Dim ControlName_RV12_RLAT() As String
+    Dim ControlName_RV12_LLAT() As String
+    Dim DebugBoolean As Boolean
+    Dim DummyBoolean As Boolean
+
+    'Construct ComboBox Control Names from preloaded MOST variable root names
+    ControlName_RV12_PA = Concat_Prefix("Combo_", MOST_RV12_XB_Vars)
+    ControlName_RV12_RLAT = Concat_Prefix("Combo_", MOST_RV12_LXR_Vars)
+    ControlName_RV12_LLAT = Concat_Prefix("Combo_", MOST_RV12_LXL_Vars)
+
+    'Unlock the RV1 & RV2 PA variables on PA subform
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, False)
+
+    'Unlock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, False)
+
+    'Unlock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, False)
+
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+
+    'Clear the error catching
+    On Error GoTo 0
+
+    Exit Sub
+
+ErrorHandler_Main1:
+    Resume Next
+
+End Sub
+
 '---COMMAND_SUBMIT_CLICK---'
 Private Sub Command_SUBMIT_Click()
 
