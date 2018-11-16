@@ -64,6 +64,9 @@ Private Sub Form_Current()
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
+    'Refresh quit request tag
+    Forms("Form_MOST_144_168").Controls("Command_QUIT").Tag = ""
+
     'Set the ComboBox After Updates
     LoadAfterUpdate
 
@@ -92,6 +95,37 @@ Private Sub Form_Current()
 
 ErrorHandler_Main1:
     Resume Next
+
+End Sub
+
+'---FORM_UNLOAD---'
+Private Sub Form_Unload(Cancel As Integer)
+    QuitBoolean As Boolean
+    QuitTag As String
+
+    QuitTag = Trim(Nz(Forms("Form_MOST_144_168").Controls("Command_QUIT").Tag,""))
+
+    If QuitTag <> "VBAQUIT" Then
+
+      QuitBoolean = QuitRequest("Form_MOST_144_168", "E_DATE")
+
+    Else
+
+      QuitBoolean = True
+
+    End If
+
+    If QuitBoolean Then
+
+      'Set quit request tag
+      Forms("Form_MOST_144_168").Controls("Command_QUIT").Tag = "VBAQUIT"
+
+      'Restore ribbon and quit
+      DoCmd.ShowToolbar "Ribbon", acToolbarYes
+      Exit Sub
+    Else
+      Cancel = True
+    End If
 
 End Sub
 
@@ -934,8 +968,12 @@ Private Sub Command_SUBMIT_Click()
     'MsgResponse = MsgBox(CStr(nUnlocked_XB) & " " & CStr(nUnlocked_LXR) & " " & CStr(nUnlocked_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
     'MsgResponse = MsgBox(CStr(nScored_XB) & " " & CStr(nScored_LXR) & " " & CStr(nScored_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
 
-    'Sign the record
-
+    'Sign the record with READER,DATE, and TIME
+    Me.Recordset.Edit
+    Me.Recordset.Fields("READER").Value = CUR_READER
+    Me.Recordset.Fields("E_DATE").Value = CUR_DATE
+    Me.Recordset.Fields("E_TIME").Value = CUR_TIME
+    Me.Recordset.Update
 
     'Exit the Sub
     On Error GoTo 0
@@ -943,5 +981,24 @@ Private Sub Command_SUBMIT_Click()
 
 ErrorHandler1:
     Exit Sub
+
+End Sub
+
+'---COMMAND_QUIT_CLICK---'
+Private Sub Command_QUIT_Click()
+
+    QuitBoolean As Boolean
+
+    QuitBoolean = QuitRequest("Form_MOST_144_168", "E_DATE")
+
+    If QuitBoolean Then
+
+      'Set quit request tag
+      Forms("Form_MOST_144_168").Controls("Command_QUIT").Tag = "VBAQUIT"
+
+      'Restore ribbon and quit
+      DoCmd.ShowToolbar "Ribbon", acToolbarYes
+      DoCmd.Quit
+    End If
 
 End Sub
