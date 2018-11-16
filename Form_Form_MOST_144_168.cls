@@ -849,6 +849,24 @@ ErrorHandler_Main1:
 
 End Sub
 
+'---COMMAND_NEXT_CLICK---'
+Private Sub Command_Next_Click()
+
+    Dim DummyBoolean As Boolean
+
+    DummyBoolean = ButtonNext("Form_MOST_144_168","E_DATE")
+
+End Sub
+
+'---COMMAND_PREV_CLICK---'
+Private Sub Command_Prev_Click()
+
+    Dim DummyBoolean As Boolean
+
+    DummyBoolean = ButtonPrev("Form_MOST_144_168","E_DATE")
+
+End Sub
+
 '---COMMAND_SUBMIT_CLICK---'
 Private Sub Command_SUBMIT_Click()
 
@@ -898,8 +916,8 @@ Private Sub Command_SUBMIT_Click()
     nScored_LXL = CountScored("Form_MOST_144_168","Subform_LLAT",ComboNames_LXB)
 
     'for debugging
-    MsgResponse = MsgBox(CStr(nUnlocked_XB) & " " & CStr(nUnlocked_LXR) & " " & CStr(nUnlocked_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
-    MsgResponse = MsgBox(CStr(nScored_XB) & " " & CStr(nScored_LXR) & " " & CStr(nScored_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+    'MsgResponse = MsgBox(CStr(nUnlocked_XB) & " " & CStr(nUnlocked_LXR) & " " & CStr(nUnlocked_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+    'MsgResponse = MsgBox(CStr(nScored_XB) & " " & CStr(nScored_LXR) & " " & CStr(nScored_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
 
     'Sign the record
 
