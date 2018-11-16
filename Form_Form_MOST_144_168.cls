@@ -75,9 +75,9 @@ Private Sub Form_Current()
     DummyBoolean = LoadValues_PA ("XR")
     DummyBoolean = LoadValues_PA ("XL")
     DummyBoolean = LoadVisitDates("Subform_RLAT")
-    DummyBoolean = LoadValues_LAT ("LXR")
+    DummyBoolean = LoadValues_LAT ("Subform_RLAT", "LXR")
     DummyBoolean = LoadVisitDates("Subform_LLAT")
-    DummyBoolean = LoadValues_LAT ("LXL")
+    DummyBoolean = LoadValues_LAT ("Subform_LLAT", "LXL")
 
     'Reload initial background color scheme for ComboBox Controls
     LoadColor
