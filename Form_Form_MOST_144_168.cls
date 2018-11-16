@@ -67,6 +67,21 @@ Private Sub Form_Current()
     'Set the ComboBox After Updates
     LoadAfterUpdate
 
+    'Reload default view for ComboBox Controls
+    LoadView
+
+    'Load subform views
+    DummyBoolean = LoadVisitDates("Subform_PA")
+    DummyBoolean = LoadValues_PA ("XR")
+    DummyBoolean = LoadValues_PA ("XL")
+    DummyBoolean = LoadVisitDates("Subform_RLAT")
+    DummyBoolean = LoadValues_LAT ("LXR")
+    DummyBoolean = LoadVisitDates("Subform_LLAT")
+    DummyBoolean = LoadValues_LAT ("LXL")
+
+    'Reload initial background color scheme for ComboBox Controls
+    LoadColor
+
     'Reload the current record number
     DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
 
