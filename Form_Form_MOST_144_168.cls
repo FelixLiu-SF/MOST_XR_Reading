@@ -19,8 +19,8 @@ Private Sub Form_Load()
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Load the dataset objects for combo box dropdown menus
-    LoadDAO
+    'Load the form view and objects
+    LoadForm("Form_MOST_144_168")
 
     'Load the EFilm Automation object to link with EFilm Workstation
     LoadEFilmAuto
