@@ -10,6 +10,7 @@ Attribute VB_Exposed = False
 Option Compare Database
 Option Explicit
 
+
 '---FORM_LOAD---'
 Private Sub Form_Load()
 ' Load various modules when this scoresheet is opened
@@ -20,7 +21,7 @@ Private Sub Form_Load()
     On Error GoTo ErrorHandler_Main1
 
     'Load the form view and objects
-    LoadForm("Form_MOST_144_168")
+    LoadForm ("Form_MOST_144_168")
 
     'Load the EFilm Automation object to link with EFilm Workstation
     LoadEFilmAuto
@@ -64,9 +65,6 @@ Private Sub Form_Current()
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Refresh quit request tag
-    Forms("Form_MOST_144_168").Controls("Command_QUIT").Tag = ""
-
     'Set the ComboBox After Updates
     LoadAfterUpdate
 
@@ -75,12 +73,12 @@ Private Sub Form_Current()
 
     'Load subform views
     DummyBoolean = LoadVisitDates("Subform_PA")
-    DummyBoolean = LoadValues_PA ("XR")
-    DummyBoolean = LoadValues_PA ("XL")
+    DummyBoolean = LoadValues_PA("XR")
+    DummyBoolean = LoadValues_PA("XL")
     DummyBoolean = LoadVisitDates("Subform_RLAT")
-    DummyBoolean = LoadValues_LAT ("Subform_RLAT", "LXR")
+    DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
     DummyBoolean = LoadVisitDates("Subform_LLAT")
-    DummyBoolean = LoadValues_LAT ("Subform_LLAT", "LXL")
+    DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
 
     'Reload initial background color scheme for ComboBox Controls
     LoadColor
@@ -95,37 +93,6 @@ Private Sub Form_Current()
 
 ErrorHandler_Main1:
     Resume Next
-
-End Sub
-
-'---FORM_UNLOAD---'
-Private Sub Form_Unload(Cancel As Integer)
-    QuitBoolean As Boolean
-    QuitTag As String
-
-    QuitTag = Trim(Nz(Forms("Form_MOST_144_168").Controls("Command_QUIT").Tag,""))
-
-    If QuitTag <> "VBAQUIT" Then
-
-      QuitBoolean = QuitRequest("Form_MOST_144_168", "E_DATE")
-
-    Else
-
-      QuitBoolean = True
-
-    End If
-
-    If QuitBoolean Then
-
-      'Set quit request tag
-      Forms("Form_MOST_144_168").Controls("Command_QUIT").Tag = "VBAQUIT"
-
-      'Restore ribbon and quit
-      DoCmd.ShowToolbar "Ribbon", acToolbarYes
-      Exit Sub
-    Else
-      Cancel = True
-    End If
 
 End Sub
 
@@ -443,6 +410,7 @@ Private Function LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boo
 
     'Set menu for PF KLG
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFKLG", SelectStr_PFKLG, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFOA", SelectStr_MiscYN, MenuLimitBoolean)
 
     'Set menu for PF JSN
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFJSN", SelectStr_JSN, MenuLimitBoolean)
@@ -501,6 +469,7 @@ Private Function LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boo
 
     'Set menu for PF KLG
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFKLG", SelectStr_PFKLG, MenuLimitBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFOA", SelectStr_MiscYN, MenuLimitBoolean)
 
     'Set menu for PF JSN
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFJSN", SelectStr_JSN, MenuLimitBoolean)
@@ -903,7 +872,7 @@ Private Sub Command_Next_Click()
 
     Dim DummyBoolean As Boolean
 
-    DummyBoolean = ButtonNext("Form_MOST_144_168","E_DATE")
+    DummyBoolean = ButtonNext("Form_MOST_144_168", "E_DATE")
 
 End Sub
 
@@ -912,7 +881,7 @@ Private Sub Command_Prev_Click()
 
     Dim DummyBoolean As Boolean
 
-    DummyBoolean = ButtonPrev("Form_MOST_144_168","E_DATE")
+    DummyBoolean = ButtonPrev("Form_MOST_144_168", "E_DATE")
 
 End Sub
 
@@ -956,24 +925,20 @@ Private Sub Command_SUBMIT_Click()
     ComboNames_XB = Concat_Prefix("Combo_", MOST_RV1234_XB_Vars)
     ComboNames_LXB = Concat_Prefix("Combo_", MOST_RV1234_LXB_Vars)
 
-    nUnlocked_XB = CountUnlocked("Form_MOST_144_168","Subform_PA",ComboNames_XB)
-    nUnlocked_LXR = CountUnlocked("Form_MOST_144_168","Subform_RLAT",ComboNames_LXB)
-    nUnlocked_LXL = CountUnlocked("Form_MOST_144_168","Subform_LLAT",ComboNames_LXB)
+    nUnlocked_XB = CountUnlocked("Form_MOST_144_168", "Subform_PA", ComboNames_XB)
+    nUnlocked_LXR = CountUnlocked("Form_MOST_144_168", "Subform_RLAT", ComboNames_LXB)
+    nUnlocked_LXL = CountUnlocked("Form_MOST_144_168", "Subform_LLAT", ComboNames_LXB)
 
-    nScored_XB = CountScored("Form_MOST_144_168","Subform_PA",ComboNames_XB)
-    nScored_LXR = CountScored("Form_MOST_144_168","Subform_RLAT",ComboNames_LXB)
-    nScored_LXL = CountScored("Form_MOST_144_168","Subform_LLAT",ComboNames_LXB)
+    nScored_XB = CountScored("Form_MOST_144_168", "Subform_PA", ComboNames_XB)
+    nScored_LXR = CountScored("Form_MOST_144_168", "Subform_RLAT", ComboNames_LXB)
+    nScored_LXL = CountScored("Form_MOST_144_168", "Subform_LLAT", ComboNames_LXB)
 
     'for debugging
     'MsgResponse = MsgBox(CStr(nUnlocked_XB) & " " & CStr(nUnlocked_LXR) & " " & CStr(nUnlocked_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
     'MsgResponse = MsgBox(CStr(nScored_XB) & " " & CStr(nScored_LXR) & " " & CStr(nScored_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
 
-    'Sign the record with READER,DATE, and TIME
-    Me.Recordset.Edit
-    Me.Recordset.Fields("READER").Value = CUR_READER
-    Me.Recordset.Fields("E_DATE").Value = CUR_DATE
-    Me.Recordset.Fields("E_TIME").Value = CUR_TIME
-    Me.Recordset.Update
+    'Sign the record
+
 
     'Exit the Sub
     On Error GoTo 0
@@ -984,21 +949,3 @@ ErrorHandler1:
 
 End Sub
 
-'---COMMAND_QUIT_CLICK---'
-Private Sub Command_QUIT_Click()
-
-    QuitBoolean As Boolean
-
-    QuitBoolean = QuitRequest("Form_MOST_144_168", "E_DATE")
-
-    If QuitBoolean Then
-
-      'Set quit request tag
-      Forms("Form_MOST_144_168").Controls("Command_QUIT").Tag = "VBAQUIT"
-
-      'Restore ribbon and quit
-      DoCmd.ShowToolbar "Ribbon", acToolbarYes
-      DoCmd.Quit
-    End If
-
-End Sub
