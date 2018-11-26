@@ -87,6 +87,7 @@ Public Function LoadValues_Lat(Subform_Lat_Name As String, ViewPrefix As String)
 
     'Set value for PF KLG
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFOA", TableName, FilterName1, FilterValue1)
 
     'Set value for PF JSN
     DummyBoolean = SetComboValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
