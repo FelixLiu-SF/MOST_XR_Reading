@@ -86,6 +86,9 @@ Private Sub Form_Current()
     'Reload the current record number
     DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
 
+    'Load the PA films and set subform focus automatically
+    Command_LOAD_PA_Click
+
 'Clear the error catching
     On Error GoTo 0
 
@@ -948,4 +951,3 @@ ErrorHandler1:
     Exit Sub
 
 End Sub
-
