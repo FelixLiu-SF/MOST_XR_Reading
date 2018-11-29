@@ -83,7 +83,7 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_LATRoot_Array(15) = "OPTU"
   MOST_LATRoot_Array(16) = "OPTL"
   MOST_LATRoot_Array(17) = "OSLB"
-  MOST_LATRoot_Array(18) = "PFOA"
+
 
   MOST_RLATKnee_Vars = Concat_Prefix("LXR", MOST_LATRoot_Array)
   MOST_LLATKnee_Vars = Concat_Prefix("LXL", MOST_LATRoot_Array)

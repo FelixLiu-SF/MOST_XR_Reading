@@ -413,7 +413,7 @@ Private Function LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boo
 
     'Set menu for PF KLG
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFKLG", SelectStr_PFKLG, MenuLimitBoolean)
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFOA", SelectStr_MiscYN, MenuLimitBoolean)
+
 
     'Set menu for PF JSN
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFJSN", SelectStr_JSN, MenuLimitBoolean)
@@ -449,7 +449,7 @@ Private Function LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boo
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSLB", SelectStr_MiscYN, MenuLimitBoolean)
 
     'Set menu for PF OA
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFOA", SelectStr_MiscYN, MenuLimitBoolean)
+
 
     'Clear the error catching
     On Error GoTo 0
@@ -472,7 +472,7 @@ Private Function LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boo
 
     'Set menu for PF KLG
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFKLG", SelectStr_PFKLG, MenuLimitBoolean)
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFOA", SelectStr_MiscYN, MenuLimitBoolean)
+
 
     'Set menu for PF JSN
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFJSN", SelectStr_JSN, MenuLimitBoolean)
@@ -508,7 +508,7 @@ Private Function LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boo
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSLB", SelectStr_MiscYN, MenuLimitBoolean)
 
     'Set menu for PF OA
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFOA", SelectStr_MiscYN, MenuLimitBoolean)
+
 
     'Clear the error catching
     On Error GoTo 0
@@ -638,8 +638,7 @@ Private Function LoadAfterUpdate_RLat(ViewPrefix As String)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
 
-    'Set update for PF OA
-    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "PFOA", TableName, FilterName1, FilterValue1)
+
 
     'Clear the error catching
     On Error GoTo 0
@@ -706,8 +705,7 @@ Private Function LoadAfterUpdate_LLat(ViewPrefix As String)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
 
-    'Set update for PF OA
-    DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "PFOA", TableName, FilterName1, FilterValue1)
+    
 
     'Clear the error catching
     On Error GoTo 0
