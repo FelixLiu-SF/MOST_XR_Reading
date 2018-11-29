@@ -80,6 +80,9 @@ Private Sub Form_Current()
     DummyBoolean = LoadVisitDates("Subform_LLAT")
     DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
 
+    'Insert assigned reader into reader ComboBox
+    Insert_Reader
+
     'Reload initial background color scheme for ComboBox Controls
     LoadColor
 
@@ -214,6 +217,40 @@ Private Sub LoadColor()
 
 ErrorHandler_Main1:
     Resume Next
+
+End Sub
+
+'---INSERT_READER---'
+Private Sub Insert_Reader()
+  'Insert the selected reader into the reader var
+  Dim Cur_Reader As String
+  Dim Reader_Var As String
+  Dim Assigned_Reader As String
+
+  On Error GoTo InsertErr
+  Cur_Reader = Me("Combo_HeaderREADER").Value
+  Reader_Var = Me.Recordset.Fields("READER").Value
+  Assigned_Reader = DLookup("AssignedReader","tblProperties","RecordID = 1")
+
+  'Automatically fill Combo_HeaderREADER if AssignedReader is not null
+  If Len(Nz(Assigned_Reader, "")) > 0 And Len(Nz(Cur_Reader, "")) < 1 Then
+      Me("Combo_HeaderREADER").Value = Assigned_Reader
+      Cur_Reader = Assigned_Reader
+  End If
+
+  'Insert only if selected reader and is not null, and reader var is
+  If Len(Nz(Cur_Reader, "")) > 0 And Len(Nz(Reader_Var, "")) < 1 Then
+      Me.Recordset.Edit
+      Me.Recordset.Fields("READER").Value = Cur_Reader
+      Me.Recordset.Update
+  End If
+
+
+On Error GoTo 0
+Exit Sub
+
+InsertErr:
+Resume Next
 
 End Sub
 
@@ -705,7 +742,7 @@ Private Function LoadAfterUpdate_LLat(ViewPrefix As String)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
     DummyBoolean = SetComboUpdate_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
 
-    
+
 
     'Clear the error catching
     On Error GoTo 0
