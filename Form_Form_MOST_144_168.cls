@@ -111,6 +111,7 @@ Private Sub LoadView()
     Dim ControlName_RV12_LLAT() As String
     Dim ControlName_RV34_RLAT() As String
     Dim ControlName_RV34_LLAT() As String
+    Dim ControlName_RV12_PFKLG() As String
     Dim DebugFlag As Integer
     Dim DebugBoolean As Boolean
     Dim DummyBoolean As Boolean
@@ -137,6 +138,7 @@ Private Sub LoadView()
     ControlName_RV12_LLAT = Concat_Prefix("Combo_", MOST_RV12_LXL_Vars)
     ControlName_RV34_RLAT = Concat_Prefix("Combo_", MOST_RV34_LXR_Vars)
     ControlName_RV34_LLAT = Concat_Prefix("Combo_", MOST_RV34_LXL_Vars)
+    ControlName_RV12_PFKLG = Concat_Prefix("Combo_", MOST_RV12_LXB_PFKLG)
 
     'Lock the RV1 & RV2 PA variables on PA subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, DebugBoolean)
@@ -160,6 +162,10 @@ Private Sub LoadView()
 
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, DebugBoolean)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, DebugBoolean)
+
+    'Lock & Hide all the PF KLG variables from Visit 1 & 2
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_PFKLG, DebugBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_PFKLG, DebugBoolean)
 
     'Clear the error catching
     On Error GoTo 0
