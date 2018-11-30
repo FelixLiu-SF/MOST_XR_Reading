@@ -23,5 +23,9 @@ Public Function MOST_Load_SelectStr()
   SelectStr_Sclerosis = "SELECT [DisplayOrder], [ValueStr], [DisplayStr], [ValueDescription] FROM tblValuesSclerosis;"
   SelectStr_Ossification = "SELECT [DisplayOrder], [ValueStr], [DisplayStr], [ValueDescription] FROM tblValuesOssification;"
   SelectStr_MiscYN = "SELECT [DisplayOrder], [ValueStr], [DisplayStr], [ValueDescription] FROM tblValuesMiscYN;"
-  
+  SelectStr_Attrition = "SELECT [DisplayOrder], [ValueStr], [DisplayStr], [ValueDescription] FROM tblValuesAttrition;"
+  SelectStr_Chondro = "SELECT [DisplayOrder], [ValueStr], [DisplayStr], [ValueDescription] FROM tblValuesChondro;"
+  SelectStr_JE = "SELECT [DisplayOrder], [ValueStr], [DisplayStr], [ValueDescription] FROM tblValuesJE;"
+  SelectStr_OssLB = "SELECT [DisplayOrder], [ValueStr], [DisplayStr], [ValueDescription] FROM tblValuesOssLB;"
+
 End Function

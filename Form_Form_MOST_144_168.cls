@@ -430,12 +430,12 @@ Private Function LoadDropDown_PA(ViewPrefix As String, MenuLimitBoolean As Boole
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTL", SelectStr_TFCyst, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for Attrition
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTM", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTL", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTM", SelectStr_Attrition, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTL", SelectStr_Attrition, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for Chondrocalcinosis
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOM", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOL", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOM", SelectStr_Chondro, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOL", SelectStr_Chondro, MenuLimitBoolean, ColHeaderBoolean)
 
 
     'Clear the error catching
@@ -483,16 +483,16 @@ Private Function LoadDropDown_RLat(ViewPrefix As String, MenuLimitBoolean As Boo
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CYPF", SelectStr_PFCyst, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for Chondrocalcinosis
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CHON", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "CHON", SelectStr_Chondro, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for Joint Effusion
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "JE", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "JE", SelectStr_JE, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for Ossification
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSQI", SelectStr_Ossification, MenuLimitBoolean, ColHeaderBoolean)
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTU", SelectStr_Ossification, MenuLimitBoolean, ColHeaderBoolean)
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OPTL", SelectStr_Ossification, MenuLimitBoolean, ColHeaderBoolean)
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSLB", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_RLAT", ViewPrefix, "OSLB", SelectStr_OssLB, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for PF OA
 
@@ -542,16 +542,16 @@ Private Function LoadDropDown_LLat(ViewPrefix As String, MenuLimitBoolean As Boo
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CYPF", SelectStr_PFCyst, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for Chondrocalcinosis
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CHON", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "CHON", SelectStr_Chondro, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for Joint Effusion
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "JE", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "JE", SelectStr_JE, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for Ossification
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSQI", SelectStr_Ossification, MenuLimitBoolean, ColHeaderBoolean)
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTU", SelectStr_Ossification, MenuLimitBoolean, ColHeaderBoolean)
     DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OPTL", SelectStr_Ossification, MenuLimitBoolean, ColHeaderBoolean)
-    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSLB", SelectStr_MiscYN, MenuLimitBoolean, ColHeaderBoolean)
+    DummyBoolean = SetComboSelection_RV1234("Form_MOST_144_168", "Subform_LLAT", ViewPrefix, "OSLB", SelectStr_OssLB, MenuLimitBoolean, ColHeaderBoolean)
 
     'Set menu for PF OA
 
