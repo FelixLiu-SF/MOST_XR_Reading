@@ -26,7 +26,7 @@ Public Function Control_Edit_AfterUpdate(FormName As String, SubFormControlName 
 End function
 
 '---CONTROL_EDIT_BINDING---'
-Public Function Control_Edit_Binding(FormName As String, SubFormControlName As String, ControlName As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean)
+Public Function Control_Edit_Binding(FormName As String, SubFormControlName As String, ControlName As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean, HeaderBool As Boolean)
 'Update the control binding properties
 
     Dim TwipListWidth As Integer
@@ -38,6 +38,7 @@ Public Function Control_Edit_Binding(FormName As String, SubFormControlName As S
     Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).ColumnWidths = ColWidth 'text specifying column display widths
     Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).ListWidth = TwipListWidth 'test specifying list width
     Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).LimitToList = LimitBool 'only allow values from this table
+    Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).ColumnHeads = HeaderBool 'show column headers (caption or fieldname)
 
 End Function
 
@@ -66,27 +67,34 @@ Public Function Make_ControlSave_Func(FormName As String) As String
 End Function
 
 '---MAKE_CONTROLUPDATE_FUNC---'
-Public Function Make_ControlUpdate_Func(FormName As String, SubFormControlName As String, ControlName As String, SelectFunc As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean) As String
+Public Function Make_ControlUpdate_Func(FormName As String, SubFormControlName As String, ControlName As String, SelectFunc As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean, HeaderBool As Boolean) As String
 'Concatente string for updating dropdown menu SQL query
 
     Dim FocusFuncStr As String
-    Dim BoolStr As String
+    Dim LimitBoolStr As String
+    Dim HeaderBoolStr As String
 
-    'Set the Boolean string
+    'Set the Boolean strings
     If LimitBool Then
-      BoolStr = "TRUE"
+      LimitBoolStr = "TRUE"
     Else
-      BoolStr = "FALSE"
+      LimitBoolStr = "FALSE"
     End If
 
-    FocusFuncStr = "=UpdateDropdown(""" & FormName & """,""" & SubFormControlName & """,""" & ControlName & """,""" & SelectFunc & """,""" & CStr(ColCount) & """,""" & CStr(ColBind) & """,""" & ColWidth & """,""" & CStr(ComboListWidth) & """,""" & BoolStr & """)"
+    If HeaderBool Then
+      HeaderBoolStr = "TRUE"
+    Else
+      HeaderBoolStr = "FALSE"
+    End If
+
+    FocusFuncStr = "=UpdateDropdown(""" & FormName & """,""" & SubFormControlName & """,""" & ControlName & """,""" & SelectFunc & """,""" & CStr(ColCount) & """,""" & CStr(ColBind) & """,""" & ColWidth & """,""" & CStr(ComboListWidth) & """,""" & LimitBoolStr & """,""" & HeaderBoolStr & """)"
 
     Make_ControlUpdate_Func = FocusFuncStr
 
 End Function
 
 '---UPDATEDROPDOWN---'
-Public Function UpdateDropdown(FormName As String, SubFormControlName As String, ControlName As String, ControlSQL As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean)
+Public Function UpdateDropdown(FormName As String, SubFormControlName As String, ControlName As String, ControlSQL As String, ColCount As Integer, ColBind As Integer, ColWidth As String, ComboListWidth As Single, LimitBool As Boolean, HeaderBool As Boolean)
 ' Update Combo Box object table if not Locked
 
     'dummy variables for artificial CPU wait
@@ -114,7 +122,7 @@ Public Function UpdateDropdown(FormName As String, SubFormControlName As String,
         Set db = Nothing
 
         'Set Combo Box binding
-        DumBool = Control_Edit_Binding(FormName,SubFormControlName,ControlName,ColCount,ColBind,ColWidth,ComboListWidth, LimitBool)
+        DumBool = Control_Edit_Binding(FormName,SubFormControlName,ControlName,ColCount,ColBind,ColWidth,ComboListWidth, LimitBool, HeaderBool)
 
         UpdateDropdown = True
 

@@ -108,7 +108,7 @@ Public Function MOST_Load_VariableNameArrays()
 End Function
 
 '---SETCOMBOSELECTION_RV1234---'
-Public Function SetComboSelection_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean As Boolean)
+Public Function SetComboSelection_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, SelectionStr As String, MenuLimitBoolean As Boolean, ColHeaderBoolean As Boolean)
 
     Dim DummyBoolean As Boolean
     Dim VisitArray(4) As String
@@ -130,7 +130,7 @@ Public Function SetComboSelection_RV1234(FormName As String, SubFormControlName 
         ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
 
         'Construct ComboBox selection string
-        OnFocusStr = Make_ControlUpdate_Func(FormName, SubFormControlName, ControlName, SelectionStr, 4, 2, "0; 0; 0.5 in; 2 in", 3, MenuLimitBoolean)
+        OnFocusStr = Make_ControlUpdate_Func(FormName, SubFormControlName, ControlName, SelectionStr, 4, 2, "0; 0; 0.5 in; 2 in", 3, MenuLimitBoolean, ColHeaderBoolean)
 
         'Set the selection string to the OnFocus property of the ComboBox
         DummyBoolean = Control_Edit_OnFocus(FormName, SubFormControlName, ControlName, OnFocusStr)
