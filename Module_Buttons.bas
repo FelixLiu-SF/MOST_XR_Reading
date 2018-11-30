@@ -34,7 +34,7 @@ Public Function ButtonNext(FormName As String, SignVarName As String)
 
         ElseIf Len(Nz(SignCheck,"")) < 1 Then
             'not signed - ask user for confirmation
-            MsgResponse = MsgBox("Current record is not saved. Are you sure you want to switch records?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
+            MsgResponse = MsgBox("current record is not signed. Are you sure you want to switch records?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
             If Forms(FormName).CurrentRecord < nMaxRec And MsgResponse = vbYes Then
                 'answer is yes and not at max index - go to next
                 DoCmd.GoToRecord , , acNext
@@ -94,7 +94,7 @@ Public Function ButtonPrev(FormName As String, SignVarName As String)
 
         ElseIf Len(Nz(SignCheck,"")) < 1 Then
             'not signed - ask user for confirmation
-            MsgResponse = MsgBox("Current record is not saved. Are you sure you want to switch records?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
+            MsgResponse = MsgBox("Current record is not signed. Are you sure you want to switch records?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
             If Forms(FormName).CurrentRecord <> 1 And MsgResponse = vbYes Then
                 'answer is yes and not at max index - go to previous
                 DoCmd.GoToRecord , , acPrevious
@@ -155,7 +155,7 @@ Public Function QuitRequest(FormName As String, SignVarName As String)
 
         ElseIf Len(Nz(SignCheck,"")) < 1 Then
             'not signed - ask user for confirmation
-            MsgResponse = MsgBox("Current record is not saved. Are you sure you want to quit?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
+            MsgResponse = MsgBox("current record is not signed. Are you sure you want to quit?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
             If MsgResponse = vbYes Then
                 'answer is yes - continue with quitting
 
@@ -174,7 +174,7 @@ Public Function QuitRequest(FormName As String, SignVarName As String)
         End If
 
     Else
-    ' debug mode, continue with quitting 
+    ' debug mode, continue with quitting
 
         'ADD PRE-QUIT CODE HERE
         QuitRequest = True
