@@ -327,3 +327,44 @@ TableValueError:
   Resume Next
 
 End Function
+
+'---ZEROTABLEVALUE---'
+Public Function ZeroTableValue(VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String)
+'Set MS Access table value to zero by filter 1 & 2
+
+  Dim TableValue As String
+  Dim ZeroValue As String
+  Dim SQLText As String
+
+  On Error GoTo TableValueError
+
+  ZeroValue = "0"
+
+  'Get value from table
+  TableValue = Nz(MyLookup2(TableName, VariableName, FilterName1, FilterValue1, FilterName2, FilterValue2),"")
+
+  'Set value to zero if source IS NOT empty
+  If Len(TableValue)>0 Then
+    'Copy value from source into destination
+
+    Set db = DBEngine(0)(0)
+
+    'Construct SQL code for insert score value
+    SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName & " = " & ZeroValue  & " WHERE (((" & TableName & "." & FilterName1 & ")=""" & FilterValue1 & """) AND ((" & TableName & "." & FilterName2 & ")=""" & FilterValue2 & """));"
+
+    'Execute SQL update code
+    DoCmd.SetWarnings False
+    db.Execute SQLText
+    DoCmd.SetWarnings True
+
+    Set db = Nothing
+
+  End If
+
+  On Error GoTo 0
+  Exit Function
+
+TableValueError:
+  Resume Next
+
+End Function
