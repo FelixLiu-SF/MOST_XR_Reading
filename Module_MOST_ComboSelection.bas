@@ -11,6 +11,10 @@ Global SelectStr_PFCyst As String
 Global SelectStr_Sclerosis As String
 Global SelectStr_Ossification As String
 Global SelectStr_MiscYN As String
+Global SelectStr_Attrition As String
+Global SelectStr_Chondro As String
+Global SelectStr_JE As String
+Global SelectStr_OssLB As String 
 
 Public Function MOST_Load_SelectStr()
 
