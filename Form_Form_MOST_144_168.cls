@@ -882,6 +882,14 @@ Private Sub Command_UnlockV1V2_Click()
     Dim DebugBoolean As Boolean
     Dim DummyBoolean As Boolean
 
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+
+    'Set flag for record keeping
+    Me.Recordset.Edit
+    Me.Recordset.Fields("FLAG_UNLOCKED_PREV").Value = True
+    Me.Recordset.Update
+
     'Construct ComboBox Control Names from preloaded MOST variable root names
     ControlName_RV12_PA = Concat_Prefix("Combo_", MOST_RV12_XB_Vars)
     ControlName_RV12_RLAT = Concat_Prefix("Combo_", MOST_RV12_LXR_Vars)
@@ -898,9 +906,6 @@ Private Sub Command_UnlockV1V2_Click()
 
     'Reload background color scheme for ComboBox Controls
     LoadColor
-
-    'Error catching
-    On Error GoTo ErrorHandler_Main1
 
     'Clear the error catching
     On Error GoTo 0
