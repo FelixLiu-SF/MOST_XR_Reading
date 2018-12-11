@@ -1030,7 +1030,7 @@ Private Sub Command_SUBMIT_Click()
 
     Else
       'Display number of unscored boxes and ask for confirmation
-      MsgResponse = MsgBox("Some features may be missing scores." & vbCrLf & MsgString & "Do you want to sign anyways? ", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+      MsgResponse = MsgBox("Some features may be missing scores." & vbCrLf & MsgString & "Do you have want to save/sign anyways?", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
 
       If MsgResponse = vbYes Then
         'Sign the record anyways
