@@ -302,16 +302,22 @@ Public Function CopyTableValue(VariableName As String, TableName As String, Filt
   TableValueSource = Nz(MyLookup2(TableName, VariableName, FilterName1, FilterValue1, FilterName2, FilterValue2),"")
   TableValueDestination = Nz(MyLookup2(TableName, VariableName, FilterName3, FilterValue3, FilterName4, FilterValue4),"")
 
-  'Copy value if destination IS empty
-  If Len(TableValueDestination)<1 Then
+  'Copy value if source IS NOT empty AND destination IS empty
+  If (Len(TableValueSource)>0 AND Len(TableValueDestination)<1) Then
     'Copy value from source into destination
 
     Set db = DBEngine(0)(0)
 
     'Construct SQL code for insert score value
+    SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName & " = " & TableValueSource  & " WHERE (((" & TableName & "." & FilterName1 & ")=""" & FilterValue1 & """) AND ((" & TableName & "." & FilterName2 & ")=""" & FilterValue2 & """));"
+
+    'Execute SQL update code
+    DoCmd.SetWarnings False
+    db.Execute SQLText
+    DoCmd.SetWarnings True
 
     Set db = Nothing
-    
+
   End If
 
   On Error GoTo 0
