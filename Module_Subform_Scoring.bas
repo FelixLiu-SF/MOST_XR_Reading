@@ -174,6 +174,8 @@ Public Function InsertScore(FormName As String, SubFormControlName As String, Co
 
   DirtySave(FormName)
 
+  Set db = Nothing
+
   On Error GoTo 0
   Exit Function
 
@@ -211,6 +213,8 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   DoCmd.SetWarnings True
 
   DirtySave(FormName)
+
+  Set db = Nothing
 
   On Error GoTo 0
   Exit Function
@@ -290,7 +294,7 @@ Public Function CopyTableValue(VariableName As String, TableName As String, Filt
 
   Dim TableValueSource As String
   Dim TableValueDestination As String
-  Dim SQLText As String 
+  Dim SQLText As String
 
   On Error GoTo TableValueError
 
@@ -302,9 +306,12 @@ Public Function CopyTableValue(VariableName As String, TableName As String, Filt
   If Len(TableValueDestination)<1 Then
     'Copy value from source into destination
 
+    Set db = DBEngine(0)(0)
+
     'Construct SQL code for insert score value
 
-
+    Set db = Nothing
+    
   End If
 
   On Error GoTo 0
