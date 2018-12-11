@@ -24,10 +24,12 @@ Global MOST_RV12_LXL_Vars() As String
 Global MOST_RV34_LXR_Vars() As String
 Global MOST_RV34_LXL_Vars() As String
 
-Public Function MOST_Load_VariableNameArrays()
+Global MOST_RPAKnee_Vars() As String
+Global MOST_LPAKnee_Vars() As String
+Global MOST_RLATKnee_Vars() As String
+Global MOST_LLATKnee_Vars() As String
 
-  Dim MOST_RLATKnee_Vars() As String
-  Dim MOST_LLATKnee_Vars() As String
+Public Function MOST_Load_VariableNameArrays()
 
   MOST_Visits_Array(0) = "RV1"
   MOST_Visits_Array(1) = "RV2"
@@ -86,6 +88,8 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_LATRoot_Array(17) = "OSLB"
 
 
+  MOST_RPAKnee_Vars = Concat_Prefix("XR", MOST_PARoot_Array)
+  MOST_LPAKnee_Vars = Concat_Prefix("XL", MOST_PARoot_Array)
   MOST_RLATKnee_Vars = Concat_Prefix("LXR", MOST_LATRoot_Array)
   MOST_LLATKnee_Vars = Concat_Prefix("LXL", MOST_LATRoot_Array)
 
