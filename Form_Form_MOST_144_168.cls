@@ -948,7 +948,7 @@ Private Sub Command_RV3ZERO_Click()
   Dim FilterName1 As String
   Dim FilterValue1 As String
   Dim FilterName2 As String
-  Dim FilterName2 As String
+  Dim FilterValue2 As String
 
   'Error catching
   On Error GoTo ErrorHandler_Main1
@@ -1021,7 +1021,7 @@ Private Sub Command_RV4ZERO_Click()
   Dim FilterName1 As String
   Dim FilterValue1 As String
   Dim FilterName2 As String
-  Dim FilterName2 As String
+  Dim FilterValue2 As String
 
   'Error catching
   On Error GoTo ErrorHandler_Main1
@@ -1086,8 +1086,23 @@ End Sub
 '---COMMAND_RV3NC_CLICK---'
 Private Sub Command_RV3NC_Click()
 
+  Dim DummyBoolean As Boolean
+  Dim Upper As Integer
+  Dim Index As Integer
+  Dim VarName As String
+  Dim TableName As String
+  Dim FilterName1 As String
+  Dim FilterValue1 As String
+  Dim FilterName2 As String
+  Dim FilterValue2 As String
+
   'Error catching
   On Error GoTo ErrorHandler_Main1
+
+  'Set flag for record keeping
+  Me.Recordset.Edit
+  Me.Recordset.Fields("FLAG_NOCHANGE_RV3").Value = True
+  Me.Recordset.Update
 
   'Exit the Sub
   On Error GoTo 0
