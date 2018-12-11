@@ -1027,6 +1027,11 @@ Private Sub Command_SUBMIT_Click()
     'Confirm record signing
     If Not ScoreFlag Then
       'All combo boxes are scored, sign E_DATE and E_TIME
+      Me.Recordset.Edit
+      Me.Recordset.Fields("READER").Value = CUR_READER
+      Me.Recordset.Fields("E_DATE").Value = CUR_DATE
+      Me.Recordset.Fields("E_TIME").Value = CUR_TIME
+      Me.Recordset.Update
 
     Else
       'Display number of unscored boxes and ask for confirmation
