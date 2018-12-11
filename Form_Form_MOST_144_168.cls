@@ -993,7 +993,7 @@ Private Sub Command_RV3ZERO_Click()
     DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
-  'Zero the right knee lateral view vars
+  'Zero the left knee lateral view vars
   Upper = UBound(MOST_LLATKnee_Vars,1) - 1
   Index = 0
   For Index = 0 To Upper
@@ -1062,7 +1062,7 @@ Private Sub Command_RV4ZERO_Click()
     DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
-  'Zero the right knee lateral view vars
+  'Zero the left knee lateral view vars
   Upper = UBound(MOST_LLATKnee_Vars,1) - 1
   Index = 0
   For Index = 0 To Upper
