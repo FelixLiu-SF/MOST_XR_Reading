@@ -290,10 +290,22 @@ Public Function CopyTableValue(VariableName As String, TableName As String, Filt
 
   Dim TableValueSource As String
   Dim TableValueDestination As String
+  Dim SQLText As String 
 
   On Error GoTo TableValueError
 
+  'Get values from table
+  TableValueSource = Nz(MyLookup2(TableName, VariableName, FilterName1, FilterValue1, FilterName2, FilterValue2),"")
+  TableValueDestination = Nz(MyLookup2(TableName, VariableName, FilterName3, FilterValue3, FilterName4, FilterValue4),"")
 
+  'Copy value if destination IS empty
+  If Len(TableValueDestination)<1 Then
+    'Copy value from source into destination
+
+    'Construct SQL code for insert score value
+
+
+  End If
 
   On Error GoTo 0
   Exit Function
