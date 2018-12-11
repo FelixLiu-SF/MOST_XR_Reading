@@ -260,8 +260,11 @@ End Function
 
 '---SETCOMBOVALUE---'
 Public Function SetComboValue(FormName As String, SubFormControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String)
+'Read value from MS Access table using filters and insert into scoresheet combo box
 
   Dim TableValue As String
+
+  On Error GoTo ComboValueError
 
   'Get value from table
   TableValue = Nz(MyLookup2(TableName, VariableName, FilterName1, FilterValue1, FilterName2, FilterValue2),"")
@@ -272,5 +275,30 @@ Public Function SetComboValue(FormName As String, SubFormControlName As String, 
   Else
     Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value = Null
   End If
+
+  On Error GoTo 0
+  Exit Function
+
+ComboValueError:
+  Resume Next
+
+End Function
+
+'---COPYTABLEVALUE---'
+Public Function CopyTableValue(VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String, FilterName3 As String, FilterValue3 As String, FilterName4 As String, FilterValue4 As String)
+'Copy MS Access table value from source by filter 1 & 2 into table value destination by filter 3 & 4
+
+  Dim TableValueSource As String
+  Dim TableValueDestination As String
+
+  On Error GoTo TableValueError
+
+
+
+  On Error GoTo 0
+  Exit Function
+
+TableValueError:
+  Resume Next
 
 End Function
