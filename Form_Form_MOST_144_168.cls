@@ -1095,6 +1095,10 @@ Private Sub Command_RV3NC_Click()
   Dim FilterValue1 As String
   Dim FilterName2 As String
   Dim FilterValue2 As String
+  Dim FilterName3 As String
+  Dim FilterValue3 As String
+  Dim FilterName4 As String
+  Dim FilterValue4 As String
 
   'Error catching
   On Error GoTo ErrorHandler_Main1
@@ -1103,6 +1107,134 @@ Private Sub Command_RV3NC_Click()
   Me.Recordset.Edit
   Me.Recordset.Fields("FLAG_NOCHANGE_RV3").Value = True
   Me.Recordset.Update
+
+  'Set filter var names
+  FilterName1 = "READINGID"
+  FilterName2 = "RVNUM"
+  FilterName3 = "READINGID"
+  FilterName4 = "RVNUM"
+
+  'Get READINGID from current record
+  FilterValue1 = Forms("Form_MOST_144_168").Recordset.Fields("READINGID").Value
+  FilterValue3 = FilterValue1
+
+  'Set constant filter values
+  FilterValue2 = "2"
+  FilterValue4 = "3"
+  TableName = "tblScores"
+
+  'Copy the right knee PA view vars
+  Upper = UBound(MOST_RPAKnee_Vars,1) - 1
+  Index = 0
+  For Index = 0 To Upper
+    VarName = MOST_RPA_Knee_Vars(Index)
+    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+  Next
+
+  'Copy the left knee PA view vars
+  Upper = UBound(MOST_LPAKnee_Vars,1) - 1
+  Index = 0
+  For Index = 0 To Upper
+    VarName = MOST_LPAKnee_Vars(Index)
+    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+  Next
+
+  'Copy the right knee lateral view vars
+  Upper = UBound(MOST_RLATKnee_Vars,1) - 1
+  Index = 0
+  For Index = 0 To Upper
+    VarName = MOST_RLATKnee_Vars(Index)
+    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+  Next
+
+  'Copy the left knee lateral view vars
+  Upper = UBound(MOST_LLATKnee_Vars,1) - 1
+  Index = 0
+  For Index = 0 To Upper
+    VarName = MOST_LLATKnee_Vars(Index)
+    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+  Next
+
+  'Exit the Sub
+  On Error GoTo 0
+  Exit Sub
+
+ErrorHandler_Main1:
+  Resume Next
+
+End Sub
+
+'---COMMAND_RV4NC_CLICK---'
+Private Sub Command_RV4NC_Click()
+
+  Dim DummyBoolean As Boolean
+  Dim Upper As Integer
+  Dim Index As Integer
+  Dim VarName As String
+  Dim TableName As String
+  Dim FilterName1 As String
+  Dim FilterValue1 As String
+  Dim FilterName2 As String
+  Dim FilterValue2 As String
+  Dim FilterName3 As String
+  Dim FilterValue3 As String
+  Dim FilterName4 As String
+  Dim FilterValue4 As String
+
+  'Error catching
+  On Error GoTo ErrorHandler_Main1
+
+  'Set flag for record keeping
+  Me.Recordset.Edit
+  Me.Recordset.Fields("FLAG_NOCHANGE_RV4").Value = True
+  Me.Recordset.Update
+
+  'Set filter var names
+  FilterName1 = "READINGID"
+  FilterName2 = "RVNUM"
+  FilterName3 = "READINGID"
+  FilterName4 = "RVNUM"
+
+  'Get READINGID from current record
+  FilterValue1 = Forms("Form_MOST_144_168").Recordset.Fields("READINGID").Value
+  FilterValue3 = FilterValue1
+
+  'Set constant filter values
+  FilterValue2 = "3"
+  FilterValue4 = "4"
+  TableName = "tblScores"
+
+  'Copy the right knee PA view vars
+  Upper = UBound(MOST_RPAKnee_Vars,1) - 1
+  Index = 0
+  For Index = 0 To Upper
+    VarName = MOST_RPA_Knee_Vars(Index)
+    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+  Next
+
+  'Copy the left knee PA view vars
+  Upper = UBound(MOST_LPAKnee_Vars,1) - 1
+  Index = 0
+  For Index = 0 To Upper
+    VarName = MOST_LPAKnee_Vars(Index)
+    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+  Next
+
+  'Copy the right knee lateral view vars
+  Upper = UBound(MOST_RLATKnee_Vars,1) - 1
+  Index = 0
+  For Index = 0 To Upper
+    VarName = MOST_RLATKnee_Vars(Index)
+    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+  Next
+
+  'Copy the left knee lateral view vars
+  Upper = UBound(MOST_LLATKnee_Vars,1) - 1
+  Index = 0
+  For Index = 0 To Upper
+    VarName = MOST_LLATKnee_Vars(Index)
+    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+  Next
 
   'Exit the Sub
   On Error GoTo 0
