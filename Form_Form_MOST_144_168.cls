@@ -1001,6 +1001,10 @@ Private Sub Command_RV3ZERO_Click()
     DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
+  'Exit the Sub
+  On Error GoTo 0
+  Exit Sub
+
 ErrorHandler_Main1:
   Resume Next
 
@@ -1069,6 +1073,25 @@ Private Sub Command_RV4ZERO_Click()
     VarName = MOST_LLATKnee_Vars(Index)
     DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
+
+  'Exit the Sub
+  On Error GoTo 0
+  Exit Sub
+
+ErrorHandler_Main1:
+  Resume Next
+
+End Sub
+
+'---COMMAND_RV3NC_CLICK---'
+Private Sub Command_RV3NC_Click()
+
+  'Error catching
+  On Error GoTo ErrorHandler_Main1
+
+  'Exit the Sub
+  On Error GoTo 0
+  Exit Sub
 
 ErrorHandler_Main1:
   Resume Next
