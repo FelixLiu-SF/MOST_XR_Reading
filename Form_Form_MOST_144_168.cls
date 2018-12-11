@@ -119,7 +119,7 @@ Private Sub LoadView()
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Get AdjudicationFlag
+    'Get DebugFlag
     DebugFlag = DLookup("DebugFlag", "tblProperties", "RecordID = 1")
     If Len(Nz(DebugFlag, "")) > 0 Then
         If DebugFlag > 0 Then
@@ -947,12 +947,33 @@ Private Sub Command_SUBMIT_Click()
     Dim nScored_XB As Integer
     Dim nScored_LXR As Integer
     Dim nScored_LXL As Integer
+    Dim ScoreFlag As Boolean
 
     Dim DummyBoolean As Boolean
+    Dim MsgString As String
     Dim MsgResponse As Integer
     Dim MsgExtra As Integer
 
+    Dim DebugFlag As Integer
+    Dim DebugBoolean As Boolean
+
     On Error GoTo ErrorHandler1
+
+    ScoreFlag = False
+    MsgString = ""
+
+    'Get DebugFlag
+    DebugFlag = DLookup("DebugFlag", "tblProperties", "RecordID = 1")
+    If Len(Nz(DebugFlag, "")) > 0 Then
+        If DebugFlag > 0 Then
+            DebugBoolean = False
+        Else
+            DebugBoolean = True
+        End If
+
+    Else
+        DebugBoolean = True
+    End If
 
     'Get the current date and time
     CUR_DATE = Format(Now, "yyyymmdd")
@@ -980,11 +1001,48 @@ Private Sub Command_SUBMIT_Click()
     nScored_LXR = CountScored("Form_MOST_144_168", "Subform_RLAT", ComboNames_LXB)
     nScored_LXL = CountScored("Form_MOST_144_168", "Subform_LLAT", ComboNames_LXB)
 
-    'for debugging
-    'MsgResponse = MsgBox(CStr(nUnlocked_XB) & " " & CStr(nUnlocked_LXR) & " " & CStr(nUnlocked_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
-    'MsgResponse = MsgBox(CStr(nScored_XB) & " " & CStr(nScored_LXR) & " " & CStr(nScored_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+    'Compare number of scores and unlocked combo boxes
+    If Abs(nUnlocked_XB - nScored_XB)>0 Then
+      ScoreFlag = True
+      MsgString = MsgString & "PA view scores missing: " & Cstr(nUnlocked_XB - nScored_XB) & " out of " & Cstr(nUnlocked_XB) & vbCrLf
 
-    'Sign the record
+    End If
+    If Abs(nUnlocked_LXR - nScored_LXR)>0 Then
+      ScoreFlag = True
+      MsgString = MsgString & "Right lateral view scores missing: " & Cstr(nUnlocked_LXR - nScored_LXR) & " out of " & Cstr(nUnlocked_LXR) & vbCrLf
+
+    End If
+    If Abs(nUnlocked_LXL - nScored_LXL)>0 Then
+      ScoreFlag = True
+      MsgString = MsgString & "Left lateral view scores missing: " & Cstr(nUnlocked_LXL - nScored_LXL) & " out of " & Cstr(nUnlocked_LXL) & vbCrLf
+
+    End If
+
+    'Debugging
+    If DebugBoolean Then
+      MsgResponse = MsgBox("Unlocked: " & CStr(nUnlocked_XB) & ", " & CStr(nUnlocked_LXR) & ", " & CStr(nUnlocked_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+      MsgResponse = MsgBox("Scored: " & CStr(nScored_XB) & ", " & CStr(nScored_LXR) & ", " & CStr(nScored_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+    End If
+
+    'Confirm record signing
+    If Not ScoreFlag Then
+      'All combo boxes are scored, sign E_DATE and E_TIME
+
+    Else
+      'Display number of unscored boxes and ask for confirmation
+      MsgResponse = MsgBox("Some features may be missing scores." & vbCrLf & MsgString & "Do you want to sign anyways? ", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+
+      If MsgResponse = vbYes Then
+        'Sign the record anyways
+        Me.Recordset.Edit
+        Me.Recordset.Fields("READER").Value = CUR_READER
+        Me.Recordset.Fields("E_DATE").Value = CUR_DATE
+        Me.Recordset.Fields("E_TIME").Value = CUR_TIME
+        Me.Recordset.Update
+
+      End If
+
+    End If
 
 
     'Exit the Sub
