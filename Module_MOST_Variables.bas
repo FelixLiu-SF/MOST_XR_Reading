@@ -17,7 +17,7 @@ Global MOST_RV34_XB_Vars() As String
 Global MOST_RV1234_LXB_Vars() As String
 Global MOST_RV12_LXB_Vars() As String
 Global MOST_RV34_LXB_Vars() As String
-Global MOST_RV12_LXB_PFKLG() As String
+Global MOST_RV12_LXB_PFKLG(4) As String
 
 Global MOST_RV12_LXR_Vars() As String
 Global MOST_RV12_LXL_Vars() As String
@@ -101,7 +101,10 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_RV12_LXB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
   MOST_RV34_LXB_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
 
-  MOST_RV12_LXB_PFKLG = Concat_VisitVarSide(MOST_RV12_Array, MOST_LATKnee_Array, MOST_LATRoot_Array(0))
+  MOST_RV12_LXB_PFKLG(0) = "RV1LXRPFKLG"
+  MOST_RV12_LXB_PFKLG(1) = "RV1LXLPFKLG"
+  MOST_RV12_LXB_PFKLG(2) = "RV2LXRPFKLG"
+  MOST_RV12_LXB_PFKLG(3) = "RV2LXLPFKLG"
 
   MOST_RV12_LXR_Vars = Concat_VisitVar(MOST_RV12_Array, MOST_RLATKnee_Vars)
   MOST_RV12_LXL_Vars = Concat_VisitVar(MOST_RV12_Array, MOST_LLATKnee_Vars)
