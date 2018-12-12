@@ -975,7 +975,7 @@ Private Sub Command_RV3ZERO_Click()
   Upper = UBound(MOST_RPAKnee_Vars,1) - 1
   Index = 0
   For Index = 0 To Upper
-    VarName = MOST_RPA_Knee_Vars(Index)
+    VarName = MOST_RPAKnee_Vars(Index)
     DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
@@ -1048,7 +1048,7 @@ Private Sub Command_RV4ZERO_Click()
   Upper = UBound(MOST_RPAKnee_Vars,1) - 1
   Index = 0
   For Index = 0 To Upper
-    VarName = MOST_RPA_Knee_Vars(Index)
+    VarName = MOST_RPAKnee_Vars(Index)
     DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
@@ -1129,7 +1129,7 @@ Private Sub Command_RV3NC_Click()
   Upper = UBound(MOST_RPAKnee_Vars,1) - 1
   Index = 0
   For Index = 0 To Upper
-    VarName = MOST_RPA_Knee_Vars(Index)
+    VarName = MOST_RPAKnee_Vars(Index)
     DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
@@ -1210,7 +1210,7 @@ Private Sub Command_RV4NC_Click()
   Upper = UBound(MOST_RPAKnee_Vars,1) - 1
   Index = 0
   For Index = 0 To Upper
-    VarName = MOST_RPA_Knee_Vars(Index)
+    VarName = MOST_RPAKnee_Vars(Index)
     DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
