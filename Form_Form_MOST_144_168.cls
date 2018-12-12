@@ -164,6 +164,8 @@ Private Sub LoadView()
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV34_RLAT, DebugBoolean)
 
     'Lock & Hide all the PF KLG variables from Visit 1 & 2
+    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_PFKLG, DebugBoolean)
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_PFKLG, DebugBoolean)
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_PFKLG, DebugBoolean)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_PFKLG, DebugBoolean)
 
