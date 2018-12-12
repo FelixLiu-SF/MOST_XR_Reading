@@ -976,7 +976,7 @@ Private Sub Command_RV3ZERO_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_RPAKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
   'Zero the left knee PA view vars
@@ -984,7 +984,7 @@ Private Sub Command_RV3ZERO_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_LPAKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
   'Zero the right knee lateral view vars
@@ -992,7 +992,7 @@ Private Sub Command_RV3ZERO_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_RLATKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
   'Zero the left knee lateral view vars
@@ -1000,7 +1000,7 @@ Private Sub Command_RV3ZERO_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_LLATKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
   'Exit the Sub
@@ -1049,7 +1049,7 @@ Private Sub Command_RV4ZERO_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_RPAKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
   'Zero the left knee PA view vars
@@ -1057,7 +1057,7 @@ Private Sub Command_RV4ZERO_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_LPAKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
   'Zero the right knee lateral view vars
@@ -1065,7 +1065,7 @@ Private Sub Command_RV4ZERO_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_RLATKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
   'Zero the left knee lateral view vars
@@ -1073,7 +1073,7 @@ Private Sub Command_RV4ZERO_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_LLATKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
   'Exit the Sub

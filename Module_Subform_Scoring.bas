@@ -343,8 +343,8 @@ Public Function ZeroTableValue(VariableName As String, TableName As String, Filt
   'Get value from table
   TableValue = Nz(MyLookup2(TableName, VariableName, FilterName1, FilterValue1, FilterName2, FilterValue2),"")
 
-  'Set value to zero if source IS NOT empty
-  If Len(TableValue)>0 Then
+  'Set value to zero if source IS empty
+  If Len(TableValue)<1 Then
     'Copy value from source into destination
 
     Set db = DBEngine(0)(0)
