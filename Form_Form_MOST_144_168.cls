@@ -1144,7 +1144,7 @@ Private Sub Command_RV3NC_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_RPAKnee_Vars(Index)
-    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+    DummyBoolean = CopyTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
   'Copy the left knee PA view vars
@@ -1152,7 +1152,7 @@ Private Sub Command_RV3NC_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_LPAKnee_Vars(Index)
-    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+    DummyBoolean = CopyTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
   'Copy the right knee lateral view vars
@@ -1160,7 +1160,7 @@ Private Sub Command_RV3NC_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_RLATKnee_Vars(Index)
-    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+    DummyBoolean = CopyTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
   'Copy the left knee lateral view vars
@@ -1168,7 +1168,7 @@ Private Sub Command_RV3NC_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_LLATKnee_Vars(Index)
-    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+    DummyBoolean = CopyTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
   'Reload subform views
@@ -1232,7 +1232,7 @@ Private Sub Command_RV4NC_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_RPAKnee_Vars(Index)
-    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+    DummyBoolean = CopyTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
   'Copy the left knee PA view vars
@@ -1240,7 +1240,7 @@ Private Sub Command_RV4NC_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_LPAKnee_Vars(Index)
-    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+    DummyBoolean = CopyTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
   'Copy the right knee lateral view vars
@@ -1248,7 +1248,7 @@ Private Sub Command_RV4NC_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_RLATKnee_Vars(Index)
-    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+    DummyBoolean = CopyTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
   'Copy the left knee lateral view vars
@@ -1256,7 +1256,7 @@ Private Sub Command_RV4NC_Click()
   Index = 0
   For Index = 0 To Upper
     VarName = MOST_LLATKnee_Vars(Index)
-    DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
+    DummyBoolean = CopyTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
   'Reload subform views
