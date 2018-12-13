@@ -215,7 +215,7 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
 
   DirtySave(FormName)
 
-  DummyBoolean = BackcolorCode(FormName, SubFormControlName, ControlIn)
+  DummyBoolean = BackcolorCode(FormName, SubFormControlName, ControlName)
 
   Set db = Nothing
 
