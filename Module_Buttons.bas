@@ -132,6 +132,7 @@ Public Function QuitRequest(FormName As String, SignVarName As String)
     Dim SignCheck As Variant
     Dim Debug_Flag As Integer
     Dim MsgResponse As Integer
+    Dim DummyBoolean As Boolean 
 
     On Error Goto ErrorHandler1
 
@@ -140,6 +141,9 @@ Public Function QuitRequest(FormName As String, SignVarName As String)
 
     'Set Focus on Form
     Forms(FormName).SetFocus
+
+    'DirtySave
+    DummyBoolean = DirtySave(FormName)
 
     If Debug_Flag < 1 Then
     'no debug - proceed as normal
@@ -155,7 +159,7 @@ Public Function QuitRequest(FormName As String, SignVarName As String)
 
         ElseIf Len(Nz(SignCheck,"")) < 1 Then
             'not signed - ask user for confirmation
-            MsgResponse = MsgBox("current record is not signed. Are you sure you want to quit?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
+            MsgResponse = MsgBox("Current record is not signed. Are you sure you want to quit?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
             If MsgResponse = vbYes Then
                 'answer is yes - continue with quitting
 

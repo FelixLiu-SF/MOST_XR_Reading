@@ -1401,3 +1401,25 @@ ErrorHandler1:
     Exit Sub
 
 End Sub
+
+'---COMMAND_QUIT_CLICK---'
+Private Sub Command_QUIT_Click()
+
+  Dim QuitBoolean As Boolean
+
+  On Error GoTo QuitError
+
+  QuitBoolean = QuitRequest("Form_MOST_144_168", "E_DATE")
+
+  If QuitBoolean Then
+    DoCmd.Quit
+  End If
+
+  On Error GoTo 0
+  Exit Sub
+
+QuitError:
+  DoCmd.Quit
+  Exit Sub
+
+End Sub
