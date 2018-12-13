@@ -8,7 +8,7 @@ Global MOST_RV34_Array(2) As String
 Global MOST_PAKnee_Array(2) As String
 Global MOST_LATKnee_Array(2) As String
 Global MOST_PARoot_Array(19) As String
-Global MOST_LATRoot_Array(19) As String
+Global MOST_LATRoot_Array(18) As String
 
 Global MOST_RV1234_XB_Vars() As String
 Global MOST_RV12_XB_Vars() As String
