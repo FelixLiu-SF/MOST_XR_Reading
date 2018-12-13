@@ -1281,13 +1281,13 @@ Private Sub Command_SUBMIT_Click()
     DebugFlag = DLookup("DebugFlag", "tblProperties", "RecordID = 1")
     If Len(Nz(DebugFlag, "")) > 0 Then
         If DebugFlag > 0 Then
-            DebugBoolean = False
-        Else
             DebugBoolean = True
+        Else
+            DebugBoolean = False
         End If
 
     Else
-        DebugBoolean = True
+        DebugBoolean = False
     End If
 
     'Get the current date and time
@@ -1335,8 +1335,8 @@ Private Sub Command_SUBMIT_Click()
 
     'Debugging
     If DebugBoolean Then
-      MsgResponse = MsgBox("Unlocked: " & CStr(nUnlocked_XB) & ", " & CStr(nUnlocked_LXR) & ", " & CStr(nUnlocked_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
-      MsgResponse = MsgBox("Scored: " & CStr(nScored_XB) & ", " & CStr(nScored_LXR) & ", " & CStr(nScored_LXL), vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+      MsgResponse = MsgBox("Unlocked: " & CStr(nUnlocked_XB) & ", " & CStr(nUnlocked_LXR) & ", " & CStr(nUnlocked_LXL), vbOKOnly, "Debug")
+      MsgResponse = MsgBox("Scored: " & CStr(nScored_XB) & ", " & CStr(nScored_LXR) & ", " & CStr(nScored_LXL), vbOKOnly, "Debug")
     End If
 
     'Confirm record signing
