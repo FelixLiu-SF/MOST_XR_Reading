@@ -312,7 +312,7 @@ Public Function CopyTableValue(VariableName As String, TableName As String, Filt
     Set db = DBEngine(0)(0)
 
     'Construct SQL code for insert score value
-    SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName & " = " & TableValueSource  & " WHERE (((" & TableName & "." & FilterName1 & ")=""" & FilterValue1 & """) AND ((" & TableName & "." & FilterName2 & ")=""" & FilterValue2 & """));"
+    SQLText = "UPDATE " & TableName & " SET " & TableName & "." & VariableName & " = " & TableValueSource  & " WHERE (((" & TableName & "." & FilterName3 & ")=""" & FilterValue3 & """) AND ((" & TableName & "." & FilterName4 & ")=""" & FilterValue4 & """));"
 
     'Execute SQL update code
     DoCmd.SetWarnings False
