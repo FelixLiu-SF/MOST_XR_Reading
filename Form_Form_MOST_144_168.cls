@@ -1003,6 +1003,13 @@ Private Sub Command_RV3ZERO_Click()
     DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
 
+  'Reload subform views
+  DummyBoolean = LoadValues_PA("XR")
+  DummyBoolean = LoadValues_PA("XL")
+  DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
+  DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
+  LoadColor
+
   'Exit the Sub
   On Error GoTo 0
   Exit Sub
@@ -1075,6 +1082,13 @@ Private Sub Command_RV4ZERO_Click()
     VarName = MOST_LLATKnee_Vars(Index)
     DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
   Next
+
+  'Reload subform views
+  DummyBoolean = LoadValues_PA("XR")
+  DummyBoolean = LoadValues_PA("XL")
+  DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
+  DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
+  LoadColor
 
   'Exit the Sub
   On Error GoTo 0
@@ -1157,6 +1171,13 @@ Private Sub Command_RV3NC_Click()
     DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
 
+  'Reload subform views
+  DummyBoolean = LoadValues_PA("XR")
+  DummyBoolean = LoadValues_PA("XL")
+  DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
+  DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
+  LoadColor
+
   'Exit the Sub
   On Error GoTo 0
   Exit Sub
@@ -1237,6 +1258,13 @@ Private Sub Command_RV4NC_Click()
     VarName = MOST_LLATKnee_Vars(Index)
     DummyBoolean = CopyTableValue(TableName, VarName, FilterName1, FilterValue1, FilterName2, FilterValue2, FilterName3, FilterValue3, FilterName4, FilterValue4)
   Next
+
+  'Reload subform views
+  DummyBoolean = LoadValues_PA("XR")
+  DummyBoolean = LoadValues_PA("XL")
+  DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
+  DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
+  LoadColor
 
   'Exit the Sub
   On Error GoTo 0
