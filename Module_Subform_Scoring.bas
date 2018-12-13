@@ -190,6 +190,7 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   Dim SQLText as String
   Dim ScoreValue As String
   Dim SQLValue As String
+  Dim DummyBoolean As Boolean
 
   On Error GoTo ScoreErr
 
@@ -213,6 +214,8 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   DoCmd.SetWarnings True
 
   DirtySave(FormName)
+
+  DummyBoolean = BackcolorCode(FormName, SubFormControlName, ControlIn)
 
   Set db = Nothing
 
