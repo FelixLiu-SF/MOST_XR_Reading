@@ -186,3 +186,108 @@ Public Function SkipSigned(FormName As String, SignVarName As String)
         Exit Function
 
 End Function
+
+'---IMPORTEFILM---'
+Public Function ImportEFilm()
+
+'Run Batch file for importing DICOMs into EFilm Workstation
+
+  Dim MsgInt As Integer
+  Dim CurPath As String
+  Dim CurPathRoot As String
+  Dim CurDrive As String
+  Dim BatFile As String
+  Dim FSObj As Object
+  Dim FSTest As Object
+
+  On Error GoTo ErrorHandler1
+
+  'Prompt user before EFilm import
+  MsgInt = MsgBox("Click OK to Import DICOMs into EFilm.", vbOKCancel, "Import DICOMs")
+  If MsgInt = 1 Then
+    'Continue with automated EFilm importing
+
+    'Construct file path for batch file according to Box Sync folder structure
+    CurPath = Application.CurrentProject.Path
+    CurPathRoot = Left(CurPath, InStrRev(CurPath, "\") - 1)
+    CurDrive = Left(CurPath, InStrRev(CurPath, ":\"))
+    BatFile = CurPathRoot & "\Efilm_import_code\import-images.bat"
+
+    'Check if batch file already exists
+    If Dir(BatFile,vbNormal) = vbNullString Then
+      'Batch file is missing, write a new batch file
+
+      'Write file object
+      Set FSObj = CreateObject("Scripting.FileSystemObject")
+      Set FSText = FSObj.CreateTextFile(BatFile, True)
+
+      'Write lines
+      FSText.Writeline ("@echo.")
+      FSText.Writeline ("@echo Importing DICOM files into EFilm Workstation.")
+      FSText.Writeline ("@echo Please wait...")
+      FSText.Writeline ("@echo.")
+      FSText.Writeline ("@echo off")
+
+      FSText.Writeline (CurDrive)
+      FSText.Writeline ("cd """ & CurPathRoot & """")
+      FSText.Writeline ("""" & CurPathRoot & "\Efilm_import_code\storescu.exe"" --propose-lossless --recurse --scan-directories -aet AE_TITLE -aec AE_TITLE localhost 4006 """ & CurPathRoot & "\DICOM""")
+
+      FSText.Writeline ("@echo on")
+      FSText.Writeline ("@echo.")
+      FSText.Writeline ("@echo Importing has finished.")
+      FSText.Writeline ("@echo.")
+
+      FSText.Close
+    End If
+
+    'Run the batch file
+    MsgInt = Shell(BatFile, vbNormalFocus)
+
+  End If
+
+
+  On Error GoTo 0
+  Exit Function
+
+ErrorHandler1:
+  On Error GoTo ErrorHandler2
+  'Try to write new batch file one more time
+
+  'Construct file path for batch file according to Box Sync folder structure
+  CurPath = Application.CurrentProject.Path
+  CurPathRoot = Left(CurPath, InStrRev(CurPath, "\") - 1)
+  CurDrive = Left(CurPath, InStrRev(CurPath, ":\"))
+  BatFile = CurPathRoot & "\Efilm_import_code\import-images.bat"
+
+  'Write file object
+  Set FSObj = CreateObject("Scripting.FileSystemObject")
+  Set FSText = FSObj.CreateTextFile(BatFile, True)
+
+  'Write lines
+  FSText.Writeline ("@echo.")
+  FSText.Writeline ("@echo Importing DICOM files into EFilm Workstation.")
+  FSText.Writeline ("@echo Please wait...")
+  FSText.Writeline ("@echo.")
+  FSText.Writeline ("@echo off")
+
+  FSText.Writeline (CurDrive)
+  FSText.Writeline ("cd """ & CurPathRoot & """")
+  FSText.Writeline ("""" & CurPathRoot & "\Efilm_import_code\storescu.exe"" --propose-lossless --recurse --scan-directories -aet AE_TITLE -aec AE_TITLE localhost 4006 """ & CurPathRoot & "\DICOM""")
+
+  FSText.Writeline ("@echo on")
+  FSText.Writeline ("@echo.")
+  FSText.Writeline ("@echo Importing has finished.")
+  FSText.Writeline ("@echo.")
+
+  FSText.Close
+
+  'Run the batch file
+  MsgInt = Shell(BatFile, vbNormalFocus)
+
+  Exit Function
+
+ErrorHandler2:
+
+  Exit Function
+
+End Function
