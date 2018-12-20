@@ -132,7 +132,7 @@ Public Function QuitRequest(FormName As String, SignVarName As String)
     Dim SignCheck As Variant
     Dim Debug_Flag As Integer
     Dim MsgResponse As Integer
-    Dim DummyBoolean As Boolean 
+    Dim DummyBoolean As Boolean
 
     On Error Goto ErrorHandler1
 
@@ -190,5 +190,58 @@ Public Function QuitRequest(FormName As String, SignVarName As String)
 
     ErrorHandler1:
       Exit Function
+
+End Function
+
+'---SKIPSIGNED---'
+Public Function SkipSigned(FormName As String, SignVarName As String)
+
+  Dim Index As Integer
+  Dim SignCheck As Variant
+  Dim nMaxRec As Integer
+  Dim Debug_Flag As Integer
+
+  On Error GoTo ErrorHandler1
+
+  'Preallocate
+  Index = 1
+  nMaxRec = 1
+
+  'Get properties
+  Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
+  nMaxRec = DLookup("MaxRecord","tblProperties","RecordID = 1")
+
+  'Set Focus on Form
+  Forms(FormName).SetFocus
+
+  If Debug_Flag < 1 Then
+  'no debug - skip signed records
+
+      For Index = 1 To nMaxRec
+
+        'check if current record is signed
+        SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
+
+        If Forms(FormName).CurrentRecord < nMaxRec And Len(Nz(SignCheck, "")) > 0 Then
+            'signed and not max record - continue to next record
+            DoCmd.GoToRecord , , acNext
+
+        Else
+            ' do not go to next record
+            Exit Function
+        End If
+        
+      Next
+
+  Else
+  ' debug mode, do nothing
+
+  End If
+
+  On Error GoTo 0
+  Exit Function
+
+ErrorHandler1:
+  Exit Function
 
 End Function
