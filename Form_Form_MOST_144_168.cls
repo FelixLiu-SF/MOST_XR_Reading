@@ -27,6 +27,9 @@ Private Sub Form_Load()
     DummyBoolean = MOST_Load_SelectStr
     DummyBoolean = MOST_Load_VariableNameArrays
 
+    'Skip until first unsigned record
+    SkipSigned("Form_MOST_144_168", "E_DATE")
+
     'Load default view for ComboBox Controls
     LoadView
 
