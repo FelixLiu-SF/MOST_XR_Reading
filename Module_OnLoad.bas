@@ -191,7 +191,7 @@ Public Function ImportEFilm()
   Dim CurDrive As String
   Dim BatFile As String
   Dim FSObj As Object
-  Dim FSTest As Object
+  Dim FSText As Object
 
   On Error GoTo ErrorHandler1
 
