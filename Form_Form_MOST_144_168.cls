@@ -20,6 +20,9 @@ Private Sub Form_Load()
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
+    'Import X-ray films into EFilm with batch file
+    ImportEFilm
+
     'Load the form view and objects
     LoadForm ("Form_MOST_144_168")
 
