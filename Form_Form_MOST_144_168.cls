@@ -30,9 +30,6 @@ Private Sub Form_Load()
     DummyBoolean = MOST_Load_SelectStr
     DummyBoolean = MOST_Load_VariableNameArrays
 
-    'Skip until first unsigned record
-    DummyBoolean = SkipSigned("Form_MOST_144_168", "E_DATE")
-
     'Load default view for ComboBox Controls
     LoadView
 
@@ -48,6 +45,9 @@ Private Sub Form_Load()
     'Load the record numbers
     DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
     DummyBoolean = LoadMaxRec("Form_MOST_144_168", "Text_MaxRecord")
+
+    'Skip until first unsigned record
+    DummyBoolean = SkipSigned("Form_MOST_144_168", "E_DATE")
 
     'Clear the error catching
     On Error GoTo 0
