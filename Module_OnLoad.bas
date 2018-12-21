@@ -186,6 +186,7 @@ Public Function ImportEFilm()
 'Run Batch file for importing DICOMs into EFilm Workstation
 
   Dim MsgInt As Integer
+  Dim WarningBoolean As Boolean
   Dim CurPath As String
   Dim CurPathRoot As String
   Dim CurDrive As String
@@ -236,6 +237,8 @@ Public Function ImportEFilm()
     'Run the batch file
     MsgInt = Shell(BatFile, vbNormalFocus)
 
+    WarningBoolean = MsgBox("Please wait a few minutes for importing to finish before loading films.", vbOKOnly)
+
   End If
 
 
@@ -276,6 +279,8 @@ ErrorHandler1:
 
   'Run the batch file
   MsgInt = Shell(BatFile, vbNormalFocus)
+
+  WarningBoolean = MsgBox("Please wait a few minutes for importing to finish before loading films.", vbOKOnly)
 
   Exit Function
 
