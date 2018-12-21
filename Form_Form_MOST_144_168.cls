@@ -23,9 +23,6 @@ Private Sub Form_Load()
     'Load the form view and objects
     LoadForm ("Form_MOST_144_168")
 
-    'Load the EFilm Automation object to link with EFilm Workstation
-    LoadEFilmAuto
-
     'Load MOST global variable names and SQL selection strings
     DummyBoolean = MOST_Load_SelectStr
     DummyBoolean = MOST_Load_VariableNameArrays
