@@ -30,14 +30,14 @@ Public Function ButtonNext(FormName As String, SignVarName As String)
 
         If Forms(FormName).CurrentRecord < nMaxRec And Len(Nz(SignCheck, "")) > 0 Then
             'signed and not max record - continue to next record
-            DoCmd.GoToRecord , , acNext
+            DoCmd.GoToRecord acDataForm, FormName, acNext
 
         ElseIf Len(Nz(SignCheck,"")) < 1 Then
             'not signed - ask user for confirmation
             MsgResponse = MsgBox("Current record is not signed. Are you sure you want to switch records?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
             If Forms(FormName).CurrentRecord < nMaxRec And MsgResponse = vbYes Then
                 'answer is yes and not at max index - go to next
-                DoCmd.GoToRecord , , acNext
+                DoCmd.GoToRecord acDataForm, FormName, acNext
 
             Else
                 'do not go to next record
@@ -52,7 +52,7 @@ Public Function ButtonNext(FormName As String, SignVarName As String)
     ' debug mode, just go to next record if not at max index
 
         If Forms(FormName).CurrentRecord < nMaxRec Then
-            DoCmd.GoToRecord , , acNext
+            DoCmd.GoToRecord acDataForm, FormName, acNext
         Else
             Exit Function
         End If
@@ -90,14 +90,14 @@ Public Function ButtonPrev(FormName As String, SignVarName As String)
 
         If Forms(FormName).CurrentRecord <> 1  And Len(Nz(SignCheck, "")) > 0 Then
             'signed and not first record - continue to previous record
-            DoCmd.GoToRecord , , acPrevious
+            DoCmd.GoToRecord acDataForm, FormName, acPrevious
 
         ElseIf Len(Nz(SignCheck,"")) < 1 Then
             'not signed - ask user for confirmation
             MsgResponse = MsgBox("Current record is not signed. Are you sure you want to switch records?", vbYesNo + vbCritical + vbDefaultButton2, "Quit")
             If Forms(FormName).CurrentRecord <> 1 And MsgResponse = vbYes Then
                 'answer is yes and not at max index - go to previous
-                DoCmd.GoToRecord , , acPrevious
+                DoCmd.GoToRecord acDataForm, FormName, acPrevious
 
             Else
                 'do not go to previous record
@@ -112,7 +112,7 @@ Public Function ButtonPrev(FormName As String, SignVarName As String)
     ' debug mode, just go to previous record if not at first index
 
         If Forms(FormName).CurrentRecord <> 1 Then
-            DoCmd.GoToRecord , , acPrevious
+            DoCmd.GoToRecord acDataForm, FormName, acPrevious
         Else
             Exit Function
         End If

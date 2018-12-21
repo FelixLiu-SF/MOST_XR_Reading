@@ -145,20 +145,20 @@ Public Function SkipSigned(FormName As String, SignVarName As String)
   Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
   nMaxRec = DLookup("MaxRecord","tblProperties","RecordID = 1")
 
-  'Set Focus on Form
-  Forms(FormName).SetFocus
-
   If Debug_Flag < 1 Then
   'no debug - skip signed records
 
       For Index = 1 To nMaxRec
+
+      'Set Focus on Form
+      Forms(FormName).SetFocus
 
         'check if current record is signed
         SignCheck = Forms(FormName).Recordset.Fields(SignVarName).Value
 
         If Forms(FormName).CurrentRecord < nMaxRec And Len(Nz(SignCheck, "")) > 0 Then
             'signed and not max record - continue to next record
-            DoCmd.GoToRecord , , acNext
+            DoCmd.GoToRecord acDataForm, FormName, acNext
 
         Else
             ' do not go to next record
