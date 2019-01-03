@@ -1426,3 +1426,26 @@ QuitError:
   Exit Sub
 
 End Sub
+
+'---COMMAND_PRINT_CLICK---'
+Private Sub Command_Print_Click()
+'Print report
+
+  Dim RecID As Integer
+
+  On Error GoTo PrintError
+
+  RecID = Me.Recordset.Fields("RECORDUID").Value
+
+  If Len(Nz(RecID, "")) > 0 Then
+      UnloadRibbon("Form_MOST_144_168")
+      DoCmd.OpenReport "Report_MOST_144_168", acViewPreview, , "RECORDUID = " & RecID
+  End If
+
+  On Error GoTo 0
+  Exit Sub
+
+PrintError:
+  DoCmd.Quit
+  Exit Sub
+End Sub
