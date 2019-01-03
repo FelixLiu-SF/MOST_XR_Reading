@@ -20,11 +20,8 @@ Private Sub Form_Load()
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Load the form view and objects
-    LoadForm ("Form_MOST_144_168")
-
-    'Load the EFilm Automation object to link with EFilm Workstation
-    LoadEFilmAuto
+    'Load the report view and objects
+    LoadReport ("Report_MOST_144_168")
 
     'Load MOST global variable names and SQL selection strings
     DummyBoolean = MOST_Load_SelectStr
@@ -35,9 +32,6 @@ Private Sub Form_Load()
 
     'Set all ComboBox OnLostFocus properties to color coding
     SetComboLostFocus
-
-    'Set all Combobox OnFocus properties to dropdown menus
-    LoadDropDown
 
     'Load initial background color scheme for ComboBox Controls
     LoadColor
