@@ -24,17 +24,11 @@ Private Sub Form_Load()
     LoadReport ("Report_MOST_144_168")
 
     'Load default view for ComboBox Controls
-    LoadView
-
-    'Set all ComboBox OnLostFocus properties to color coding
-    SetComboLostFocus
-
-    'Load initial background color scheme for ComboBox Controls
-    LoadColor
+    'LoadView
 
     'Load the record numbers
-    DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
-    DummyBoolean = LoadMaxRec("Form_MOST_144_168", "Text_MaxRecord")
+    'DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
+    'DummyBoolean = LoadMaxRec("Form_MOST_144_168", "Text_MaxRecord")
 
     'Clear the error catching
     On Error GoTo 0
@@ -56,31 +50,31 @@ Private Sub Form_Current()
     On Error GoTo ErrorHandler_Main1
 
     'Set the ComboBox After Updates
-    LoadAfterUpdate
+    'LoadAfterUpdate
 
     'Reload default view for ComboBox Controls
-    LoadView
+    'LoadView
 
     'Load subform views
-    DummyBoolean = LoadVisitDates("Subform_PA")
-    DummyBoolean = LoadValues_PA("XR")
-    DummyBoolean = LoadValues_PA("XL")
-    DummyBoolean = LoadVisitDates("Subform_RLAT")
-    DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
-    DummyBoolean = LoadVisitDates("Subform_LLAT")
-    DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
+    DummyBoolean = LoadReportVisitDates("Subform_PA")
+    DummyBoolean = LoadReportValues_PA("XR")
+    DummyBoolean = LoadReportValues_PA("XL")
+    DummyBoolean = LoadReportVisitDates("Subform_RLAT")
+    DummyBoolean = LoadReportValues_Lat("Subform_RLAT", "LXR")
+    DummyBoolean = LoadReportVisitDates("Subform_LLAT")
+    DummyBoolean = LoadReportValues_Lat("Subform_LLAT", "LXL")
 
     'Insert assigned reader into reader ComboBox
-    Insert_Reader
+    Insert_Report_Reader
 
     'Reload initial background color scheme for ComboBox Controls
-    LoadColor
+    'LoadColor
 
     'Reload the current record number
-    DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
+    'DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
 
     'Load the PA films and set subform focus automatically
-    Command_LOAD_PA_Click
+    'Command_LOAD_PA_Click
 
 'Clear the error catching
     On Error GoTo 0
@@ -89,6 +83,39 @@ Private Sub Form_Current()
 
 ErrorHandler_Main1:
     Resume Next
+
+End Sub
+
+'---INSERT_REPORT_READER---'
+Private Sub Insert_Report_Reader()
+  'Insert the selected reader into the reader var
+  Dim Cur_Reader As String
+  Dim Reader_Var As String
+  Dim Assigned_Reader As String
+
+  On Error GoTo InsertErr
+  Cur_Reader = Me("Combo_HeaderREADER").Value
+  Reader_Var = Me.Recordset.Fields("READER").Value
+  Assigned_Reader = DLookup("AssignedReader","tblProperties","RecordID = 1")
+
+  'Automatically fill Combo_HeaderREADER if AssignedReader is not null
+  If Len(Nz(Assigned_Reader, "")) > 0 And Len(Nz(Cur_Reader, "")) < 1 Then
+      Me("Combo_HeaderREADER").Value = Assigned_Reader
+      Cur_Reader = Assigned_Reader
+  End If
+
+  'Insert reader name from table instead if it exists
+  If Len(Nz(Cur_Reader, "")) > 0 And Len(Nz(Reader_Var, "")) > 0 Then
+      Me("Combo_HeaderREADER").Value = Reader_Var
+      Cur_Reader = Reader_Var
+  End If
+
+
+On Error GoTo 0
+Exit Sub
+
+InsertErr:
+Resume Next
 
 End Sub
 
@@ -166,129 +193,5 @@ Private Sub LoadView()
 
 ErrorHandler_Main1:
     Resume Next
-
-End Sub
-
-'---LOADCOLOR---'
-Private Sub LoadColor()
-' Reload all of the combo box background colors
-
-    Dim Index As Integer
-    Dim Upper As Integer
-    Dim ControlName As String
-    Dim DummyBoolean As Boolean
-
-    'Error catching
-    On Error GoTo ErrorHandler_Main1
-
-    'Loop through preloaded PA view variable name array on PA subform
-    Index = 0
-    Upper = UBound(MOST_RV1234_XB_Vars, 1) - 1
-
-    For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
-        DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_PA", ControlName)
-    Next
-
-    'Loop through preloaded Lateral View variable name array on Right Lat subform
-    Index = 0
-    Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-
-    For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
-        DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_RLAT", ControlName)
-    Next
-
-    'Loop through preloaded Lateral View variable name array on Left Lat subform
-    Index = 0
-    Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
-
-    For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
-        DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_LLAT", ControlName)
-    Next
-
-    'Clear the error catching
-    On Error GoTo 0
-
-    Exit Sub
-
-ErrorHandler_Main1:
-    Resume Next
-
-End Sub
-
-'---INSERT_READER---'
-Private Sub Insert_Reader()
-  'Insert the selected reader into the reader var
-  Dim CUR_READER As String
-  Dim Reader_Var As String
-  Dim Assigned_Reader As String
-
-  On Error GoTo InsertErr
-  CUR_READER = Me("Combo_HeaderREADER").Value
-  Reader_Var = Me.Recordset.Fields("READER").Value
-  Assigned_Reader = DLookup("AssignedReader", "tblProperties", "RecordID = 1")
-
-  'Automatically fill Combo_HeaderREADER if AssignedReader is not null
-  If Len(Nz(Assigned_Reader, "")) > 0 And Len(Nz(CUR_READER, "")) < 1 Then
-      Me("Combo_HeaderREADER").Value = Assigned_Reader
-      CUR_READER = Assigned_Reader
-  End If
-
-  'Insert only if selected reader and is not null, and reader var is
-  If Len(Nz(CUR_READER, "")) > 0 And Len(Nz(Reader_Var, "")) < 1 Then
-      Me.Recordset.Edit
-      Me.Recordset.Fields("READER").Value = CUR_READER
-      Me.Recordset.Update
-  End If
-
-
-On Error GoTo 0
-Exit Sub
-
-InsertErr:
-Resume Next
-
-End Sub
-
-'---COMMAND_NEXT_CLICK---'
-Private Sub Command_Next_Click()
-
-    Dim DummyBoolean As Boolean
-
-    DummyBoolean = ButtonNext("Form_MOST_144_168", "E_DATE")
-
-End Sub
-
-'---COMMAND_PREV_CLICK---'
-Private Sub Command_Prev_Click()
-
-    Dim DummyBoolean As Boolean
-
-    DummyBoolean = ButtonPrev("Form_MOST_144_168", "E_DATE")
-
-End Sub
-
-
-'---COMMAND_QUIT_CLICK---'
-Private Sub Command_QUIT_Click()
-
-  Dim QuitBoolean As Boolean
-
-  On Error GoTo QuitError
-
-  QuitBoolean = QuitRequest("Form_MOST_144_168", "E_DATE")
-
-  If QuitBoolean Then
-    DoCmd.Quit
-  End If
-
-  On Error GoTo 0
-  Exit Sub
-
-QuitError:
-  DoCmd.Quit
-  Exit Sub
 
 End Sub
