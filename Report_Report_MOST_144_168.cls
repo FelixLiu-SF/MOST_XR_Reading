@@ -11,8 +11,8 @@ Option Compare Database
 Option Explicit
 
 
-'---FORM_LOAD---'
-Private Sub Form_Load()
+'---REPORT_LOAD---'
+Private Sub Report_Load()
 ' Load various modules when this scoresheet is opened
 
     Dim DummyBoolean As Boolean
@@ -40,8 +40,8 @@ ErrorHandler_Main1:
 
 End Sub
 
-'---FORM_CURRENT---'
-Private Sub Form_Current()
+'---REPORT_CURRENT---'
+Private Sub Report_Current()
 ' Reload view for current record/participant ID
 
     Dim DummyBoolean As Boolean
