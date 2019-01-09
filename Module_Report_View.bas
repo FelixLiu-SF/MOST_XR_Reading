@@ -137,18 +137,21 @@ Public Function LoadReportVisitDates(Subform_Name As String)
 
     Dim VisitStrs(4) As String
     Dim DateStrs(4) As String
+    Dim ReportFilter As String
+
+    ReportFilter = Reports("Report_MOST_144_168").Filter
 
     'Get time points from current record
-    VisitStrs(0) = Reports("Report_MOST_144_168").Recordset.Fields("RV1TP").Value
-    VisitStrs(1) = Reports("Report_MOST_144_168").Recordset.Fields("RV2TP").Value
-    VisitStrs(2) = Reports("Report_MOST_144_168").Recordset.Fields("RV3TP").Value
-    VisitStrs(3) = Reports("Report_MOST_144_168").Recordset.Fields("RV4TP").Value
+    VisitStrs(0) = DLookup("RV1TP", "tblReadings", ReportFilter)
+    VisitStrs(1) = DLookup("RV2TP", "tblReadings", ReportFilter)
+    VisitStrs(2) = DLookup("RV3TP", "tblReadings", ReportFilter)
+    VisitStrs(3) = DLookup("RV4TP", "tblReadings", ReportFilter)
 
     'Get exam dates from current record
-    DateStrs(0) = Reports("Report_MOST_144_168").Recordset.Fields("RV1DATE").Value
-    DateStrs(1) = Reports("Report_MOST_144_168").Recordset.Fields("RV2DATE").Value
-    DateStrs(2) = Reports("Report_MOST_144_168").Recordset.Fields("RV3DATE").Value
-    DateStrs(3) = Reports("Report_MOST_144_168").Recordset.Fields("RV4DATE").Value
+    DateStrs(0) = DLookup("RV1DATE", "tblReadings", ReportFilter)
+    DateStrs(1) = DLookup("RV2DATE", "tblReadings", ReportFilter)
+    DateStrs(2) = DLookup("RV3DATE", "tblReadings", ReportFilter)
+    DateStrs(3) = DLookup("RV4DATE", "tblReadings", ReportFilter)
 
     'Set time point strings
     Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Label_RV1TP").Caption = VisitStrs(0)
