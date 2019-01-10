@@ -26,6 +26,15 @@ Private Sub Report_Load()
     'Load default view for ComboBox Controls
     'LoadView
 
+    'Load subform views
+    DummyBoolean = LoadReportVisitDates("Subform_PA")
+    DummyBoolean = LoadReportValues_PA("XR")
+    DummyBoolean = LoadReportValues_PA("XL")
+    DummyBoolean = LoadReportVisitDates("Subform_RLAT")
+    DummyBoolean = LoadReportValues_Lat("Subform_RLAT", "LXR")
+    DummyBoolean = LoadReportVisitDates("Subform_LLAT")
+    DummyBoolean = LoadReportValues_Lat("Subform_LLAT", "LXL")
+
     'Load the record numbers
     'DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
     'DummyBoolean = LoadMaxRec("Form_MOST_144_168", "Text_MaxRecord")
