@@ -901,12 +901,15 @@ Private Sub Command_UnlockV1V2_Click()
     ControlName_RV12_LLAT = Concat_Prefix("Combo_", MOST_RV12_LXL_Vars)
 
     'Unlock the RV1 & RV2 PA variables on PA subform
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, False)
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, False)
 
     'Unlock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, False)
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, False)
 
     'Unlock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
+    DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, False)
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, False)
 
     'Reload background color scheme for ComboBox Controls
