@@ -29,6 +29,41 @@ Public Function MOST_Validation_VariableNameArrays()
 
 End Function
 
+Public Function IsMOSTNewCohortID(ReadingIDIn As String)
+
+  Dim SiteStr As String
+  Dim CohortChar As String
+  Dim CohortNum As Integer
+  Dim NewCohortFlag As Boolean
+
+  NewCohortFlag = False
+
+  'Check for clinic site indicator'
+  SiteStr = Left(ReadingIDIn,2)
+
+  If Nz(SiteStr,"") = "MB" Or Nz(SiteStr,"") = "MI" Then
+
+    'Get the cohort digit indicator'
+    CohortChar = Mid(ReadingIDIn,4,1)
+
+    'Convert indicator to an integer'
+    CohortNum = CInt(CohortChar)
+
+    'Check if indicator is for MOST new cohort'
+    If CohortNum >= 3 Then
+      NewCohortFlag = True
+    Else
+      NewCohortFlag = False
+    End If
+  Else
+    NewCohortFlag = False
+  End If
+
+  'Output boolean result'
+  IsMOSTNewCohortID = NewCohortFlag
+
+End Function
+
 Public Function MOST_Validate_By_ID(ReadingIDIn As String)
 
   'Check if existing or new cohort
