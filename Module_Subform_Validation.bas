@@ -66,6 +66,8 @@ End Function
 
 Public Function MOST_Validate_By_ID(ReadingIDIn As String)
 
+  Dim ValidationResult As New Collection
+
   'Check if existing or new cohort
 
   'Validate right knee PA
@@ -80,13 +82,19 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String)
 
 End Function
 
-Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As String, SideView As String)
+Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
 
   Dim TableName As String
   Dim KLGVarName As String
   Dim FilterName1 As String
   Dim FilterName2 As String
   Dim KLGValue As String
+  Dim FormName As String
+  Dim SubFormControlName As String
+  Dim KLGCombo As String
+  Dim ComboVisible As Boolean
+  Dim ComboUnlocked As Boolean
+  Dim ValidationResultInt As Integer
   Dim ValidationResultStr As String
 
   'Preset variables
@@ -95,18 +103,30 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   FilterName1 = "READINGID"
   FilterName2 = "RVNUM"
 
+  FormName = "Form_MOST_144_168"
+  SubFormControlName = "Subform_PA"
+
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
+  KLGCombo = "Combo_" & VisitStrIn & KLGVarName
 
-  'Get KLG value
-  KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
+  ComboVisible = Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Visible
+  ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
 
-  'Check if empty
+  'Continue if combo box is unlocked and visible
+  If ComboVisible And ComboUnlocked
 
-  'Check if special missing value
+    'Get KLG value
+    KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
 
-  'Continue to triage based on KLG value
+    'Check if empty
+
+    'Check if special missing value
+
+    'Continue to triage based on KLG value
+
+  End If
 
   'Return checks
 
