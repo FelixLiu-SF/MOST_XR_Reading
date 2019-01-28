@@ -64,6 +64,126 @@ Public Function IsMOSTNewCohortID(ReadingIDIn As String)
 
 End Function
 
+Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As String, SideView As String, VarArrayIn As String) As Variant
+
+  Dim Index As Integer
+  Dim Upper As Integer
+  Dim VarName As String
+  Dim DummyBoolean As Boolean
+  Dim DummyValueStr As String
+  Dim DummyValueInt As Integer
+  Dim ValueOut As Variant
+  Dim TableName As String
+  Dim FilterName1 As String
+  Dim FilterName2 As String
+  Dim CounterFlag As Boolean
+
+  On Error GoTo ErrorHandler_Main1
+
+  'Preset variables
+  TableName = "tblScores"
+  FilterName1 = "READINGID"
+  FilterName2 = "RVNUM"
+  CounterFlag = True
+
+  'Loop through variables and save max value
+  Index = 0
+  Upper = UBound(VarArrayIn, 1) - 1
+
+  For Index = 0 To Upper
+    VarName = SideView & VarArrayIn(Index)
+    DummyValueStr = MyLookup2(TableName, VarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
+    If Nz(DummyValueStr,"") <> ""
+
+      DummyValueInt = CInt(DummyValueStr)
+
+      If CounterFlag Then
+          If DummyValueInt >= -0.5 Then
+            ValueOut = DummyValueInt
+            CounterFlag = False
+          End If
+      Else
+        DummyValueInt = CInt(DummyValueStr)
+        If DummyValueInt > ValueOut
+          ValueOut = DummyValueInt
+        End If
+      End If
+
+    End If
+  Next
+
+  MOST_Validate_Features_Max = Nz(ValueOut,"")
+
+  On Error GoTo 0
+  Exit Sub
+
+ErrorHandler_Main1:
+
+  MOST_Validate_Features_Max = ""
+  Exit Sub
+
+End Function
+
+Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As String, SideView As String, VarArrayIn As String) As Variant
+
+  Dim Index As Integer
+  Dim Upper As Integer
+  Dim VarName As String
+  Dim DummyBoolean As Boolean
+  Dim DummyValueStr As String
+  Dim DummyValueInt As Integer
+  Dim ValueOut As Variant
+  Dim TableName As String
+  Dim FilterName1 As String
+  Dim FilterName2 As String
+  Dim CounterFlag As Boolean
+
+  On Error GoTo ErrorHandler_Main1
+
+  'Preset variables
+  TableName = "tblScores"
+  FilterName1 = "READINGID"
+  FilterName2 = "RVNUM"
+  CounterFlag = True
+
+  'Loop through variables and save max value
+  Index = 0
+  Upper = UBound(VarArrayIn, 1) - 1
+
+  For Index = 0 To Upper
+    VarName = SideView & VarArrayIn(Index)
+    DummyValueStr = MyLookup2(TableName, VarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
+    If Nz(DummyValueStr,"") <> ""
+
+      DummyValueInt = CInt(DummyValueStr)
+
+      If CounterFlag Then
+          If DummyValueInt >= -0.5 Then
+            ValueOut = DummyValueInt
+            CounterFlag = False
+          End If
+      Else
+        DummyValueInt = CInt(DummyValueStr)
+        If DummyValueInt < ValueOut
+          ValueOut = DummyValueInt
+        End If
+      End If
+
+    End If
+  Next
+
+  MOST_Validate_Features_Max = Nz(ValueOut,"")
+
+  On Error GoTo 0
+  Exit Sub
+
+ErrorHandler_Main1:
+
+  MOST_Validate_Features_Max = ""
+  Exit Sub
+
+End Function
+
 Public Function MOST_Validate_By_ID(ReadingIDIn As String)
 
   Dim ValidationResult As New Collection
@@ -89,13 +209,24 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   Dim FilterName1 As String
   Dim FilterName2 As String
   Dim KLGValue As String
+
   Dim FormName As String
   Dim SubFormControlName As String
   Dim KLGCombo As String
   Dim ComboVisible As Boolean
   Dim ComboUnlocked As Boolean
+
   Dim ValidationResultInt As Integer
   Dim ValidationResultStr As String
+  Dim ValidationItemInt As String
+  Dim ValidationItemStr As String
+
+  Dim JSNMax As Variant
+  Dim JSNMin As Variant
+  Dim OstMax As Variant
+  Dim OstMin As Variant
+  Dim OthMax As Variant
+  Dim OthMin As Variant
 
   'Preset variables
   TableName = "tblScores"
@@ -106,6 +237,11 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   FormName = "Form_MOST_144_168"
   SubFormControlName = "Subform_PA"
 
+  ValidationItemInt = VisitStrIn & SideView & "Int"
+  ValidationItemStr = VisitStrIn & SideView & "Str"
+
+  'Initialize validation result variables
+  ValidationResultInt = 0
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
@@ -121,13 +257,52 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
     KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
 
     'Check if empty
+    If Nz(KLGValue,"") <> "" Then
 
-    'Check if special missing value
+      'Check if special missing value
+      If KLGValue <> "-6" And KLGValue <> "-7" And KLGValue <> "-8" And KLGValue <> "-9" Then
 
-    'Continue to triage based on KLG value
+        'Calculate feature mins and maxes
+        JSNMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_PA_JSN_Array)
+        JSNMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_PA_JSN_Array)
+        OSTMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_PA_OST_Array)
+        OSTMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_PA_OST_Array)
+        OthMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_PA_Other_Array)
+        OthMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_PA_Other_Array)
 
-  End If
+        'Continue to triage based on KLG value if not special missing value
+        Select Case KLGValue
 
-  'Return checks
+          Case "0"
+
+          Case "1"
+
+          Case "1.9"
+
+          Case "2"
+
+          Case "3"
+
+          Case "4"
+
+        End Select
+
+      Else 'Output indicator for special missing value
+
+        ValidationResultInt = 2
+        ValidationResultStr = ValidationResultStr & ""
+
+      End If 'missing value
+
+    Else 'Output indicator for empty value
+
+      ValidationResultInt = 2
+      ValidationResultStr = ValidationResultStr & ""
+
+    End If 'empty
+
+    'Return checks as item and keys in referenced collection object
+
+  End If 'combo locked
 
 End Function
