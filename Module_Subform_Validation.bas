@@ -307,7 +307,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
               If JSNMax > 0 Or OSTMax > 0 Or OthMax > 0 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 0 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 0 may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
@@ -318,12 +318,12 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
               If JSNMax > 1 Or OSTMax > 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 1 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 1 may be invalid. "
               Else
                 If JSNMin < 1 And OSTMin < 1 Then
                   'KLG is not valid
                   ValidationResultInt = 0
-                  ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 1 may be invalid. "
+                  ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 1 may be invalid. "
                 Else
                   ValidationResultInt = 1
                   ValidationResultStr = ValidationResultStr & ""
@@ -335,7 +335,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
               If JSNMax > 0 Or OstMin < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 2N may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 2N may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
@@ -346,7 +346,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
               If JSNMax > 1 Or OstMax > 3 Or OstMin < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 2 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 2 may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
@@ -357,7 +357,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
               If JSNMax > 2 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 3 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 3 may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
@@ -368,7 +368,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
               If JSNMax > 3 Or JSNMin < 2 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 4 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 4 may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
@@ -497,7 +497,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
               If JSNMax > 0 Or OSTMax > 0 Or OthMax > 0 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 0 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 0 may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
@@ -508,12 +508,12 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
               If JSNMax > 1 Or OSTMax > 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 1 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 1 may be invalid. "
               Else
                 If JSNMin < 1 And OSTMin < 1 Then
                   'KLG is not valid
                   ValidationResultInt = 0
-                  ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 1 may be invalid. "
+                  ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 1 may be invalid. "
                 Else
                   ValidationResultInt = 1
                   ValidationResultStr = ValidationResultStr & ""
@@ -523,14 +523,14 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
             Case "1.9"
 
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 2N is invalid for this visit. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 2N is invalid for this visit. "
 
             Case "2"
 
               If JSNMax > 1 Or OstMax > 3 Or OstMin < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 2 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 2 may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
@@ -541,7 +541,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
               If JSNMax > 2 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 3 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 3 may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
@@ -552,7 +552,393 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
               If JSNMax > 3 Or JSNMin < 2 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
-                ValidationResultStr = ValidationResultStr & VisitStrIn & " KLG 4 may be invalid. "
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 4 may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+          End Select
+
+        Else
+
+          ValidationResultInt = 2
+          ValidationResultStr = ValidationResultStr & ""
+
+        End If 'JSN/OST not null
+
+      Else 'Output indicator for special missing value
+
+        ValidationResultInt = 2
+        ValidationResultStr = ValidationResultStr & ""
+
+      End If 'missing value
+
+    Else 'Output indicator for empty value
+
+      ValidationResultInt = 2
+      ValidationResultStr = ValidationResultStr & ""
+
+    End If 'empty
+
+    'Return checks as item and keys in referenced collection object
+    ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
+    ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
+
+  End If 'combo locked
+
+End Function
+
+
+Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
+
+  Dim TableName As String
+  Dim KLGVarName As String
+  Dim FilterName1 As String
+  Dim FilterName2 As String
+  Dim KLGValue As String
+
+  Dim FormName As String
+  Dim SubFormControlName As String
+  Dim KLGCombo As String
+  Dim ComboVisible As Boolean
+  Dim ComboUnlocked As Boolean
+
+  Dim ValidationResultInt As Integer
+  Dim ValidationResultStr As String
+  Dim ValidationKeyInt As String
+  Dim ValidationKeyStr As String
+
+  Dim JSNMax As Variant
+  Dim JSNMin As Variant
+  Dim OstMax As Variant
+  Dim OstMin As Variant
+  Dim OthMax As Variant
+  Dim OthMin As Variant
+
+  'Preset variables
+  TableName = "tblScores"
+  KLGVarName = SideView & "PFKLG"
+  FilterName1 = "READINGID"
+  FilterName2 = "RVNUM"
+
+  FormName = "Form_MOST_144_168"
+
+  If SideView = "LXL" Then
+    SubFormControlName = "Subform_LLAT"
+  Else If SideView = "LXR" Then
+    SubFormControlName = "Subform_RLAT"
+  End If
+
+  ValidationKeyInt = VisitStrIn & SideView & "Int"
+  ValidationKeyStr = VisitStrIn & SideView & "Str"
+
+  'Initialize validation result variables
+  ValidationResultInt = 0
+  ValidationResultStr = ""
+
+  'Check if combobox is visible & unlocked
+  KLGCombo = "Combo_" & VisitStrIn & KLGVarName
+
+  ComboVisible = Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Visible
+  ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
+
+  'Continue if combo box is unlocked and visible
+  If ComboVisible And ComboUnlocked
+
+    'Get KLG value
+    KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
+
+    'Check if empty
+    If Nz(KLGValue,"") <> "" Then
+
+      'Check if special missing value
+      If KLGValue <> "-6" And KLGValue <> "-7" And KLGValue <> "-8" And KLGValue <> "-9" Then
+
+        'Calculate feature mins and maxes
+        JSNMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_JSN_Array)
+        JSNMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_JSN_Array)
+        OSTMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_OST_Array)
+        OSTMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_OST_Array)
+        OthMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
+        OthMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
+
+        JSNMax = Nz(JSNMax,"")
+        JSNMin = Nz(JSNMin,"")
+        OSTMax = Nz(OSTMax,"")
+        OSTMin = Nz(OSTMin,"")
+        OthMax = Nz(OthMax,0)
+        OthMin = Nz(OthMin,0)
+
+        If JSNMax <> "" And JSNMin <> "" And OSTMax <> "" And OSTMin <> "" Then
+
+          JSNMax = CInt(JSNMax)
+          JSNMin = CInt(JSNMin)
+          OSTMax = CInt(OSTMax)
+          OSTMin = CInt(OSTMin)
+          OthMax = CInt(OthMax)
+          OthMin = CInt(OthMin)
+
+          'Continue to triage based on KLG value if not special missing value
+          Select Case KLGValue
+
+            Case "0"
+
+              If JSNMax > 0 Or OSTMax > 0 Or OthMax > 0 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 0 may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+            Case "1"
+
+              If JSNMax > 1 Or OSTMax > 1 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 1 may be invalid. "
+              Else
+                If JSNMin < 1 And OSTMin < 1 Then
+                  'KLG is not valid
+                  ValidationResultInt = 0
+                  ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 1 may be invalid. "
+                Else
+                  ValidationResultInt = 1
+                  ValidationResultStr = ValidationResultStr & ""
+                End If
+              End If
+
+            Case "1.9"
+
+              If JSNMax > 0 Or OstMin < 1 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 2N may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+            Case "2"
+
+              If JSNMax > 1 Or OstMax > 3 Or OstMin < 1 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 2 may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+            Case "3"
+
+              If JSNMax > 2 Or OstMax > 3 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 3 may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+            Case "4"
+
+              If JSNMax > 3 Or JSNMin < 2 Or OstMax > 3 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 4 may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+          End Select
+
+        Else
+
+          ValidationResultInt = 2
+          ValidationResultStr = ValidationResultStr & ""
+
+        End If 'JSN/OST not null
+
+      Else 'Output indicator for special missing value
+
+        ValidationResultInt = 2
+        ValidationResultStr = ValidationResultStr & ""
+
+      End If 'missing value
+
+    Else 'Output indicator for empty value
+
+      ValidationResultInt = 2
+      ValidationResultStr = ValidationResultStr & ""
+
+    End If 'empty
+
+    'Return checks as item and keys in referenced collection object
+    ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
+    ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
+
+  End If 'combo locked
+
+End Function
+
+Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
+
+  Dim TableName As String
+  Dim KLGVarName As String
+  Dim FilterName1 As String
+  Dim FilterName2 As String
+  Dim KLGValue As String
+
+  Dim FormName As String
+  Dim SubFormControlName As String
+  Dim KLGCombo As String
+  Dim ComboVisible As Boolean
+  Dim ComboUnlocked As Boolean
+
+  Dim ValidationResultInt As Integer
+  Dim ValidationResultStr As String
+  Dim ValidationKeyInt As String
+  Dim ValidationKeyStr As String
+
+  Dim JSNMax As Variant
+  Dim JSNMin As Variant
+  Dim OstMax As Variant
+  Dim OstMin As Variant
+  Dim OthMax As Variant
+  Dim OthMin As Variant
+
+  'Preset variables
+  TableName = "tblScores"
+  KLGVarName = SideView & "PFKLG"
+  FilterName1 = "READINGID"
+  FilterName2 = "RVNUM"
+
+  FormName = "Form_MOST_144_168"
+
+  If SideView = "LXL" Then
+    SubFormControlName = "Subform_LLAT"
+  Else If SideView = "LXR" Then
+    SubFormControlName = "Subform_RLAT"
+  End If
+
+  ValidationKeyInt = VisitStrIn & SideView & "Int"
+  ValidationKeyStr = VisitStrIn & SideView & "Str"
+
+  'Initialize validation result variables
+  ValidationResultInt = 0
+  ValidationResultStr = ""
+
+  'Check if combobox is visible & unlocked
+  KLGCombo = "Combo_" & VisitStrIn & KLGVarName
+
+  ComboVisible = Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Visible
+  ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
+
+  'Continue if combo box is unlocked and visible
+  If ComboVisible And ComboUnlocked
+
+    'Get KLG value
+    KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
+
+    'Check if empty
+    If Nz(KLGValue,"") <> "" Then
+
+      'Check if special missing value
+      If KLGValue <> "-6" And KLGValue <> "-7" And KLGValue <> "-8" And KLGValue <> "-9" Then
+
+        'Calculate feature mins and maxes
+        JSNMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_JSN_Array)
+        JSNMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_JSN_Array)
+        OSTMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_OST_Array)
+        OSTMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_OST_Array)
+        OthMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
+        OthMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
+
+        JSNMax = Nz(JSNMax,"")
+        JSNMin = Nz(JSNMin,"")
+        OSTMax = Nz(OSTMax,"")
+        OSTMin = Nz(OSTMin,"")
+        OthMax = Nz(OthMax,0)
+        OthMin = Nz(OthMin,0)
+
+        If JSNMax <> "" And JSNMin <> "" And OSTMax <> "" And OSTMin <> "" Then
+
+          JSNMax = CInt(JSNMax)
+          JSNMin = CInt(JSNMin)
+          OSTMax = CInt(OSTMax)
+          OSTMin = CInt(OSTMin)
+          OthMax = CInt(OthMax)
+          OthMin = CInt(OthMin)
+
+          'Continue to triage based on KLG value if not special missing value
+          Select Case KLGValue
+
+            Case "0"
+
+              If JSNMax > 0 Or OSTMax > 0 Or OthMax > 0 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 0 may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+            Case "1"
+
+              If JSNMax > 1 Or OSTMax > 1 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 1 may be invalid. "
+              Else
+                If JSNMin < 1 And OSTMin < 1 Then
+                  'KLG is not valid
+                  ValidationResultInt = 0
+                  ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 1 may be invalid. "
+                Else
+                  ValidationResultInt = 1
+                  ValidationResultStr = ValidationResultStr & ""
+                End If
+              End If
+
+            Case "1.9"
+
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " TF KLG 2N is invalid for this visit. "
+
+            Case "2"
+
+              If JSNMax > 1 Or OstMax > 3 Or OstMin < 1 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 2 may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+            Case "3"
+
+              If JSNMax > 2 Or OstMax > 3 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 3 may be invalid. "
+              Else
+                ValidationResultInt = 1
+                ValidationResultStr = ValidationResultStr & ""
+              End If
+
+            Case "4"
+
+              If JSNMax > 3 Or JSNMin < 2 Or OstMax > 3 Then
+                'KLG is not valid
+                ValidationResultInt = 0
+                ValidationResultStr = ValidationResultStr & VisitStrIn & " PF KLG 4 may be invalid. "
               Else
                 ValidationResultInt = 1
                 ValidationResultStr = ValidationResultStr & ""
