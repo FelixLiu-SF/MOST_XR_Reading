@@ -5,6 +5,9 @@ Option Explicit
 Global MOST_Validation_PA_JSN_Array(2) As String
 Global MOST_Validation_PA_OST_Array(4) As String
 Global MOST_Validation_PA_Other_Array(10) As String
+Global MOST_Validation_LAT_JSN_Array(1) As String
+Global MOST_Validation_LAT_OST_Array(3) As String
+Global MOST_Validation_LAT_Other_Array(3) As String
 
 Public Function MOST_Validation_VariableNameArrays()
 
@@ -26,6 +29,16 @@ Public Function MOST_Validation_VariableNameArrays()
     MOST_Validation_PA_Other_Array(7) = "CYTL"
     MOST_Validation_PA_Other_Array(8) = "ATTM"
     MOST_Validation_PA_Other_Array(9) = "ATTL"
+
+    MOST_Validation_LAT_JSN_Array(0) = "PFJSN"
+
+    MOST_Validation_LAT_OST_Array(0) = "OSFA"
+    MOST_Validation_LAT_OST_Array(1) = "OSPS"
+    MOST_Validation_LAT_OST_Array(2) = "OSPI"
+
+    MOST_Validation_LAT_Other_Array(0) = "SCPF"
+    MOST_Validation_LAT_Other_Array(1) = "CYPF"
+    MOST_Validation_LAT_Other_Array(2) = "JE"
 
 End Function
 
