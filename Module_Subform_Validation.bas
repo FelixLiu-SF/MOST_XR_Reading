@@ -211,20 +211,20 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
   If NewCohortBoolean = True Then
 
   'Validate right knee PA
-  MOST_Validate_PA_Standard(ReadingIDIn, "RV3", "XR", ValidationResult)
-  MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV4", "XR", ValidationResult)
+  MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV3", "XR", ValidationResult)
+  MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XR", ValidationResult)
 
   'Validate left knee PA
-  MOST_Validate_PA_Standard(ReadingIDIn, "RV3", "XL", ValidationResult)
-  MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV4", "XL", ValidationResult)
+  MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV3", "XL", ValidationResult)
+  MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XL", ValidationResult)
 
   'Validate right knee lateral
-  MOST_Validate_LAT_Standard(ReadingIDIn, "RV3", "LXR", ValidationResult)
-  MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV4", "LXR", ValidationResult)
+  MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXR", ValidationResult)
+  MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXR", ValidationResult)
 
   'Validate left knee lateral
-  MOST_Validate_LAT_Standard(ReadingIDIn, "RV3", "LXL", ValidationResult)
-  MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV4", "LXL", ValidationResult)
+  MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXL", ValidationResult)
+  MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXL", ValidationResult)
 
   Else
 
@@ -237,11 +237,11 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
     MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XL", ValidationResult)
 
     'Validate right knee lateral
-    MOST_Validate_LAT_Standard(ReadingIDIn, "RV3", "LXR", ValidationResult)
+    MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXR", ValidationResult)
     MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXR", ValidationResult)
 
     'Validate left knee lateral
-    MOST_Validate_LAT_Standard(ReadingIDIn, "RV3", "LXL", ValidationResult)
+    MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXL", ValidationResult)
     MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXL", ValidationResult)
 
   End If
