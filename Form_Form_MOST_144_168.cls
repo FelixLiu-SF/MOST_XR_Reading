@@ -1306,6 +1306,9 @@ Private Sub Command_SUBMIT_Click()
     Dim DebugFlag As Integer
     Dim DebugBoolean As Boolean
 
+    Dim ValidationResponse As Integer
+    Dim ReadingID As Variant
+
     On Error GoTo ErrorHandler1
 
     ScoreFlag = False
@@ -1337,6 +1340,9 @@ Private Sub Command_SUBMIT_Click()
         MsgExtra = MsgBox("Please select reader name before signing the scoresheet.", vbOKOnly, "No Reader selected")
         Exit Sub
     End If
+
+    ReadingID = Me("Text_ReadingID").Value
+    ReadingID = CStr(Nz(ReadingID,""))
 
     'Check for empty scoring boxes
     ComboNames_XB = Concat_Prefix("Combo_", MOST_RV1234_XB_Vars)
