@@ -197,10 +197,13 @@ ErrorHandler_Main1:
 
 End Function
 
-Public Function MOST_Validate_By_ID(ReadingIDIn As String)
+Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
 
   Dim ValidationResult As New Collection
   Dim NewCohortBoolean As Boolean
+  Dim ValidationResponse As Integer
+
+  ValidationResponse = vbYes
 
   'Check if existing or new cohort
   NewCohortBoolean = IsMOSTNewCohortID(ReadingIDIn)
@@ -244,6 +247,9 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String)
   End If
 
   'Return results
+  ValidationResponse = MOST_Validate_MsgBox(ValidationResult)
+
+  MOST_Validate_By_ID = ValidationResponse
 
 End Function
 
@@ -1004,5 +1010,78 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
     ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
 
   End If 'combo locked
+
+End Function
+
+Public Function MOST_Validate_MsgBox(ByRef ValidationResult As Collection) As Integer
+
+  Dim ValidationFlag As Boolean
+  Dim ValidationMessage As String
+  Dim ValidationResponse As Integer
+  Dim DummyInt As Integer
+  Dim DummyStr As String
+
+  'Preset values
+  ValidationFlag = False
+  ValidationMessage = ""
+
+  'Check each validation result for invalid scores
+
+  DummyInt = ValidationResult.Item("RV3XRInt") 'Right PA'
+  If DummyInt = 1 Then
+    ValidationFlag = True
+    DummyStr = ValidationResult.Item("RV3XRStr")
+    ValidationMessage = ValidationMessage & DummyStr
+  End If
+  DummyInt = ValidationResult.Item("RV4XRInt")
+  If DummyInt = 1 Then
+    ValidationFlag = True
+    DummyStr = ValidationResult.Item("RV4XRStr")
+    ValidationMessage = ValidationMessage & DummyStr
+  End If
+
+  DummyInt = ValidationResult.Item("RV3XLInt") 'Left PA'
+  If DummyInt = 1 Then
+    ValidationFlag = True
+    DummyStr = ValidationResult.Item("RV3XLStr")
+    ValidationMessage = ValidationMessage & DummyStr
+  End If
+  DummyInt = ValidationResult.Item("RV4XLInt")
+  If DummyInt = 1 Then
+    ValidationFlag = True
+    DummyStr = ValidationResult.Item("RV4XLStr")
+    ValidationMessage = ValidationMessage & DummyStr
+  End If
+
+  DummyInt = ValidationResult.Item("RV3LXRInt") 'Right Lat'
+  If DummyInt = 1 Then
+    ValidationFlag = True
+    DummyStr = ValidationResult.Item("RV3LXRStr")
+    ValidationMessage = ValidationMessage & DummyStr
+  End If
+  DummyInt = ValidationResult.Item("RV4LXRInt")
+  If DummyInt = 1 Then
+    ValidationFlag = True
+    DummyStr = ValidationResult.Item("RV4LXRStr")
+    ValidationMessage = ValidationMessage & DummyStr
+  End If
+
+  DummyInt = ValidationResult.Item("RV3LXLInt") 'Left Lat'
+  If DummyInt = 1 Then
+    ValidationFlag = True
+    DummyStr = ValidationResult.Item("RV3LXLStr")
+    ValidationMessage = ValidationMessage & DummyStr
+  End If
+  DummyInt = ValidationResult.Item("RV4LXLInt")
+  If DummyInt = 1 Then
+    ValidationFlag = True
+    DummyStr = ValidationResult.Item("RV4LXLStr")
+    ValidationMessage = ValidationMessage & DummyStr
+  End If
+
+  'Pop up MsgBox if any invalid scores
+  ValidationResponse = MsgBox("Warning: " & vbCrLf & ValidationMessage & "Do you have want to save/sign anyways?", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+
+  MOST_Validate_MsgBox = ValidationResponse
 
 End Function
