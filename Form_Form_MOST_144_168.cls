@@ -1381,24 +1381,36 @@ Private Sub Command_SUBMIT_Click()
 
     'Confirm record signing
     If Not ScoreFlag Then
-      'All combo boxes are scored, sign E_DATE and E_TIME
-      Me.Recordset.Edit
-      Me.Recordset.Fields("READER").Value = CUR_READER
-      Me.Recordset.Fields("E_DATE").Value = CUR_DATE
-      Me.Recordset.Fields("E_TIME").Value = CUR_TIME
-      Me.Recordset.Update
+      'All combo boxes are scored, validate the scores
+
+      ValidationResponse = MOST_Validate_By_ID(ReadingID)
+
+      If ValidationResponse = vbYes Then
+        'All scores validated, sign E_DATE and E_TIME
+        Me.Recordset.Edit
+        Me.Recordset.Fields("READER").Value = CUR_READER
+        Me.Recordset.Fields("E_DATE").Value = CUR_DATE
+        Me.Recordset.Fields("E_TIME").Value = CUR_TIME
+        Me.Recordset.Update
+      End If
 
     Else
       'Display number of unscored boxes and ask for confirmation
       MsgResponse = MsgBox("Some features may be missing scores." & vbCrLf & MsgString & "Do you have want to save/sign anyways?", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
 
       If MsgResponse = vbYes Then
-        'Sign the record anyways
-        Me.Recordset.Edit
-        Me.Recordset.Fields("READER").Value = CUR_READER
-        Me.Recordset.Fields("E_DATE").Value = CUR_DATE
-        Me.Recordset.Fields("E_TIME").Value = CUR_TIME
-        Me.Recordset.Update
+        'Continue anyways and try to validate scores 
+
+        ValidationResponse = MOST_Validate_By_ID(ReadingID)
+
+        If ValidationResponse = vbYes Then
+          'All scores validated, sign E_DATE and E_TIME
+          Me.Recordset.Edit
+          Me.Recordset.Fields("READER").Value = CUR_READER
+          Me.Recordset.Fields("E_DATE").Value = CUR_DATE
+          Me.Recordset.Fields("E_TIME").Value = CUR_TIME
+          Me.Recordset.Update
+        End If
 
       End If
 
