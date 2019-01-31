@@ -1066,7 +1066,7 @@ Public Function MOST_Validate_MsgBox(ByRef ValidationResult As Collection) As In
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3XRStr")
-    ValidationMessage = ValidationMessage & DummyStr & vbCrLf & vbCrLf
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf
   End If
   DummyInt = ValidationResult.Item("RV4XRInt")
   If DummyInt = 0 Then
