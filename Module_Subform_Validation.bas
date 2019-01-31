@@ -1063,52 +1063,52 @@ Public Function MOST_Validate_MsgBox(ByRef ValidationResult As Collection) As In
   'Check each validation result for invalid scores
 
   DummyInt = ValidationResult.Item("RV3XRInt") 'Right PA'
-  If DummyInt = 1 Then
+  If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3XRStr")
     ValidationMessage = ValidationMessage & DummyStr
   End If
   DummyInt = ValidationResult.Item("RV4XRInt")
-  If DummyInt = 1 Then
+  If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV4XRStr")
     ValidationMessage = ValidationMessage & DummyStr
   End If
 
   DummyInt = ValidationResult.Item("RV3XLInt") 'Left PA'
-  If DummyInt = 1 Then
+  If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3XLStr")
     ValidationMessage = ValidationMessage & DummyStr
   End If
   DummyInt = ValidationResult.Item("RV4XLInt")
-  If DummyInt = 1 Then
+  If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV4XLStr")
     ValidationMessage = ValidationMessage & DummyStr
   End If
 
   DummyInt = ValidationResult.Item("RV3LXRInt") 'Right Lat'
-  If DummyInt = 1 Then
+  If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3LXRStr")
     ValidationMessage = ValidationMessage & DummyStr
   End If
   DummyInt = ValidationResult.Item("RV4LXRInt")
-  If DummyInt = 1 Then
+  If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV4LXRStr")
     ValidationMessage = ValidationMessage & DummyStr
   End If
 
   DummyInt = ValidationResult.Item("RV3LXLInt") 'Left Lat'
-  If DummyInt = 1 Then
+  If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3LXLStr")
     ValidationMessage = ValidationMessage & DummyStr
   End If
   DummyInt = ValidationResult.Item("RV4LXLInt")
-  If DummyInt = 1 Then
+  If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV4LXLStr")
     ValidationMessage = ValidationMessage & DummyStr

@@ -29,6 +29,7 @@ Private Sub Form_Load()
     'Load MOST global variable names and SQL selection strings
     DummyBoolean = MOST_Load_SelectStr
     DummyBoolean = MOST_Load_VariableNameArrays
+    DummyBoolean = MOST_Validation_VariableNameArrays
 
     'Load default view for ComboBox Controls
     LoadView
