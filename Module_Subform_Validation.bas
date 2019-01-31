@@ -128,12 +128,12 @@ Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As 
   MOST_Validate_Features_Max = Nz(ValueOut,"")
 
   On Error GoTo 0
-  Exit Sub
+  Exit Function
 
 ErrorHandler_Main1:
 
   MOST_Validate_Features_Max = ""
-  Exit Sub
+  Exit Function
 
 End Function
 
@@ -188,12 +188,12 @@ Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As 
   MOST_Validate_Features_Min = Nz(ValueOut,"")
 
   On Error GoTo 0
-  Exit Sub
+  Exit Function
 
 ErrorHandler_Main1:
 
   MOST_Validate_Features_Min = ""
-  Exit Sub
+  Exit Function
 
 End Function
 
