@@ -213,38 +213,38 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
     'New cohort
 
     'Validate right knee PA
-    DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV3", "XR", ValidationResult)
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XR", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "3", "XR", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XR", ValidationResult)
 
     'Validate left knee PA
-    DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV3", "XL", ValidationResult)
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XL", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "3", "XL", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XL", ValidationResult)
 
     'Validate right knee lateral
-    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXR", ValidationResult)
-    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXR", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXR", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXR", ValidationResult)
 
     'Validate left knee lateral
-    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXL", ValidationResult)
-    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXL", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXL", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXL", ValidationResult)
 
   Else 'Existing cohort
 
     'Validate right knee PA
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV3", "XR", ValidationResult)
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XR", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "3", "XR", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XR", ValidationResult)
 
     'Validate left knee PA
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV3", "XL", ValidationResult)
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XL", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "3", "XL", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XL", ValidationResult)
 
     'Validate right knee lateral
-    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXR", ValidationResult)
-    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXR", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXR", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXR", ValidationResult)
 
     'Validate left knee lateral
-    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXL", ValidationResult)
-    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXL", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXL", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXL", ValidationResult)
 
   End If
 
@@ -290,8 +290,8 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   FormName = "Form_MOST_144_168"
   SubFormControlName = "Subform_PA"
 
-  ValidationKeyInt = VisitStrIn & SideView & "Int"
-  ValidationKeyStr = VisitStrIn & SideView & "Str"
+  ValidationKeyInt = "RV" & VisitStrIn & SideView & "Int"
+  ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
   'Initialize validation result variables
   ValidationResultInt = 0
@@ -480,8 +480,8 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
   FormName = "Form_MOST_144_168"
   SubFormControlName = "Subform_PA"
 
-  ValidationKeyInt = VisitStrIn & SideView & "Int"
-  ValidationKeyStr = VisitStrIn & SideView & "Str"
+  ValidationKeyInt = "RV" & VisitStrIn & SideView & "Int"
+  ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
   'Initialize validation result variables
   ValidationResultInt = 0
@@ -670,8 +670,8 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
     SubFormControlName = "Subform_RLAT"
   End If
 
-  ValidationKeyInt = VisitStrIn & SideView & "Int"
-  ValidationKeyStr = VisitStrIn & SideView & "Str"
+  ValidationKeyInt = "RV" & VisitStrIn & SideView & "Int"
+  ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
   'Initialize validation result variables
   ValidationResultInt = 0
@@ -865,8 +865,8 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
     SubFormControlName = "Subform_RLAT"
   End If
 
-  ValidationKeyInt = VisitStrIn & SideView & "Int"
-  ValidationKeyStr = VisitStrIn & SideView & "Str"
+  ValidationKeyInt = "RV" & VisitStrIn & SideView & "Int"
+  ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
   'Initialize validation result variables
   ValidationResultInt = 0
