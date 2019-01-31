@@ -1116,7 +1116,7 @@ Public Function MOST_Validate_MsgBox(ByRef ValidationResult As Collection) As In
 
   'Pop up MsgBox if any invalid scores
   If ValidationFlag Then
-    ValidationResponse = MsgBox("Validation Warning: " & vbCrLf & ValidationMessage & "Do you have want to save/sign anyways?", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+    ValidationResponse = MsgBox("Validation Warning: " & vbCrLf & ValidationMessage & vbCrLf & vbCrLf & "Do you have want to save/sign anyways?", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
   Else
     ValidationResponse = vbYes
   End If
