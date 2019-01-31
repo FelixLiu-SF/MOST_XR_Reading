@@ -306,7 +306,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
-  KLGCombo = "Combo_" & VisitStrIn & KLGVarName
+  KLGCombo = "Combo_" & "RV" & VisitStrIn & KLGVarName
 
   ComboVisible = Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Visible
   ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
@@ -504,7 +504,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
-  KLGCombo = "Combo_" & VisitStrIn & KLGVarName
+  KLGCombo = "Combo_" & "RV" & VisitStrIn & KLGVarName
 
   ComboVisible = Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Visible
   ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
@@ -702,7 +702,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
-  KLGCombo = "Combo_" & VisitStrIn & KLGVarName
+  KLGCombo = "Combo_" & "RV" & VisitStrIn & KLGVarName
 
   ComboVisible = Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Visible
   ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
@@ -905,7 +905,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
-  KLGCombo = "Combo_" & VisitStrIn & KLGVarName
+  KLGCombo = "Combo_" & "RV" & VisitStrIn & KLGVarName
 
   ComboVisible = Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Visible
   ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
