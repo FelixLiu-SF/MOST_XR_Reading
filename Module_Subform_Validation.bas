@@ -60,7 +60,7 @@ Public Function IsMOSTNewCohortID(ReadingIDIn As String)
     CohortChar = Mid(ReadingIDIn,4,1)
 
     'Convert indicator to an integer'
-    CohortNum = CInt(CohortChar)
+    CohortNum = Int(CohortChar)
 
     'Check if indicator is for MOST new cohort'
     If CohortNum >= 3 Then
@@ -108,7 +108,7 @@ Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As 
     DummyValueStr = MyLookup2(TableName, VarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
     If Nz(DummyValueStr,"") <> "" Then
 
-      DummyValueInt = CInt(DummyValueStr)
+      DummyValueInt = Int(DummyValueStr)
 
       If CounterFlag Then
           If DummyValueInt >= -0.5 Then
@@ -116,7 +116,7 @@ Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As 
             CounterFlag = False
           End If
       Else
-        DummyValueInt = CInt(DummyValueStr)
+        DummyValueInt = Int(DummyValueStr)
         If DummyValueInt > ValueOut Then
           ValueOut = DummyValueInt
         End If
@@ -168,7 +168,7 @@ Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As 
     DummyValueStr = MyLookup2(TableName, VarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
     If Nz(DummyValueStr,"") <> "" Then
 
-      DummyValueInt = CInt(DummyValueStr)
+      DummyValueInt = Int(DummyValueStr)
 
       If CounterFlag Then
           If DummyValueInt >= -0.5 Then
@@ -176,7 +176,7 @@ Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As 
             CounterFlag = False
           End If
       Else
-        DummyValueInt = CInt(DummyValueStr)
+        DummyValueInt = Int(DummyValueStr)
         If DummyValueInt < ValueOut Then
           ValueOut = DummyValueInt
         End If
@@ -340,12 +340,12 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
 
         If JSNMax <> "" And JSNMin <> "" And OSTMax <> "" And OSTMin <> "" Then
 
-          JSNMax = CInt(JSNMax)
-          JSNMin = CInt(JSNMin)
-          OSTMax = CInt(OSTMax)
-          OSTMin = CInt(OSTMin)
-          OthMax = CInt(OthMax)
-          OthMin = CInt(OthMin)
+          JSNMax = Int(JSNMax)
+          JSNMin = Int(JSNMin)
+          OSTMax = Int(OSTMax)
+          OSTMin = Int(OSTMin)
+          OthMax = Int(OthMax)
+          OthMin = Int(OthMin)
 
           'Continue to triage based on KLG value if not special missing value
           Select Case KLGValue
@@ -538,12 +538,12 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
 
         If JSNMax <> "" And JSNMin <> "" And OSTMax <> "" And OSTMin <> "" Then
 
-          JSNMax = CInt(JSNMax)
-          JSNMin = CInt(JSNMin)
-          OSTMax = CInt(OSTMax)
-          OSTMin = CInt(OSTMin)
-          OthMax = CInt(OthMax)
-          OthMin = CInt(OthMin)
+          JSNMax = Int(JSNMax)
+          JSNMin = Int(JSNMin)
+          OSTMax = Int(OSTMax)
+          OSTMin = Int(OSTMin)
+          OthMax = Int(OthMax)
+          OthMin = Int(OthMin)
 
           'Continue to triage based on KLG value if not special missing value
           Select Case KLGValue
@@ -736,12 +736,12 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
 
         If JSNMax <> "" And JSNMin <> "" And OSTMax <> "" And OSTMin <> "" Then
 
-          JSNMax = CInt(JSNMax)
-          JSNMin = CInt(JSNMin)
-          OSTMax = CInt(OSTMax)
-          OSTMin = CInt(OSTMin)
-          OthMax = CInt(OthMax)
-          OthMin = CInt(OthMin)
+          JSNMax = Int(JSNMax)
+          JSNMin = Int(JSNMin)
+          OSTMax = Int(OSTMax)
+          OSTMin = Int(OSTMin)
+          OthMax = Int(OthMax)
+          OthMin = Int(OthMin)
 
           'Continue to triage based on KLG value if not special missing value
           Select Case KLGValue
@@ -939,12 +939,12 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
 
         If JSNMax <> "" And JSNMin <> "" And OSTMax <> "" And OSTMin <> "" Then
 
-          JSNMax = CInt(JSNMax)
-          JSNMin = CInt(JSNMin)
-          OSTMax = CInt(OSTMax)
-          OSTMin = CInt(OSTMin)
-          OthMax = CInt(OthMax)
-          OthMin = CInt(OthMin)
+          JSNMax = Int(JSNMax)
+          JSNMin = Int(JSNMin)
+          OSTMax = Int(OSTMax)
+          OSTMin = Int(OSTMin)
+          OthMax = Int(OthMax)
+          OthMin = Int(OthMin)
 
           'Continue to triage based on KLG value if not special missing value
           Select Case KLGValue
