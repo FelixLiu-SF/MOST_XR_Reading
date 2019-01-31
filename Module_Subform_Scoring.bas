@@ -239,6 +239,32 @@ Public Function Make_ControlAfterUpdate_Func(FormName As String, SubFormControlN
 
 End Function
 
+'---MYLOOKUP---'
+Public Function MyLookup(TableName As String, VariableName As String, FilterName1 As String, FilterValue1 As String) As String
+'Look up value from Access table using string filter criteria
+  Dim TableValue As String
+  Dim VariableIn As String
+  Dim FilterIn As String
+
+  On Error GoTo LookupErr
+
+  'Construct strings for DLookup query
+  VariableIn = "[" & VariableName & "]"
+  FilterIn = "[" & FilterName1 & "] = """ & FilterValue1 & """"
+
+  'Query for value and return it
+  TableValue = DLookup(VariableIn, TableName, FilterIn)
+
+  MyLookup = TableValue
+
+  On Error GoTo 0
+  Exit Function
+
+LookupErr:
+  Resume Next
+
+End Function
+
 '---MYLOOKUP2---'
 Public Function MyLookup2(TableName As String, VariableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String) As String
 'Look up value from Access table using 2 string filter criteria
