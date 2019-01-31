@@ -1066,57 +1066,57 @@ Public Function MOST_Validate_MsgBox(ByRef ValidationResult As Collection) As In
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3XRStr")
-    ValidationMessage = ValidationMessage & DummyStr
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf & vbCrLf
   End If
   DummyInt = ValidationResult.Item("RV4XRInt")
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV4XRStr")
-    ValidationMessage = ValidationMessage & DummyStr
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf
   End If
 
   DummyInt = ValidationResult.Item("RV3XLInt") 'Left PA'
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3XLStr")
-    ValidationMessage = ValidationMessage & DummyStr
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf
   End If
   DummyInt = ValidationResult.Item("RV4XLInt")
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV4XLStr")
-    ValidationMessage = ValidationMessage & DummyStr
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf
   End If
 
   DummyInt = ValidationResult.Item("RV3LXRInt") 'Right Lat'
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3LXRStr")
-    ValidationMessage = ValidationMessage & DummyStr
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf
   End If
   DummyInt = ValidationResult.Item("RV4LXRInt")
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV4LXRStr")
-    ValidationMessage = ValidationMessage & DummyStr
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf
   End If
 
   DummyInt = ValidationResult.Item("RV3LXLInt") 'Left Lat'
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV3LXLStr")
-    ValidationMessage = ValidationMessage & DummyStr
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf
   End If
   DummyInt = ValidationResult.Item("RV4LXLInt")
   If DummyInt = 0 Then
     ValidationFlag = True
     DummyStr = ValidationResult.Item("RV4LXLStr")
-    ValidationMessage = ValidationMessage & DummyStr
+    ValidationMessage = ValidationMessage & DummyStr & vbCrLf
   End If
 
   'Pop up MsgBox if any invalid scores
   If ValidationFlag Then
-    ValidationResponse = MsgBox("Warning: " & vbCrLf & ValidationMessage & "Do you have want to save/sign anyways?", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
+    ValidationResponse = MsgBox("Validation Warning: " & vbCrLf & ValidationMessage & "Do you have want to save/sign anyways?", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
   Else
     ValidationResponse = vbYes
   End If
