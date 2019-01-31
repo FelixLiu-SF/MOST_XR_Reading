@@ -1307,7 +1307,8 @@ Private Sub Command_SUBMIT_Click()
     Dim DebugBoolean As Boolean
 
     Dim ValidationResponse As Integer
-    Dim ReadingID As Variant
+    Dim ReadingIDVar As Variant
+    Dim ReadingIDStr As String
 
     On Error GoTo ErrorHandler1
 
@@ -1341,8 +1342,8 @@ Private Sub Command_SUBMIT_Click()
         Exit Sub
     End If
 
-    ReadingID = Me("Text_ReadingID").Value
-    ReadingID = CStr(Nz(ReadingID,""))
+    ReadingIDVar = Me("Text_ReadingID").Value
+    ReadingIDStr = CStr(Nz(ReadingIDVar,""))
 
     'Check for empty scoring boxes
     ComboNames_XB = Concat_Prefix("Combo_", MOST_RV1234_XB_Vars)
@@ -1383,7 +1384,7 @@ Private Sub Command_SUBMIT_Click()
     If Not ScoreFlag Then
       'All combo boxes are scored, validate the scores
 
-      ValidationResponse = MOST_Validate_By_ID(ReadingID)
+      ValidationResponse = MOST_Validate_By_ID(ReadingIDStr)
 
       If ValidationResponse = vbYes Then
         'All scores validated, sign E_DATE and E_TIME
@@ -1399,9 +1400,9 @@ Private Sub Command_SUBMIT_Click()
       MsgResponse = MsgBox("Some features may be missing scores." & vbCrLf & MsgString & "Do you have want to save/sign anyways?", vbYesNo + vbCritical + vbDefaultButton2, "Confirm")
 
       If MsgResponse = vbYes Then
-        'Continue anyways and try to validate scores 
+        'Continue anyways and try to validate scores
 
-        ValidationResponse = MOST_Validate_By_ID(ReadingID)
+        ValidationResponse = MOST_Validate_By_ID(ReadingIDStr)
 
         If ValidationResponse = vbYes Then
           'All scores validated, sign E_DATE and E_TIME
