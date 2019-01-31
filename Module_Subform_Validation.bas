@@ -380,7 +380,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
 
             Case "1.9"
 
-              If JSNMax > 0 Or OstMin < 1 Then
+              If JSNMax > 0 Or OstMax < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 2N may be invalid. "
@@ -776,7 +776,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
 
             Case "1.9"
 
-              If JSNMax > 0 Or OstMin < 1 Then
+              If JSNMax > 0 Or OstMax < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 2N may be invalid. "
