@@ -368,7 +368,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 1 may be invalid. "
               Else
-                If JSNMin < 1 And OSTMin < 1 Then
+                If JSNMax < 1 And OSTMax < 1 Then
                   'KLG is not valid
                   ValidationResultInt = 0
                   ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 1 may be invalid. "
@@ -566,7 +566,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 1 may be invalid. "
               Else
-                If JSNMin < 1 And OSTMin < 1 Then
+                If JSNMax < 1 And OSTMax < 1 Then
                   'KLG is not valid
                   ValidationResultInt = 0
                   ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 1 may be invalid. "
@@ -764,7 +764,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 1 may be invalid. "
               Else
-                If JSNMin < 1 And OSTMin < 1 Then
+                If JSNMax < 1 And OSTMax < 1 Then
                   'KLG is not valid
                   ValidationResultInt = 0
                   ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 1 may be invalid. "
@@ -967,7 +967,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 1 may be invalid. "
               Else
-                If JSNMin < 1 And OSTMin < 1 Then
+                If JSNMax < 1 And OSTMax < 1 Then
                   'KLG is not valid
                   ValidationResultInt = 0
                   ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 1 may be invalid. "
