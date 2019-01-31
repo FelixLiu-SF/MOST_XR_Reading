@@ -263,6 +263,10 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   Dim FilterName2 As String
   Dim KLGValue As String
 
+  Dim TableName2 As String
+  Dim VisitVarName As String
+  Dim VisitName As String
+
   Dim FormName As String
   Dim SubFormControlName As String
   Dim KLGCombo As String
@@ -286,6 +290,10 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   KLGVarName = SideView & "TFKLG"
   FilterName1 = "READINGID"
   FilterName2 = "RVNUM"
+
+  TableName2 = "tblReadings"
+  VisitVarName = "RV" & VisitStrIn & "TP"
+  VisitName = MyLookup(TableName2, VisitVarName, FilterName1, ReadingIDIn)
 
   FormName = "Form_MOST_144_168"
   SubFormControlName = "Subform_PA"
@@ -453,6 +461,10 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
   Dim FilterName2 As String
   Dim KLGValue As String
 
+  Dim TableName2 As String
+  Dim VisitVarName As String
+  Dim VisitName As String
+
   Dim FormName As String
   Dim SubFormControlName As String
   Dim KLGCombo As String
@@ -476,6 +488,10 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
   KLGVarName = SideView & "TFKLG"
   FilterName1 = "READINGID"
   FilterName2 = "RVNUM"
+
+  TableName2 = "tblReadings"
+  VisitVarName = "RV" & VisitStrIn & "TP"
+  VisitName = MyLookup(TableName2, VisitVarName, FilterName1, ReadingIDIn)
 
   FormName = "Form_MOST_144_168"
   SubFormControlName = "Subform_PA"
@@ -638,6 +654,10 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
   Dim FilterName2 As String
   Dim KLGValue As String
 
+  Dim TableName2 As String
+  Dim VisitVarName As String
+  Dim VisitName As String
+
   Dim FormName As String
   Dim SubFormControlName As String
   Dim KLGCombo As String
@@ -661,6 +681,10 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
   KLGVarName = SideView & "PFKLG"
   FilterName1 = "READINGID"
   FilterName2 = "RVNUM"
+
+  TableName2 = "tblReadings"
+  VisitVarName = "RV" & VisitStrIn & "TP"
+  VisitName = MyLookup(TableName2, VisitVarName, FilterName1, ReadingIDIn)
 
   FormName = "Form_MOST_144_168"
 
@@ -833,6 +857,10 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
   Dim FilterName2 As String
   Dim KLGValue As String
 
+  Dim TableName2 As String
+  Dim VisitVarName As String
+  Dim VisitName As String
+
   Dim FormName As String
   Dim SubFormControlName As String
   Dim KLGCombo As String
@@ -856,6 +884,10 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
   KLGVarName = SideView & "PFKLG"
   FilterName1 = "READINGID"
   FilterName2 = "RVNUM"
+
+  TableName2 = "tblReadings"
+  VisitVarName = "RV" & VisitStrIn & "TP"
+  VisitName = MyLookup(TableName2, VisitVarName, FilterName1, ReadingIDIn)
 
   FormName = "Form_MOST_144_168"
 
