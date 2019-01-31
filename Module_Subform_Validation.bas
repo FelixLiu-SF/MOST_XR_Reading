@@ -202,6 +202,7 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
   Dim ValidationResult As New Collection
   Dim NewCohortBoolean As Boolean
   Dim ValidationResponse As Integer
+  Dim DummyBoolean As Boolean
 
   ValidationResponse = vbYes
 
@@ -212,38 +213,38 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
     'New cohort
 
     'Validate right knee PA
-    MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV3", "XR", ValidationResult)
-    MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XR", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV3", "XR", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XR", ValidationResult)
 
     'Validate left knee PA
-    MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV3", "XL", ValidationResult)
-    MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XL", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "RV3", "XL", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XL", ValidationResult)
 
     'Validate right knee lateral
-    MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXR", ValidationResult)
-    MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXR", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXR", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXR", ValidationResult)
 
     'Validate left knee lateral
-    MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXL", ValidationResult)
-    MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXL", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXL", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXL", ValidationResult)
 
   Else 'Existing cohort
 
     'Validate right knee PA
-    MOST_Validate_PA_Standard(ReadingIDIn, "RV3", "XR", ValidationResult)
-    MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XR", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV3", "XR", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XR", ValidationResult)
 
     'Validate left knee PA
-    MOST_Validate_PA_Standard(ReadingIDIn, "RV3", "XL", ValidationResult)
-    MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XL", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV3", "XL", ValidationResult)
+    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "RV4", "XL", ValidationResult)
 
     'Validate right knee lateral
-    MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXR", ValidationResult)
-    MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXR", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXR", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXR", ValidationResult)
 
     'Validate left knee lateral
-    MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXL", ValidationResult)
-    MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXL", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "RV3", "LXL", ValidationResult)
+    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "RV4", "LXL", ValidationResult)
 
   End If
 
