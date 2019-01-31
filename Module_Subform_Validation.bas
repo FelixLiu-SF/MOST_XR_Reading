@@ -77,7 +77,7 @@ Public Function IsMOSTNewCohortID(ReadingIDIn As String)
 
 End Function
 
-Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As String, SideView As String, VarArrayIn As String) As Variant
+Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As String, SideView As String, VarArrayIn() As String) As Variant
 
   Dim Index As Integer
   Dim Upper As Integer
@@ -106,7 +106,7 @@ Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As 
   For Index = 0 To Upper
     VarName = SideView & VarArrayIn(Index)
     DummyValueStr = MyLookup2(TableName, VarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
-    If Nz(DummyValueStr,"") <> ""
+    If Nz(DummyValueStr,"") <> "" Then
 
       DummyValueInt = CInt(DummyValueStr)
 
@@ -117,7 +117,7 @@ Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As 
           End If
       Else
         DummyValueInt = CInt(DummyValueStr)
-        If DummyValueInt > ValueOut
+        If DummyValueInt > ValueOut Then
           ValueOut = DummyValueInt
         End If
       End If
@@ -137,7 +137,7 @@ ErrorHandler_Main1:
 
 End Function
 
-Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As String, SideView As String, VarArrayIn As String) As Variant
+Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As String, SideView As String, VarArrayIn() As String) As Variant
 
   Dim Index As Integer
   Dim Upper As Integer
@@ -166,7 +166,7 @@ Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As 
   For Index = 0 To Upper
     VarName = SideView & VarArrayIn(Index)
     DummyValueStr = MyLookup2(TableName, VarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
-    If Nz(DummyValueStr,"") <> ""
+    If Nz(DummyValueStr,"") <> "" Then
 
       DummyValueInt = CInt(DummyValueStr)
 
@@ -177,7 +177,7 @@ Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As 
           End If
       Else
         DummyValueInt = CInt(DummyValueStr)
-        If DummyValueInt < ValueOut
+        If DummyValueInt < ValueOut Then
           ValueOut = DummyValueInt
         End If
       End If
@@ -185,14 +185,14 @@ Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As 
     End If
   Next
 
-  MOST_Validate_Features_Max = Nz(ValueOut,"")
+  MOST_Validate_Features_Min = Nz(ValueOut,"")
 
   On Error GoTo 0
   Exit Sub
 
 ErrorHandler_Main1:
 
-  MOST_Validate_Features_Max = ""
+  MOST_Validate_Features_Min = ""
   Exit Sub
 
 End Function
@@ -303,7 +303,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
 
   'Continue if combo box is unlocked and visible
-  If ComboVisible And ComboUnlocked
+  If ComboVisible And ComboUnlocked Then
 
     'Get KLG value
     KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
@@ -493,7 +493,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
   ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
 
   'Continue if combo box is unlocked and visible
-  If ComboVisible And ComboUnlocked
+  If ComboVisible And ComboUnlocked Then
 
     'Get KLG value
     KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
@@ -665,7 +665,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
 
   If SideView = "LXL" Then
     SubFormControlName = "Subform_LLAT"
-  Else If SideView = "LXR" Then
+  Elseif SideView = "LXR" Then
     SubFormControlName = "Subform_RLAT"
   End If
 
@@ -683,7 +683,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
   ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
 
   'Continue if combo box is unlocked and visible
-  If ComboVisible And ComboUnlocked
+  If ComboVisible And ComboUnlocked Then
 
     'Get KLG value
     KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
@@ -860,7 +860,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
 
   If SideView = "LXL" Then
     SubFormControlName = "Subform_LLAT"
-  Else If SideView = "LXR" Then
+  Elseif SideView = "LXR" Then
     SubFormControlName = "Subform_RLAT"
   End If
 
@@ -878,7 +878,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
   ComboUnlocked = Not Forms(FormName).Controls(SubFormControlName).Form.Controls(KLGCombo).Locked
 
   'Continue if combo box is unlocked and visible
-  If ComboVisible And ComboUnlocked
+  If ComboVisible And ComboUnlocked Then
 
     'Get KLG value
     KLGValue = MyLookup2(TableName, KLGVarName, FilterName1, ReadingIDIn, FilterName2, VisitStrIn)
