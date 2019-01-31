@@ -391,7 +391,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
 
             Case "2"
 
-              If JSNMax > 1 Or OstMax > 3 Or OstMin < 1 Then
+              If JSNMax > 1 Or OstMax > 3 Or OstMax < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 2 may be invalid. "
@@ -402,7 +402,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
 
             Case "3"
 
-              If JSNMax > 2 Or OstMax > 3 Then
+              If JSNMax > 2 Or JSNMax < 1 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 3 may be invalid. "
@@ -413,7 +413,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
 
             Case "4"
 
-              If JSNMax > 3 Or JSNMin < 2 Or OstMax > 3 Then
+              If JSNMax > 3 Or JSNMax < 2 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 4 may be invalid. "
@@ -583,7 +583,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
 
             Case "2"
 
-              If JSNMax > 1 Or OstMax > 3 Or OstMin < 1 Then
+              If JSNMax > 1 Or OstMax > 3 Or OstMax < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 2 may be invalid. "
@@ -594,7 +594,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
 
             Case "3"
 
-              If JSNMax > 2 Or OstMax > 3 Then
+              If JSNMax > 2 Or JSNMax < 1 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 3 may be invalid. "
@@ -605,7 +605,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
 
             Case "4"
 
-              If JSNMax > 3 Or JSNMin < 2 Or OstMax > 3 Then
+              If JSNMax > 3 Or JSNMax < 2 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " TF KLG 4 may be invalid. "
@@ -787,7 +787,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
 
             Case "2"
 
-              If JSNMax > 1 Or OstMax > 3 Or OstMin < 1 Then
+              If JSNMax > 1 Or OstMax > 3 Or OstMax < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 2 may be invalid. "
@@ -798,7 +798,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
 
             Case "3"
 
-              If JSNMax > 2 Or OstMax > 3 Then
+              If JSNMax > 2 Or JSNMax < 1 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 3 may be invalid. "
@@ -809,7 +809,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
 
             Case "4"
 
-              If JSNMax > 3 Or JSNMin < 2 Or OstMax > 3 Then
+              If JSNMax > 3 Or JSNMax < 2 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 4 may be invalid. "
@@ -985,7 +985,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
 
             Case "2"
 
-              If JSNMax > 1 Or OstMax > 3 Or OstMin < 1 Then
+              If JSNMax > 1 Or OstMax > 3 Or OstMax < 1 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 2 may be invalid. "
@@ -996,7 +996,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
 
             Case "3"
 
-              If JSNMax > 2 Or OstMax > 3 Then
+              If JSNMax > 2 Or JSNMax < 1 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 3 may be invalid. "
@@ -1007,7 +1007,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
 
             Case "4"
 
-              If JSNMax > 3 Or JSNMin < 2 Or OstMax > 3 Then
+              If JSNMax > 3 Or JSNMax < 2 Or OstMax > 3 Then
                 'KLG is not valid
                 ValidationResultInt = 0
                 ValidationResultStr = ValidationResultStr & VisitName & " PF KLG 4 may be invalid. "
