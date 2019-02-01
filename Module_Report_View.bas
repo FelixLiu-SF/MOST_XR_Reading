@@ -24,7 +24,7 @@ Public Function LoadReportValues_PA(ViewPrefix As String)
     ReportFilter = Reports("Report_MOST_144_168").Filter
 
     'Get READINGID from current record
-    FilterValue1 = DLookup(FilterName1, TableName, ReportFilter)
+    FilterValue1 = DLookup(FilterName1, "tblReadings", ReportFilter)
 
     'Set menu for TF KLG
     DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFKLG", TableName, FilterName1, FilterValue1)
@@ -91,7 +91,7 @@ Public Function LoadReportValues_Lat(Subform_Lat_Name As String, ViewPrefix As S
     ReportFilter = Reports("Report_MOST_144_168").Filter
 
     'Get READINGID from current record
-    FilterValue1 = DLookup(FilterName1, TableName, ReportFilter)
+    FilterValue1 = DLookup(FilterName1, "tblReadings", ReportFilter)
 
     'Set value for PF KLG
     DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
