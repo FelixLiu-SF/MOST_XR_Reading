@@ -27,33 +27,33 @@ Public Function LoadReportValues_PA(ViewPrefix As String)
     FilterValue1 = DLookup(FilterName1, "tblReadings", ReportFilter)
 
     'Set menu for TF KLG
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFKLG", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "TFKLG", TableName, FilterName1, FilterValue1)
 
     'Set menu for TF JSN
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSL", TableName, FilterName1, FilterValue1)
 
     'Set menu for Osteophytes
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSFM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSFL", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSTM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "OSTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "OSFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "OSFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "OSTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "OSTL", TableName, FilterName1, FilterValue1)
 
     'Set menu for Sclerosis
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCFM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCFL", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCTM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "SCTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "SCFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "SCFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "SCTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "SCTL", TableName, FilterName1, FilterValue1)
 
     'Set menu for Cysts
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYFM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYFL", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CYTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "CYFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "CYFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "CYTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "CYTL", TableName, FilterName1, FilterValue1)
 
     'Set menu for Attrition
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "ATTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "ATTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "ATTL", TableName, FilterName1, FilterValue1)
 
 
     'Set menu for Chondrocalcinosis
@@ -94,41 +94,41 @@ Public Function LoadReportValues_Lat(Subform_Lat_Name As String, ViewPrefix As S
     FilterValue1 = DLookup(FilterName1, "tblReadings", ReportFilter)
 
     'Set value for PF KLG
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
 
 
     'Set value for PF JSN
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
 
     'Set value for "FT" JSN from lateral view
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
 
     'Set value for Osteophytes
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSPI", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSPI", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
 
     'Set value for Sclerosis
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
 
     'Set value for Cysts
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
 
     'Set value for Chondrocalcinosis
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
 
     'Set value for Joint Effusion
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
 
     'Set value for Ossification
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
 
     'Clear the error catching
     On Error GoTo 0
