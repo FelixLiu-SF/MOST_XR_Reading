@@ -1462,7 +1462,7 @@ Private Sub Command_Print_Click()
 
   If Len(Nz(RecID, "")) > 0 Then
       UnloadRibbon("Form_MOST_144_168")
-      DoCmd.OpenReport "Report_MOST_144_168", acViewPreview, , "RECORDUID = " & RecID
+      DoCmd.OpenReport "Report_MOST_144_168", acViewReport, , "RECORDUID = " & RecID
   End If
 
   On Error GoTo 0
