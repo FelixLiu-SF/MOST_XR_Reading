@@ -4,7 +4,7 @@ Option Explicit
 
 Global MOST_Validation_PA_JSN_Array(2) As String
 Global MOST_Validation_PA_OST_Array(4) As String
-Global MOST_Validation_PA_Other_Array(10) As String
+Global MOST_Validation_PA_Other_Array(2) As String
 Global MOST_Validation_LAT_JSN_Array(1) As String
 Global MOST_Validation_LAT_OST_Array(3) As String
 Global MOST_Validation_LAT_Other_Array(2) As String
@@ -19,16 +19,16 @@ Public Function MOST_Validation_VariableNameArrays()
     MOST_Validation_PA_OST_Array(2) = "OSTM"
     MOST_Validation_PA_OST_Array(3) = "OSTL"
 
-    MOST_Validation_PA_Other_Array(0) = "SCFM"
-    MOST_Validation_PA_Other_Array(1) = "SCFL"
-    MOST_Validation_PA_Other_Array(2) = "SCTM"
-    MOST_Validation_PA_Other_Array(3) = "SCTL"
-    MOST_Validation_PA_Other_Array(4) = "CYFM"
-    MOST_Validation_PA_Other_Array(5) = "CYFL"
-    MOST_Validation_PA_Other_Array(6) = "CYTM"
-    MOST_Validation_PA_Other_Array(7) = "CYTL"
-    MOST_Validation_PA_Other_Array(8) = "ATTM"
-    MOST_Validation_PA_Other_Array(9) = "ATTL"
+    'MOST_Validation_PA_Other_Array(0) = "SCFM"
+    'MOST_Validation_PA_Other_Array(1) = "SCFL"
+    'MOST_Validation_PA_Other_Array(2) = "SCTM"
+    'MOST_Validation_PA_Other_Array(3) = "SCTL"
+    'MOST_Validation_PA_Other_Array(4) = "CYFM"
+    'MOST_Validation_PA_Other_Array(5) = "CYFL"
+    'MOST_Validation_PA_Other_Array(6) = "CYTM"
+    'MOST_Validation_PA_Other_Array(7) = "CYTL"
+    MOST_Validation_PA_Other_Array(0) = "ATTM"
+    MOST_Validation_PA_Other_Array(1) = "ATTL"
 
     MOST_Validation_LAT_JSN_Array(0) = "PFJSN"
 
@@ -36,8 +36,8 @@ Public Function MOST_Validation_VariableNameArrays()
     MOST_Validation_LAT_OST_Array(1) = "OSPS"
     MOST_Validation_LAT_OST_Array(2) = "OSPI"
 
-    MOST_Validation_LAT_Other_Array(0) = "SCPF"
-    MOST_Validation_LAT_Other_Array(1) = "CYPF"
+    'MOST_Validation_LAT_Other_Array(0) = "SCPF"
+    'MOST_Validation_LAT_Other_Array(1) = "CYPF"
     'MOST_Validation_LAT_Other_Array(2) = "JE"
 
 End Function
@@ -724,15 +724,17 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
         JSNMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_JSN_Array)
         OSTMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_OST_Array)
         OSTMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_OST_Array)
-        OthMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
-        OthMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
+        'OthMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
+        'OthMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
 
         JSNMax = Nz(JSNMax,"")
         JSNMin = Nz(JSNMin,"")
         OSTMax = Nz(OSTMax,"")
         OSTMin = Nz(OSTMin,"")
-        OthMax = Nz(OthMax,0)
-        OthMin = Nz(OthMin,0)
+        'OthMax = Nz(OthMax,0)
+        'OthMin = Nz(OthMin,0)
+        OthMax = 0
+        OthMin = 0
 
         If JSNMax <> "" And JSNMin <> "" And OSTMax <> "" And OSTMin <> "" Then
 
@@ -927,15 +929,17 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
         JSNMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_JSN_Array)
         OSTMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_OST_Array)
         OSTMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_OST_Array)
-        OthMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
-        OthMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
+        'OthMax = MOST_Validate_Features_Max(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
+        'OthMin = MOST_Validate_Features_Min(ReadingIDIn, VisitStrIn, SideView, MOST_Validation_LAT_Other_Array)
 
         JSNMax = Nz(JSNMax,"")
         JSNMin = Nz(JSNMin,"")
         OSTMax = Nz(OSTMax,"")
         OSTMin = Nz(OSTMin,"")
-        OthMax = Nz(OthMax,0)
-        OthMin = Nz(OthMin,0)
+        'OthMax = Nz(OthMax,0)
+        'OthMin = Nz(OthMin,0)
+        OthMax = 0
+        OthMin = 0
 
         If JSNMax <> "" And JSNMin <> "" And OSTMax <> "" And OSTMin <> "" Then
 
