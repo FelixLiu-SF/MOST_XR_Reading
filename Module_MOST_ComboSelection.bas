@@ -14,8 +14,9 @@ Global SelectStr_MiscYN As String
 Global SelectStr_Attrition As String
 Global SelectStr_Chondro As String
 Global SelectStr_JE As String
-Global SelectStr_OssLB As String 
+Global SelectStr_OssLB As String
 
+'---MOST_LOAD_SELECTSTR---'
 Public Function MOST_Load_SelectStr()
 
   SelectStr_TFKLG = "SELECT [DisplayOrder], [ValueStr], [DisplayStr], [ValueDescription] FROM tblValuesTFKLG;"

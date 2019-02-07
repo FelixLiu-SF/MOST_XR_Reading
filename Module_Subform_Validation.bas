@@ -9,6 +9,7 @@ Global MOST_Validation_LAT_JSN_Array(1) As String
 Global MOST_Validation_LAT_OST_Array(3) As String
 Global MOST_Validation_LAT_Other_Array(2) As String
 
+'---MOST_VALIDATION_VARIABLENAMEARRAYS---'
 Public Function MOST_Validation_VariableNameArrays()
 
     MOST_Validation_PA_JSN_Array(0) = "TFJSM"
@@ -42,6 +43,7 @@ Public Function MOST_Validation_VariableNameArrays()
 
 End Function
 
+'---ISMOSTNEWCOHORTID---'
 Public Function IsMOSTNewCohortID(ReadingIDIn As String)
 
   Dim SiteStr As String
@@ -77,6 +79,7 @@ Public Function IsMOSTNewCohortID(ReadingIDIn As String)
 
 End Function
 
+'---MOST_VALIDATE_FEATURES_MAX---'
 Public Function MOST_Validate_Features_Max(ReadingIDIn As String, VisitStrIn As String, SideView As String, VarArrayIn() As String) As Variant
 
   Dim Index As Integer
@@ -137,6 +140,7 @@ ErrorHandler_Main1:
 
 End Function
 
+'---MOST_VALIDATE_FEATURES_MIN---'
 Public Function MOST_Validate_Features_Min(ReadingIDIn As String, VisitStrIn As String, SideView As String, VarArrayIn() As String) As Variant
 
   Dim Index As Integer
@@ -197,6 +201,7 @@ ErrorHandler_Main1:
 
 End Function
 
+'---MOST_VALIDATE_BY_ID---'
 Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
 
   Dim ValidationResult As New Collection
@@ -255,6 +260,7 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
 
 End Function
 
+'---MOST_VALIDATE_PA_STANDARD---'
 Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
 
   Dim TableName As String
@@ -453,6 +459,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
 
 End Function
 
+'---MOST_VALIDATE_PA_2N_INVALID---'
 Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
 
   Dim TableName As String
@@ -645,7 +652,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
 
 End Function
 
-
+'---MOST_VALIDATE_LAT_STANDARD---'
 Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
 
   Dim TableName As String
@@ -851,6 +858,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
 
 End Function
 
+'---MOST_VALIDATE_LAT_2N_INVALID---'
 Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
 
   Dim TableName As String
@@ -1051,6 +1059,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
 
 End Function
 
+'---MOST_VALIDATE_MSGBOX---'
 Public Function MOST_Validate_MsgBox(ByRef ValidationResult As Collection) As Integer
 
   Dim ValidationFlag As Boolean

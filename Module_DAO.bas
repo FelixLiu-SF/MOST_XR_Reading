@@ -7,6 +7,7 @@ Option Explicit
 Public db As DAO.Database
 Public rs As DAO.Recordset
 
+'---LOADDAO---'
 Public Function LoadDAO()
 
     Dim str_err As String
@@ -25,6 +26,6 @@ ErrorHandler1:
     'str_err = ""
     'msg_err = MsgBox(str_err, vbOKOnly, "DAO")
 
-Exit Function 
+Exit Function
 
 End Function

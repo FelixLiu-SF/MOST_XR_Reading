@@ -2,6 +2,7 @@ Attribute VB_Name = "Module_OnLoad"
 Option Compare Database
 Option Explicit
 
+'---LOADFORM---'
 Public Function LoadForm(FormName As String)
 
     Dim Debug_Flag As Integer
@@ -82,7 +83,7 @@ Public Function UnloadRibbon(FormName As String)
 
 End Function
 
-
+'---LOADREPORT---'
 Public Function LoadReport(ReportName As String)
 
     Dim Debug_Flag As Integer

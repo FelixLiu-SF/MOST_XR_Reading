@@ -6,6 +6,7 @@ Option Explicit
 
 Public EFilmAuto As Object
 
+'---LOADEFILMAUTO---'
 Public Function LoadEFilmAuto()
 
     Dim str_err As String
@@ -27,6 +28,7 @@ ErrorHandler1:
 
 End Function
 
+'---UNLOADEFILMAUTO---'
 Public Function UnloadEFilmAuto()
 
     On Error GoTo ErrorHandler1
@@ -44,6 +46,7 @@ Exit Function
 
 End Function
 
+'---VBA_OPENSTUDY---'
 Public Function VBA_OpenStudy(PATID As String, PATACC As String, NUMXR As Integer) As Boolean
 
     Dim WindowBool As Boolean

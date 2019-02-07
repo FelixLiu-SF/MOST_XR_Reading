@@ -29,6 +29,7 @@ Global MOST_LPAKnee_Vars() As String
 Global MOST_RLATKnee_Vars() As String
 Global MOST_LLATKnee_Vars() As String
 
+'---MOST_LOAD_VARIABLENAMEARRAYS---'
 Public Function MOST_Load_VariableNameArrays()
 
   MOST_Visits_Array(0) = "RV1"
