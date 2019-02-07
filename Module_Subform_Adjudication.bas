@@ -11,7 +11,7 @@ Global MOST_ADJ2_RV1234_XB_Vars() As String
 Global MOST_ADJ1_RV1234_LXB_Vars() As String
 Global MOST_ADJ2_RV1234_LXB_Vars() As String
 
-'--- ---'
+'---MOST_ADJ_LOAD_VARIABLENAMES---'
 Public Function MOST_Adj_Load_VariableNames()
   'Call MOST_Load_VariableNameArrays from Module_MOST_Variables before calling this function
 
@@ -64,6 +64,27 @@ Public Function MOST_Adj_Load_VariableNames()
   'Create LAT view adjudication variable list
   MOST_ADJ1_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_LATKnee_Array, MOST_ADJ1_LATRoot_Array)
   MOST_ADJ1_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_LATKnee_Array, MOST_ADJ2_LATRoot_Array)
+
+End Function
+
+'---ISADJUDICATION----'
+Public Function IsAdjudication() As Boolean
+
+Dim AdjudicationFlag As Integer
+Dim AdjudicationBoolean As Boolean
+
+'Get DebugFlag
+AdjudicationFlag = DLookup("AdjudicationFlag", "tblProperties", "RecordID = 1")
+If Len(Nz(AdjudicationFlag, "")) > 0 Then
+    If AdjudicationFlag > 0 Then
+        AdjudicationBoolean = True
+    Else
+        AdjudicationBoolean = False
+    End If
+
+Else
+    AdjudicationBoolean = False
+End If
 
 End Function
 
