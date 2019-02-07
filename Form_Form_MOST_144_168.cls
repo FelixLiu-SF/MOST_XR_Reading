@@ -396,6 +396,101 @@ ErrorHandler_Main1:
 
 End Sub
 
+'---SETADJCOMBOLOSTFOCUS---'
+Private Sub SetAdjComboLostFocus()
+' Set all of the combo box background colors to update after focus is lost
+
+    Dim Index As Integer
+    Dim Upper As Integer
+    Dim ControlName As String
+    Dim DummyBoolean As Boolean
+    Dim LostFocusStr As String
+
+    'Error catching
+    On Error GoTo ErrorHandler_Main1
+
+    'Loop through preloaded priority 1 Adj PA view variable name array on PA subform
+    Index = 0
+    Upper = UBound(MOST_ADJ1_RV1234_XB_Vars, 1) - 1
+
+    For Index = 0 To Upper
+        ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+
+        LostFocusStr = Make_Adj1ControlColor_Func("Form_MOST_144_168", "Subform_PA", ControlName)
+
+        DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_PA", ControlName, LostFocusStr)
+    Next
+
+    'Loop through preloaded priority 1 Adj Lateral View variable name array on Right Lat subform
+    Index = 0
+    Upper = UBound(MOST_ADJ1_RV1234_LXB_Vars, 1) - 1
+
+    For Index = 0 To Upper
+        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+
+        LostFocusStr = Make_Adj1ControlColor_Func("Form_MOST_144_168", "Subform_RLAT", ControlName)
+
+        DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_RLAT", ControlName, LostFocusStr)
+    Next
+
+    'Loop through preloaded priority 1 Adj Lateral View variable name array on Left Lat subform
+    Index = 0
+    Upper = UBound(MOST_ADJ1_RV1234_LXB_Vars, 1) - 1
+
+    For Index = 0 To Upper
+        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+
+        LostFocusStr = Make_Adj1ControlColor_Func("Form_MOST_144_168", "Subform_LLAT", ControlName)
+
+        DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_LLAT", ControlName, LostFocusStr)
+    Next
+
+    'Loop through preloaded priority 2 Adj PA view variable name array on PA subform
+    Index = 0
+    Upper = UBound(MOST_ADJ2_RV1234_XB_Vars, 1) - 1
+
+    For Index = 0 To Upper
+        ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+
+        LostFocusStr = Make_Adj2ControlColor_Func("Form_MOST_144_168", "Subform_PA", ControlName)
+
+        DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_PA", ControlName, LostFocusStr)
+    Next
+
+    'Loop through preloaded priority 2 Adj Lateral View variable name array on Right Lat subform
+    Index = 0
+    Upper = UBound(MOST_ADJ2_RV1234_LXB_Vars, 1) - 1
+
+    For Index = 0 To Upper
+        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+
+        LostFocusStr = Make_Adj2ControlColor_Func("Form_MOST_144_168", "Subform_RLAT", ControlName)
+
+        DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_RLAT", ControlName, LostFocusStr)
+    Next
+
+    'Loop through preloaded priority 2 Adj Lateral View variable name array on Left Lat subform
+    Index = 0
+    Upper = UBound(MOST_ADJ2_RV1234_LXB_Vars, 1) - 1
+
+    For Index = 0 To Upper
+        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+
+        LostFocusStr = Make_Adj2ControlColor_Func("Form_MOST_144_168", "Subform_LLAT", ControlName)
+
+        DummyBoolean = Control_Edit_LostFocus("Form_MOST_144_168", "Subform_LLAT", ControlName, LostFocusStr)
+    Next
+
+    'Clear the error catching
+    On Error GoTo 0
+
+    Exit Sub
+
+ErrorHandler_Main1:
+    Resume Next
+
+End Sub
+
 '---LOADDROPDOWN---'
 Private Function LoadDropDown()
 'Set dropdown menus for all ComboBox controls on all subforms
