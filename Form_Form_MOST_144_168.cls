@@ -16,9 +16,13 @@ Private Sub Form_Load()
 ' Load various modules when this scoresheet is opened
 
     Dim DummyBoolean As Boolean
+    Dim AdjudicationBoolean As Boolean
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
+
+    'Check if adjudication scoresheet
+    AdjudicationBoolean = IsAdjudication
 
     'Import X-ray films into EFilm with batch file
     ImportEFilm
@@ -30,6 +34,7 @@ Private Sub Form_Load()
     DummyBoolean = MOST_Load_SelectStr
     DummyBoolean = MOST_Load_VariableNameArrays
     DummyBoolean = MOST_Validation_VariableNameArrays
+    DummyBoolean = MOST_Adj_Load_VariableNames
 
     'Load default view for ComboBox Controls
     LoadView
@@ -191,36 +196,102 @@ Private Sub LoadColor()
     Dim Upper As Integer
     Dim ControlName As String
     Dim DummyBoolean As Boolean
+    Dim AdjudicationBoolean As Boolean
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
 
-    'Loop through preloaded PA view variable name array on PA subform
-    Index = 0
-    Upper = UBound(MOST_RV1234_XB_Vars, 1) - 1
+    'Check if adjudication
+    AdjudicationBoolean = IsAdjudication
 
-    For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
-        DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_PA", ControlName)
-    Next
+    If Adjudication Boolean Then
+    'Set combo box colors for adjudication color scheme
 
-    'Loop through preloaded Lateral View variable name array on Right Lat subform
-    Index = 0
-    Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
+      'Loop through preloaded priority 1 Adj PA view variable name array on PA subform
+      Index = 0
+      Upper = UBound(MOST_ADJ1_RV1234_XB_Vars, 1) - 1
 
-    For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
-        DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_RLAT", ControlName)
-    Next
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+          DummyBoolean = AdjBackcolorCodePriority1("Form_MOST_144_168", "Subform_PA", ControlName)
+      Next
 
-    'Loop through preloaded Lateral View variable name array on Left Lat subform
-    Index = 0
-    Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
+      'Loop through preloaded priority 1 Adj Lateral View variable name array on Right Lat subform
+      Index = 0
+      Upper = UBound(MOST_ADJ1_RV1234_LXB_Vars, 1) - 1
 
-    For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
-        DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_LLAT", ControlName)
-    Next
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          DummyBoolean = AdjBackcolorCodePriority1("Form_MOST_144_168", "Subform_RLAT", ControlName)
+      Next
+
+      'Loop through preloaded priority 1 Adj Lateral View variable name array on Left Lat subform
+      Index = 0
+      Upper = UBound(MOST_ADJ1_RV1234_LXB_Vars, 1) - 1
+
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          DummyBoolean = AdjBackcolorCodePriority1("Form_MOST_144_168", "Subform_LLAT", ControlName)
+      Next
+
+      'Loop through preloaded priority 2 Adj PA view variable name array on PA subform
+      Index = 0
+      Upper = UBound(MOST_ADJ2_RV1234_XB_Vars, 1) - 1
+
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+          DummyBoolean = AdjBackcolorCodePriority2("Form_MOST_144_168", "Subform_PA", ControlName)
+      Next
+
+      'Loop through preloaded priority 2 Adj Lateral View variable name array on Right Lat subform
+      Index = 0
+      Upper = UBound(MOST_ADJ2_RV1234_LXB_Vars, 1) - 1
+
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          DummyBoolean = AdjBackcolorCodePriority2("Form_MOST_144_168", "Subform_RLAT", ControlName)
+      Next
+
+      'Loop through preloaded priority 2 Adj Lateral View variable name array on Left Lat subform
+      Index = 0
+      Upper = UBound(MOST_ADJ2_RV1234_LXB_Vars, 1) - 1
+
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          DummyBoolean = AdjBackcolorCodePriority2("Form_MOST_144_168", "Subform_LLAT", ControlName)
+      Next
+
+    Else
+    'Set combo box to default reading color scheme
+
+      'Loop through preloaded PA view variable name array on PA subform
+      Index = 0
+      Upper = UBound(MOST_RV1234_XB_Vars, 1) - 1
+
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+          DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_PA", ControlName)
+      Next
+
+      'Loop through preloaded Lateral View variable name array on Right Lat subform
+      Index = 0
+      Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
+
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_RLAT", ControlName)
+      Next
+
+      'Loop through preloaded Lateral View variable name array on Left Lat subform
+      Index = 0
+      Upper = UBound(MOST_RV1234_LXB_Vars, 1) - 1
+
+      For Index = 0 To Upper
+          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          DummyBoolean = BackcolorCode("Form_MOST_144_168", "Subform_LLAT", ControlName)
+      Next
+
+    End If
 
     'Clear the error catching
     On Error GoTo 0
