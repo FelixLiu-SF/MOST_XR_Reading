@@ -2,6 +2,71 @@ Attribute VB_Name = "Module_Subform_Adjudication"
 Option Compare Database
 Option Explicit
 
+Global MOST_ADJ1_PARoot_Array(3) As String
+Global MOST_ADJ2_PARoot_Array(16) As String
+Global MOST_ADJ1_LATRoot_Array(4) As String
+Global MOST_ADJ2_LATRoot_Array(14) As String
+Global MOST_ADJ1_RV1234_XB_Vars() As String
+Global MOST_ADJ2_RV1234_XB_Vars() As String
+Global MOST_ADJ1_RV1234_LXB_Vars() As String
+Global MOST_ADJ2_RV1234_LXB_Vars() As String
+
+'--- ---'
+Public Function MOST_Adj_Load_VariableNames()
+  'Call MOST_Load_VariableNameArrays from Module_MOST_Variables before calling this function
+
+  'Define list of priority 1 and priority 2 adjudication variable name roots
+  MOST_ADJ1_PARoot_Array(0) = "TFKLG"
+  MOST_ADJ1_PARoot_Array(1) = "TFJSM"
+  MOST_ADJ1_PARoot_Array(2) = "TFJSL"
+
+  MOST_ADJ2_PARoot_Array(0) = "OSFM"
+  MOST_ADJ2_PARoot_Array(1) = "OSFL"
+  MOST_ADJ2_PARoot_Array(2) = "OSTM"
+  MOST_ADJ2_PARoot_Array(3) = "OSTL"
+  MOST_ADJ2_PARoot_Array(4) = "SCFM"
+  MOST_ADJ2_PARoot_Array(5) = "SCFL"
+  MOST_ADJ2_PARoot_Array(6) = "SCTM"
+  MOST_ADJ2_PARoot_Array(7) = "SCTL"
+  MOST_ADJ2_PARoot_Array(8) = "CYFM"
+  MOST_ADJ2_PARoot_Array(9) = "CYFL"
+  MOST_ADJ2_PARoot_Array(10) = "CYTM"
+  MOST_ADJ2_PARoot_Array(11) = "CYTL"
+  MOST_ADJ2_PARoot_Array(12) = "ATTM"
+  MOST_ADJ2_PARoot_Array(13) = "ATTL"
+  MOST_ADJ2_PARoot_Array(14) = "CHOM"
+  MOST_ADJ2_PARoot_Array(15) = "CHOL"
+
+  MOST_ADJ1_LATRoot_Array(0) = "PFKLG"
+  MOST_ADJ1_LATRoot_Array(1) = "PFJSN"
+  MOST_ADJ1_LATRoot_Array(2) = "FTJSM"
+  MOST_ADJ1_LATRoot_Array(3) = "FTJSL"
+
+  MOST_ADJ2_LATRoot_Array(0) = "OSFA"
+  MOST_ADJ2_LATRoot_Array(1) = "OSFP"
+  MOST_ADJ2_LATRoot_Array(2) = "OSPS"
+  MOST_ADJ2_LATRoot_Array(3) = "OSPI"
+  MOST_ADJ2_LATRoot_Array(4) = "OSTA"
+  MOST_ADJ2_LATRoot_Array(5) = "OSTP"
+  MOST_ADJ2_LATRoot_Array(6) = "SCPF"
+  MOST_ADJ2_LATRoot_Array(7) = "CYPF"
+  MOST_ADJ2_LATRoot_Array(8) = "CHON"
+  MOST_ADJ2_LATRoot_Array(9) = "JE"
+  MOST_ADJ2_LATRoot_Array(10) = "OSQI"
+  MOST_ADJ2_LATRoot_Array(11) = "OPTU"
+  MOST_ADJ2_LATRoot_Array(12) = "OPTL"
+  MOST_ADJ2_LATRoot_Array(13) = "OSLB"
+
+  'Create PA view adjudication variable list
+  MOST_ADJ1_RV1234_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_ADJ1_PARoot_Array)
+  MOST_ADJ1_RV1234_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_ADJ2_PARoot_Array)
+
+  'Create LAT view adjudication variable list
+  MOST_ADJ1_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_LATKnee_Array, MOST_ADJ1_LATRoot_Array)
+  MOST_ADJ1_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_LATKnee_Array, MOST_ADJ2_LATRoot_Array)
+
+End Function
+
 '---ADJBACKCOLORCODEPRIORITY1---'
 Public Function AdjBackcolorCodePriority1(FormName As String, SubFormControlName As String, ControlIn As String)
 'Set the control background color according to property status
