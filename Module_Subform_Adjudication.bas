@@ -70,21 +70,23 @@ End Function
 '---ISADJUDICATION----'
 Public Function IsAdjudication() As Boolean
 
-Dim AdjudicationFlag As Integer
-Dim AdjudicationBoolean As Boolean
+  Dim AdjudicationFlag As Integer
+  Dim AdjudicationBoolean As Boolean
 
-'Get DebugFlag
-AdjudicationFlag = DLookup("AdjudicationFlag", "tblProperties", "RecordID = 1")
-If Len(Nz(AdjudicationFlag, "")) > 0 Then
-    If AdjudicationFlag > 0 Then
-        AdjudicationBoolean = True
-    Else
-        AdjudicationBoolean = False
-    End If
+  'Get DebugFlag
+  AdjudicationFlag = DLookup("AdjudicationFlag", "tblProperties", "RecordID = 1")
+  If Len(Nz(AdjudicationFlag, "")) > 0 Then
+      If AdjudicationFlag > 0 Then
+          AdjudicationBoolean = True
+      Else
+          AdjudicationBoolean = False
+      End If
 
-Else
-    AdjudicationBoolean = False
-End If
+  Else
+      AdjudicationBoolean = False
+  End If
+
+  IsAdjudication = AdjudicationFlag
 
 End Function
 
