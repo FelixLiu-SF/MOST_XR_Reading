@@ -102,6 +102,7 @@ Public Function AdjBackcolorCodePriority1(FormName As String, SubFormControlName
     Dim ColorYellow As Long
     Dim ColorBlue As Long
     Dim ColorBrown As Long
+    Dim ColorLightBlue As Long
 
     'Value variables
     Dim CheckVar As Variant
@@ -209,6 +210,7 @@ Public Function AdjBackcolorCodePriority2(FormName As String, SubFormControlName
     Dim ColorYellow As Long
     Dim ColorBlue As Long
     Dim ColorBrown As Long
+    Dim ColorLightBlue As Long
 
     'Value variables
     Dim CheckVar As Variant
@@ -227,6 +229,7 @@ Public Function AdjBackcolorCodePriority2(FormName As String, SubFormControlName
     ColorYellow = RGB(192, 192, 0)
     ColorBlue = RGB(0, 0, 150)
     ColorBrown = RGB(205, 133, 63)
+    ColorLightBlue = RGB(166,166,255)
 
     'Assign search character
     SearchChar = "/"
