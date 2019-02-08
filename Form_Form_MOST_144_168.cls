@@ -204,7 +204,7 @@ Private Sub LoadColor()
     'Check if adjudication
     AdjudicationBoolean = IsAdjudication
 
-    If Adjudication Boolean Then
+    If AdjudicationBoolean Then
     'Set combo box colors for adjudication color scheme
 
       'Loop through preloaded priority 1 Adj PA view variable name array on PA subform
@@ -212,7 +212,7 @@ Private Sub LoadColor()
       Upper = UBound(MOST_ADJ1_RV1234_XB_Vars, 1) - 1
 
       For Index = 0 To Upper
-          ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+          ControlName = "Combo_" & MOST_ADJ1_RV1234_XB_Vars(Index)
           DummyBoolean = AdjBackcolorCodePriority1("Form_MOST_144_168", "Subform_PA", ControlName)
       Next
 
@@ -221,7 +221,7 @@ Private Sub LoadColor()
       Upper = UBound(MOST_ADJ1_RV1234_LXB_Vars, 1) - 1
 
       For Index = 0 To Upper
-          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          ControlName = "Combo_" & MOST_ADJ1_RV1234_LXB_Vars(Index)
           DummyBoolean = AdjBackcolorCodePriority1("Form_MOST_144_168", "Subform_RLAT", ControlName)
       Next
 
@@ -230,7 +230,7 @@ Private Sub LoadColor()
       Upper = UBound(MOST_ADJ1_RV1234_LXB_Vars, 1) - 1
 
       For Index = 0 To Upper
-          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          ControlName = "Combo_" & MOST_ADJ1_RV1234_LXB_Vars(Index)
           DummyBoolean = AdjBackcolorCodePriority1("Form_MOST_144_168", "Subform_LLAT", ControlName)
       Next
 
@@ -239,7 +239,7 @@ Private Sub LoadColor()
       Upper = UBound(MOST_ADJ2_RV1234_XB_Vars, 1) - 1
 
       For Index = 0 To Upper
-          ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+          ControlName = "Combo_" & MOST_ADJ2_RV1234_XB_Vars(Index)
           DummyBoolean = AdjBackcolorCodePriority2("Form_MOST_144_168", "Subform_PA", ControlName)
       Next
 
@@ -248,7 +248,7 @@ Private Sub LoadColor()
       Upper = UBound(MOST_ADJ2_RV1234_LXB_Vars, 1) - 1
 
       For Index = 0 To Upper
-          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          ControlName = "Combo_" & MOST_ADJ2_RV1234_LXB_Vars(Index)
           DummyBoolean = AdjBackcolorCodePriority2("Form_MOST_144_168", "Subform_RLAT", ControlName)
       Next
 
@@ -257,7 +257,7 @@ Private Sub LoadColor()
       Upper = UBound(MOST_ADJ2_RV1234_LXB_Vars, 1) - 1
 
       For Index = 0 To Upper
-          ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+          ControlName = "Combo_" & MOST_ADJ2_RV1234_LXB_Vars(Index)
           DummyBoolean = AdjBackcolorCodePriority2("Form_MOST_144_168", "Subform_LLAT", ControlName)
       Next
 
@@ -414,7 +414,7 @@ Private Sub SetAdjComboLostFocus()
     Upper = UBound(MOST_ADJ1_RV1234_XB_Vars, 1) - 1
 
     For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+        ControlName = "Combo_" & MOST_ADJ1_RV1234_XB_Vars(Index)
 
         LostFocusStr = Make_Adj1ControlColor_Func("Form_MOST_144_168", "Subform_PA", ControlName)
 
@@ -426,7 +426,7 @@ Private Sub SetAdjComboLostFocus()
     Upper = UBound(MOST_ADJ1_RV1234_LXB_Vars, 1) - 1
 
     For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+        ControlName = "Combo_" & MOST_ADJ1_RV1234_LXB_Vars(Index)
 
         LostFocusStr = Make_Adj1ControlColor_Func("Form_MOST_144_168", "Subform_RLAT", ControlName)
 
@@ -438,7 +438,7 @@ Private Sub SetAdjComboLostFocus()
     Upper = UBound(MOST_ADJ1_RV1234_LXB_Vars, 1) - 1
 
     For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+        ControlName = "Combo_" & MOST_ADJ1_RV1234_LXB_Vars(Index)
 
         LostFocusStr = Make_Adj1ControlColor_Func("Form_MOST_144_168", "Subform_LLAT", ControlName)
 
@@ -450,7 +450,7 @@ Private Sub SetAdjComboLostFocus()
     Upper = UBound(MOST_ADJ2_RV1234_XB_Vars, 1) - 1
 
     For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_XB_Vars(Index)
+        ControlName = "Combo_" & MOST_ADJ2_RV1234_XB_Vars(Index)
 
         LostFocusStr = Make_Adj2ControlColor_Func("Form_MOST_144_168", "Subform_PA", ControlName)
 
@@ -462,7 +462,7 @@ Private Sub SetAdjComboLostFocus()
     Upper = UBound(MOST_ADJ2_RV1234_LXB_Vars, 1) - 1
 
     For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+        ControlName = "Combo_" & MOST_ADJ2_RV1234_LXB_Vars(Index)
 
         LostFocusStr = Make_Adj2ControlColor_Func("Form_MOST_144_168", "Subform_RLAT", ControlName)
 
@@ -474,7 +474,7 @@ Private Sub SetAdjComboLostFocus()
     Upper = UBound(MOST_ADJ2_RV1234_LXB_Vars, 1) - 1
 
     For Index = 0 To Upper
-        ControlName = "Combo_" & MOST_RV1234_LXB_Vars(Index)
+        ControlName = "Combo_" & MOST_ADJ2_RV1234_LXB_Vars(Index)
 
         LostFocusStr = Make_Adj2ControlColor_Func("Form_MOST_144_168", "Subform_LLAT", ControlName)
 
@@ -1660,7 +1660,7 @@ Private Sub Command_SUBMIT_Click()
       Me.Recordset.Fields("E_DATE").Value = CUR_DATE
       Me.Recordset.Fields("E_TIME").Value = CUR_TIME
       Me.Recordset.Update
-      
+
       Exit Sub
     End If
 

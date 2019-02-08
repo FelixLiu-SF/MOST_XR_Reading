@@ -59,11 +59,11 @@ Public Function MOST_Adj_Load_VariableNames()
 
   'Create PA view adjudication variable list
   MOST_ADJ1_RV1234_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_ADJ1_PARoot_Array)
-  MOST_ADJ1_RV1234_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_ADJ2_PARoot_Array)
+  MOST_ADJ2_RV1234_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_PAKnee_Array, MOST_ADJ2_PARoot_Array)
 
   'Create LAT view adjudication variable list
   MOST_ADJ1_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_LATKnee_Array, MOST_ADJ1_LATRoot_Array)
-  MOST_ADJ1_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_LATKnee_Array, MOST_ADJ2_LATRoot_Array)
+  MOST_ADJ2_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_LATKnee_Array, MOST_ADJ2_LATRoot_Array)
 
 End Function
 
@@ -120,6 +120,7 @@ Public Function AdjBackcolorCodePriority1(FormName As String, SubFormControlName
     ColorYellow = RGB(192, 192, 0)
     ColorBlue = RGB(0, 0, 150)
     ColorBrown = RGB(205, 133, 63)
+    ColorLightBlue = RGB(166,166,255)
 
     'Assign search character
     SearchChar = "/"
@@ -171,7 +172,7 @@ Public Function AdjBackcolorCodePriority1(FormName As String, SubFormControlName
 
             If SearchResult > 0 Then
               'Adjudication character found, highlight the ComboBox
-              Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BackColor = ColorBlue
+              Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BackColor = ColorLightBlue
               Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).FontWeight = 400
               Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BorderColor = ColorSilver
 
@@ -184,7 +185,7 @@ Public Function AdjBackcolorCodePriority1(FormName As String, SubFormControlName
 
         Else 'Is Null
 
-            Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BackColor = ColorBlue
+            Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BackColor = ColorLightBlue
             Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).FontWeight = 400
             Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BorderColor = ColorSilver
 
@@ -192,7 +193,7 @@ Public Function AdjBackcolorCodePriority1(FormName As String, SubFormControlName
 
     End If 'locked
 
-    BackcolorCode = True
+    AdjBackcolorCodePriority1 = True
 
 End Function
 
@@ -298,7 +299,7 @@ Public Function AdjBackcolorCodePriority2(FormName As String, SubFormControlName
 
     End If 'locked
 
-    BackcolorCode = True
+    AdjBackcolorCodePriority2 = True
 
 End Function
 
