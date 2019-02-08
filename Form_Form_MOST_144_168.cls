@@ -1613,10 +1613,15 @@ Private Sub Command_SUBMIT_Click()
     Dim ReadingIDVar As Variant
     Dim ReadingIDStr As String
 
+    Dim AdjudicationFlag As Boolean
+
     On Error GoTo ErrorHandler1
 
     ScoreFlag = False
-    MsgString = ""
+    MsgString =
+
+    'Get Adjudication Flag
+    AdjudicationBoolean = IsAdjudication
 
     'Get DebugFlag
     DebugFlag = DLookup("DebugFlag", "tblProperties", "RecordID = 1")
@@ -1647,6 +1652,17 @@ Private Sub Command_SUBMIT_Click()
 
     ReadingIDVar = Me("Text_ReadingID").Value
     ReadingIDStr = CStr(Nz(ReadingIDVar,""))
+
+    If AdjudicationBoolean Then
+      ' Adjudication record, sign without validation
+      Me.Recordset.Edit
+      Me.Recordset.Fields("READER").Value = CUR_READER
+      Me.Recordset.Fields("E_DATE").Value = CUR_DATE
+      Me.Recordset.Fields("E_TIME").Value = CUR_TIME
+      Me.Recordset.Update
+      
+      Exit Sub
+    End If
 
     'Check for empty scoring boxes
     ComboNames_XB = Concat_Prefix("Combo_", MOST_RV1234_XB_Vars)
