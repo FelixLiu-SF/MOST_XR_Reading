@@ -1613,12 +1613,12 @@ Private Sub Command_SUBMIT_Click()
     Dim ReadingIDVar As Variant
     Dim ReadingIDStr As String
 
-    Dim AdjudicationFlag As Boolean
+    Dim AdjudicationBoolean As Boolean
 
     On Error GoTo ErrorHandler1
 
     ScoreFlag = False
-    MsgString = "" 
+    MsgString = ""
 
     'Get Adjudication Flag
     AdjudicationBoolean = IsAdjudication
