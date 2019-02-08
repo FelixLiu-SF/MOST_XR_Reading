@@ -1618,7 +1618,7 @@ Private Sub Command_SUBMIT_Click()
     On Error GoTo ErrorHandler1
 
     ScoreFlag = False
-    MsgString =
+    MsgString = "" 
 
     'Get Adjudication Flag
     AdjudicationBoolean = IsAdjudication
