@@ -435,3 +435,99 @@ ScoreErr:
   Resume Next
 
 End Function
+
+'---SETADJ1COMBOUPDATE_RV1234----'
+Public Function SetAdj1ComboUpdate_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
+
+    Dim DummyBoolean As Boolean
+    Dim VisitArray(4) As String
+    Dim VisitNum(4) As Integer
+    Dim ControlName As String
+    Dim VariableName As String
+    Dim FilterName2 As String
+    Dim FilterValue2 As String
+    Dim AfterUpdateStr As String
+    Dim Index As Integer
+
+    'Define default variables
+    VisitArray(0) = "RV1"
+    VisitArray(1) = "RV2"
+    VisitArray(2) = "RV3"
+    VisitArray(3) = "RV4"
+
+    VisitNum(0) = 1
+    VisitNum(1) = 2
+    VisitNum(2) = 3
+    VisitNum(3) = 4
+
+    'Loop through visits
+    Index = 0
+    For Index = 0 To 4
+
+        'Construct Variable name
+        VariableName = ViewPrefix & VarNameRoot
+
+        'Construct ComboBox Control name
+        ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
+
+        'Construct visit filters
+        FilterName2 = "RVNUM"
+        FilterValue2 = CStr(VisitNum(Index))
+
+        'Construct ComboBox selection string
+        AfterUpdateStr = Make_Adj1ControlAfterUpdate_Func(FormName, SubFormControlName, ControlName, VariableName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+
+        'Set the after update string to the OnFocus property of the ComboBox
+        DummyBoolean = Control_Edit_AfterUpdate(FormName, SubFormControlName, ControlName, AfterUpdateStr)
+
+    Next
+
+End Function
+
+'---SETADJ2COMBOUPDATE_RV1234----'
+Public Function SetAdj2ComboUpdate_RV1234(FormName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
+
+    Dim DummyBoolean As Boolean
+    Dim VisitArray(4) As String
+    Dim VisitNum(4) As Integer
+    Dim ControlName As String
+    Dim VariableName As String
+    Dim FilterName2 As String
+    Dim FilterValue2 As String
+    Dim AfterUpdateStr As String
+    Dim Index As Integer
+
+    'Define default variables
+    VisitArray(0) = "RV1"
+    VisitArray(1) = "RV2"
+    VisitArray(2) = "RV3"
+    VisitArray(3) = "RV4"
+
+    VisitNum(0) = 1
+    VisitNum(1) = 2
+    VisitNum(2) = 3
+    VisitNum(3) = 4
+
+    'Loop through visits
+    Index = 0
+    For Index = 0 To 4
+
+        'Construct Variable name
+        VariableName = ViewPrefix & VarNameRoot
+
+        'Construct ComboBox Control name
+        ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
+
+        'Construct visit filters
+        FilterName2 = "RVNUM"
+        FilterValue2 = CStr(VisitNum(Index))
+
+        'Construct ComboBox selection string
+        AfterUpdateStr = Make_Adj2ControlAfterUpdate_Func(FormName, SubFormControlName, ControlName, VariableName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+
+        'Set the after update string to the OnFocus property of the ComboBox
+        DummyBoolean = Control_Edit_AfterUpdate(FormName, SubFormControlName, ControlName, AfterUpdateStr)
+
+    Next
+
+End Function
