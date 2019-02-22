@@ -89,7 +89,7 @@ Public Function CountScored(FormName As String, SubFormControlName As String, Co
         If Not Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlArray(Index)).Locked Then
 
             'Count scored (on unlocked boxes only)
-            If Len(Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlArray(Index)).Value,"")) > 0 Then
+            If Len(Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlArray(Index)).Text,"")) > 0 Then
                 nScored = nScored + 1
             End If
 
@@ -127,7 +127,7 @@ Public Function CountUnscored(FormName As String, SubFormControlName As String, 
         If Not Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlArray(Index)).Locked Then
 
             'Count scored (on unlocked boxes only)
-            If Len(Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlArray(Index)).Value,"")) < 1 Then
+            If Len(Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlArray(Index)).Text,"")) < 1 Then
                 nUnscored = nUnscored + 1
             End If
 
@@ -156,7 +156,7 @@ Public Function InsertScore(FormName As String, SubFormControlName As String, Co
   Set db = DBEngine(0)(0)
 
   'Get the score value
-  ScoreValue = Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value,"")
+  ScoreValue = Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Text,"")
   If Len(ScoreValue) < 1 Then
     SQLValue = "NULL"
   Else
@@ -197,7 +197,7 @@ Public Function InsertScore2(FormName As String, SubFormControlName As String, C
   Set db = DBEngine(0)(0)
 
   'Get the score value
-  ScoreValue = Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Value,"")
+  ScoreValue = Nz(Forms(FormName).Controls(SubFormControlName).Form.Controls(ControlName).Text,"")
   If Len(ScoreValue) < 1 Then
     SQLValue = "NULL"
   Else
