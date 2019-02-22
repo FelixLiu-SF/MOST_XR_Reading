@@ -160,7 +160,7 @@ Public Function AdjBackcolorCodePriority1(FormName As String, SubFormControlName
         Else
         'Control is not bound to a variable. Assume value is a string
 
-            StrValue = Nz(Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).Value, "")
+            StrValue = Nz(Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).Text, "")
 
         End If
 
@@ -268,7 +268,7 @@ Public Function AdjBackcolorCodePriority2(FormName As String, SubFormControlName
         Else
         'Control is not bound to a variable. Assume value is a string
 
-            StrValue = Nz(Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).Value, "")
+            StrValue = Nz(Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).Text, "")
 
         End If
 
