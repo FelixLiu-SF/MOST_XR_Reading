@@ -132,7 +132,7 @@ Public Function SetComboSelection_RV1234(FormName As String, SubFormControlName 
 
     'Loop through visits
     Index = 0
-    For Index = 0 To 4
+    For Index = 0 To 3
 
         'Construct ComboBox Control name
         ControlName = "Combo_" & VisitArray(Index) & ViewPrefix & VarNameRoot
@@ -173,7 +173,7 @@ Public Function SetComboUpdate_RV1234(FormName As String, SubFormControlName As 
 
     'Loop through visits
     Index = 0
-    For Index = 0 To 4
+    For Index = 0 To 3
 
         'Construct Variable name
         VariableName = ViewPrefix & VarNameRoot
@@ -221,7 +221,7 @@ Public Function SetComboValue_RV1234(FormName As String, SubFormControlName As S
 
     'Loop through visits
     Index = 0
-    For Index = 0 To 4
+    For Index = 0 To 3
 
         'Construct Variable name
         VariableName = ViewPrefix & VarNameRoot
