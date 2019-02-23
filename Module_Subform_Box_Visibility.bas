@@ -136,7 +136,7 @@ Public Function BackcolorCode(FormName As String, SubFormControlName As String, 
         Else
         'Control is not bound to a variable. Assume value is a string
 
-            StrValue = Nz(Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).Text, "")
+            StrValue = Nz(Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).Value, "")
 
         End If
 
