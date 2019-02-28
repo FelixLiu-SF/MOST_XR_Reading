@@ -281,7 +281,7 @@ Public Function AdjBackcolorCodePriority2(FormName As String, SubFormControlName
 
             If SearchResult > 0 Then
               'Adjudication character found, highlight the ComboBox
-              Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BackColor = ColorPaleYellow
+              Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BackColor = ColorWhite
               Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).FontWeight = 400
               Forms(FormName).Controls(SubFormControlName).Controls(ControlIn).BorderColor = ColorSilver
 
