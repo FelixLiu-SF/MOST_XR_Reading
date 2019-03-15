@@ -158,14 +158,30 @@ Private Sub LoadView()
     ControlName_RV34_LLAT = Concat_Prefix("Combo_", MOST_RV34_LXL_Vars)
     ControlName_RV12_PFKLG = Concat_Prefix("Combo_", MOST_RV12_LXB_PFKLG)
 
-    'Lock the RV1 & RV2 PA variables on PA subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, DebugBoolean)
+    'Unlock RV1 & RV2 variables if adjudication
+    If AdjudicationBoolean Then
 
-    'Lock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, DebugBoolean)
+      'Lock the RV1 & RV2 PA variables on PA subform
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, False)
 
-    'Lock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
-    DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, DebugBoolean)
+      'Lock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, False)
+
+      'Lock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, False)
+
+    Else ' Lock the RV1 & RV2 variables for normal reading
+
+      'Lock the RV1 & RV2 PA variables on PA subform
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV12_PA, DebugBoolean)
+
+      'Lock the RIGHT knee RV1 & RV2 variables on RIGHT Lateral subform
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_RLAT, DebugBoolean)
+
+      'Lock the LEFT knee RV1 & RV2 variables on LEFT Lateral subform
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_LLAT, DebugBoolean)
+
+    End If
 
     'Lock & Hide all of the LEFT knee variables on RIGHT Lateral subform
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_LLAT, DebugBoolean)
