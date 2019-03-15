@@ -125,6 +125,7 @@ Private Sub LoadView()
     Dim DebugBoolean As Boolean
     Dim DummyBoolean As Boolean
     Dim AdjudicationBoolean As Boolean
+    Dim AdjudicationComments As String
 
     'Error catching
     On Error GoTo ErrorHandler_Main1
@@ -148,6 +149,12 @@ Private Sub LoadView()
     If AdjudicationBoolean Then
     'Show adjudication text describing which scores are whose
       Forms("Form_MOST_144_168").Controls("Text_Adjudication").Visible = True
+
+      'Replace |-pipe characters in COMMENTS with VBA newline characters
+      AdjudicationComments = Me.Recordset.Fields("COMMENTS").Value
+      AdjudicationComments = Replace(AdjudicationComments, "|", vbCrLf)
+      Forms("Form_MOST_144_168").Controls("Text_COMMENTS").Value = AdjudicationComments
+      
     End If
 
     'Construct ComboBox Control Names from preloaded MOST variable root names
