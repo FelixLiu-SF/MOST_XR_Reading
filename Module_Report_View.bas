@@ -3,6 +3,51 @@ Option Compare Database
 Option Explicit
 
 
+'---LOADREPORT---'
+Public Function LoadReport(ReportName As String)
+
+    Dim Debug_Flag As Integer
+
+    On Error GoTo ErrorHandler1
+
+    Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
+
+    If Debug_Flag < 1 Then
+
+        'Set Focus on Report
+        Reports(ReportName).SetFocus
+
+        'Maximize the form window
+        DoCmd.Maximize
+
+    End If
+
+    'clear error object
+    On Error GoTo -1
+
+    On Error Goto ErrorHandler2
+
+    On Error GoTo 0
+    Exit Function
+
+    ErrorHandler1:
+
+        'clear error object
+        On Error GoTo -1
+
+        On Error Goto ErrorHandler2
+
+        'Maximize the form window
+        DoCmd.Maximize
+
+        Resume Next
+
+    ErrorHandler2:
+
+        Exit Function
+
+End Function
+
 '---LOADREPORTVALUES_PA---'
 Public Function LoadReportValues_PA(ViewPrefix As String)
 'Set table values for ComboBox controls on PA view subform

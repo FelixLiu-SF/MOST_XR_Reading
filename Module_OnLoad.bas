@@ -83,52 +83,6 @@ Public Function UnloadRibbon(FormName As String)
 
 End Function
 
-'---LOADREPORT---'
-Public Function LoadReport(ReportName As String)
-
-    Dim Debug_Flag As Integer
-
-    On Error GoTo ErrorHandler1
-
-    Debug_Flag = DLookup("DebugFlag","tblProperties","RecordID = 1")
-
-    If Debug_Flag < 1 Then
-
-        'Set Focus on Report
-        Reports(ReportName).SetFocus
-
-        'Maximize the form window
-        DoCmd.Maximize
-
-    End If
-
-    'clear error object
-    On Error GoTo -1
-
-    On Error Goto ErrorHandler2
-
-    On Error GoTo 0
-    Exit Function
-
-    ErrorHandler1:
-
-        'clear error object
-        On Error GoTo -1
-
-        On Error Goto ErrorHandler2
-
-        'Maximize the form window
-        DoCmd.Maximize
-
-        Resume Next
-
-    ErrorHandler2:
-
-        Exit Function
-
-End Function
-
-
 '---LOADRECNAV---'
 Public Function LoadRecNav(FormName As String, TextBoxName As String)
 'Refresh text boxes to show current record number
