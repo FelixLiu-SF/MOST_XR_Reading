@@ -186,7 +186,7 @@ ErrorHandler_Main1:
 End Function
 
 '---LOADREPORTVISITDATES'
-Public Function LoadReportVisitDates(Subform_Name As String)
+Public Function LoadReportVisitDates(Subreport_Name As String)
 
     Dim VisitStrs(4) As String
     Dim DateStrs(4) As String
@@ -207,16 +207,16 @@ Public Function LoadReportVisitDates(Subform_Name As String)
     DateStrs(3) = DLookup("RV4DATE", "tblReadings", ReportFilter)
 
     'Set time point strings
-    Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Label_RV1TP").Caption = VisitStrs(0)
-    Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Label_RV2TP").Caption = VisitStrs(1)
-    Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Label_RV3TP").Caption = VisitStrs(2)
-    Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Label_RV4TP").Caption = VisitStrs(3)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Label_RV1TP").Caption = VisitStrs(0)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Label_RV2TP").Caption = VisitStrs(1)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Label_RV3TP").Caption = VisitStrs(2)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Label_RV4TP").Caption = VisitStrs(3)
 
     'Set exam date strings
-    Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Text_RV1DATE").Value = DateStrs(0)
-    Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Text_RV2DATE").Value = DateStrs(1)
-    Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Text_RV3DATE").Value = DateStrs(2)
-    Reports("Report_MOST_144_168").Controls(Subform_Name).Form.Controls("Text_RV4DATE").Value = DateStrs(3)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV1DATE").Value = DateStrs(0)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV2DATE").Value = DateStrs(1)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV3DATE").Value = DateStrs(2)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV4DATE").Value = DateStrs(3)
 
 End Function
 
