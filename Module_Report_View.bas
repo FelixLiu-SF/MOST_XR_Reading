@@ -49,7 +49,7 @@ Public Function LoadReport(ReportName As String)
 End Function
 
 '---LOADREPORTVALUES_PA---'
-Public Function LoadReportValues_PA(ViewPrefix As String)
+Public Function LoadReportValues_PA(Subreport_PA_Name As String, ViewPrefix As String)
 'Set table values for ComboBox controls on PA view subform
 
     Dim DummyBoolean As Boolean
@@ -72,38 +72,38 @@ Public Function LoadReportValues_PA(ViewPrefix As String)
     FilterValue1 = DLookup(FilterName1, "tblReadings", ReportFilter)
 
     'Set menu for TF KLG
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "TFKLG", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "TFKLG", TableName, FilterName1, FilterValue1)
 
     'Set menu for TF JSN
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "TFJSL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "TFJSM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "TFJSL", TableName, FilterName1, FilterValue1)
 
     'Set menu for Osteophytes
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "OSFM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "OSFL", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "OSTM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "OSTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "OSFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "OSFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "OSTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "OSTL", TableName, FilterName1, FilterValue1)
 
     'Set menu for Sclerosis
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "SCFM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "SCFL", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "SCTM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "SCTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "SCFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "SCFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "SCTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "SCTL", TableName, FilterName1, FilterValue1)
 
     'Set menu for Cysts
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "CYFM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "CYFL", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "CYTM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "CYTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CYFM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CYFL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CYTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CYTL", TableName, FilterName1, FilterValue1)
 
     'Set menu for Attrition
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "ATTM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", "Subform_PA", ViewPrefix, "ATTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "ATTM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "ATTL", TableName, FilterName1, FilterValue1)
 
 
     'Set menu for Chondrocalcinosis
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", "Subform_PA", ViewPrefix, "CHOL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CHOM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CHOL", TableName, FilterName1, FilterValue1)
 
     'Clear the error catching
     On Error GoTo 0
@@ -116,7 +116,7 @@ ErrorHandler_Main1:
 End Function
 
 '---LOADREPORTVALUES_LAT---'
-Public Function LoadReportValues_Lat(Subform_Lat_Name As String, ViewPrefix As String)
+Public Function LoadReportValues_Lat(Subreport_Lat_Name As String, ViewPrefix As String)
 'Set table values for ComboBox controls on Right Lateral view subform
 
     Dim DummyBoolean As Boolean
@@ -139,41 +139,41 @@ Public Function LoadReportValues_Lat(Subform_Lat_Name As String, ViewPrefix As S
     FilterValue1 = DLookup(FilterName1, "tblReadings", ReportFilter)
 
     'Set value for PF KLG
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "PFKLG", TableName, FilterName1, FilterValue1)
 
 
     'Set value for PF JSN
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "PFJSN", TableName, FilterName1, FilterValue1)
 
     'Set value for "FT" JSN from lateral view
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "FTJSM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "FTJSL", TableName, FilterName1, FilterValue1)
 
     'Set value for Osteophytes
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSPI", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OSFA", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OSFP", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OSPS", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OSPI", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OSTA", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OSTP", TableName, FilterName1, FilterValue1)
 
     'Set value for Sclerosis
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "SCPF", TableName, FilterName1, FilterValue1)
 
     'Set value for Cysts
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "CYPF", TableName, FilterName1, FilterValue1)
 
     'Set value for Chondrocalcinosis
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "CHON", TableName, FilterName1, FilterValue1)
 
     'Set value for Joint Effusion
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "JE", TableName, FilterName1, FilterValue1)
 
     'Set value for Ossification
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subform_Lat_Name, ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OSQI", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OPTU", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OPTL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_Lat_Name, ViewPrefix, "OSLB", TableName, FilterName1, FilterValue1)
 
     'Clear the error catching
     On Error GoTo 0
@@ -221,7 +221,7 @@ Public Function LoadReportVisitDates(Subreport_Name As String)
 End Function
 
 '---SETREPORTVALUE_RV1234----'
-Public Function SetReportValue_RV1234(ReportName As String, SubFormControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
+Public Function SetReportValue_RV1234(ReportName As String, SubReportControlName As String, ViewPrefix As String, VarNameRoot As String, TableName As String, FilterName1 As String, FilterValue1 As String)
 
     Dim DummyBoolean As Boolean
     Dim VisitArray(4) As String
@@ -259,14 +259,14 @@ Public Function SetReportValue_RV1234(ReportName As String, SubFormControlName A
         FilterValue2 = CStr(VisitNum(Index))
 
         'Insert value from table into ComboBox
-        DummyBoolean = SetReportValue(ReportName, SubFormControlName, ControlName, VariableName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+        DummyBoolean = SetReportValue(ReportName, SubReportControlName, ControlName, VariableName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
 
     Next
 
 End Function
 
 '---SETFORMVALUE---'
-Public Function SetReportValue(ReportName As String, SubFormControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String)
+Public Function SetReportValue(ReportName As String, SubReportControlName As String, ControlName As String, VariableName As String, TableName As String, FilterName1 As String, FilterValue1 As String, FilterName2 As String, FilterValue2 As String)
 'Read value from MS Access table using filters and insert into report combo box
 
   Dim TableValue As String
@@ -278,9 +278,9 @@ Public Function SetReportValue(ReportName As String, SubFormControlName As Strin
 
   'Update ComboBox value if value is not null
   If Len(TableValue)>0 Then
-    Reports(ReportName).Controls(SubFormControlName).Form.Controls(ControlName).Value = TableValue
+    Reports(ReportName).Controls(SubReportControlName).Report.Controls(ControlName).Caption = TableValue
   Else
-    Reports(ReportName).Controls(SubFormControlName).Form.Controls(ControlName).Value = Null
+    Reports(ReportName).Controls(SubReportControlName).Report.Controls(ControlName).Caption = ""
   End If
 
   On Error GoTo 0

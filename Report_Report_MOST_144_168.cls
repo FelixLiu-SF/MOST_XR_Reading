@@ -28,12 +28,12 @@ Private Sub Report_Load()
 
     'Load subform views
     DummyBoolean = LoadReportVisitDates("Subreport_PA")
-    DummyBoolean = LoadReportValues_PA("XR")
-    DummyBoolean = LoadReportValues_PA("XL")
+    DummyBoolean = LoadReportValues_PA("Subreport_PA", "XR")
+    DummyBoolean = LoadReportValues_PA("Subreport_PA", "XL")
     DummyBoolean = LoadReportVisitDates("Subreport_RLAT")
-    DummyBoolean = LoadReportValues_Lat("Subform_RLAT", "LXR")
+    DummyBoolean = LoadReportValues_Lat("Subreport_RLAT", "LXR")
     DummyBoolean = LoadReportVisitDates("Subreport_LLAT")
-    DummyBoolean = LoadReportValues_Lat("Subform_LLAT", "LXL")
+    DummyBoolean = LoadReportValues_Lat("Subreport_LLAT", "LXL")
 
     'Load the record numbers
     'DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
@@ -66,12 +66,12 @@ Private Sub Report_Current()
 
     'Load subform views
     DummyBoolean = LoadReportVisitDates("Subreport_PA")
-    DummyBoolean = LoadReportValues_PA("XR")
-    DummyBoolean = LoadReportValues_PA("XL")
+    DummyBoolean = LoadReportValues_PA("Subreport_PA", "XR")
+    DummyBoolean = LoadReportValues_PA("Subreport_PA", "XL")
     DummyBoolean = LoadReportVisitDates("Subreport_RLAT")
-    DummyBoolean = LoadReportValues_Lat("Subform_RLAT", "LXR")
+    DummyBoolean = LoadReportValues_Lat("Subreport_RLAT", "LXR")
     DummyBoolean = LoadReportVisitDates("Subreport_LLAT")
-    DummyBoolean = LoadReportValues_Lat("Subform_LLAT", "LXL")
+    DummyBoolean = LoadReportValues_Lat("Subreport_LLAT", "LXL")
 
     'Insert assigned reader into reader ComboBox
     Insert_Report_Reader
