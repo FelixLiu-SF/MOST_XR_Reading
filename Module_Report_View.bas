@@ -213,10 +213,10 @@ Public Function LoadReportVisitDates(Subreport_Name As String)
     Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Label_RV4TP").Caption = VisitStrs(3)
 
     'Set exam date strings
-    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV1DATE").Value = DateStrs(0)
-    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV2DATE").Value = DateStrs(1)
-    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV3DATE").Value = DateStrs(2)
-    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV4DATE").Value = DateStrs(3)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV1DATE").Caption = DateStrs(0)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV2DATE").Caption = DateStrs(1)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV3DATE").Caption = DateStrs(2)
+    Reports("Report_MOST_144_168").Controls(Subreport_Name).Report.Controls("Text_RV4DATE").Caption = DateStrs(3)
 
 End Function
 
