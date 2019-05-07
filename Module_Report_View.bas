@@ -102,8 +102,8 @@ Public Function LoadReportValues_PA(Subreport_PA_Name As String, ViewPrefix As S
 
 
     'Set menu for Chondrocalcinosis
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CHOM", TableName, FilterName1, FilterValue1)
-    DummyBoolean = SetReportValue_RV1234("Form_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CHOL", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CHOM", TableName, FilterName1, FilterValue1)
+    DummyBoolean = SetReportValue_RV1234("Report_MOST_144_168", Subreport_PA_Name, ViewPrefix, "CHOL", TableName, FilterName1, FilterValue1)
 
     'Clear the error catching
     On Error GoTo 0
