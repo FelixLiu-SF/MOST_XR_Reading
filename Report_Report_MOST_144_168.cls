@@ -135,6 +135,10 @@ Private Sub Command_QUIT_Click()
 
   On Error GoTo QuitError
 
+  'Hide the Microsoft Ribbon
+  DoCmd.ShowToolbar "Ribbon", acToolbarNo
+
+  'Close the report
   DoCmd.Close
 
   On Error GoTo 0
