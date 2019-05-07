@@ -48,6 +48,44 @@ Public Function LoadReport(ReportName As String)
 
 End Function
 
+'---LOADCURRECREPORT---'
+Public Function LoadCurRecReport(FormName As String, ReportName As String, TextBoxName As String)
+'Load report text box label to show current record number
+
+    Dim nCurRec As Integer
+
+    On Error GoTo ErrorHandler1
+
+      'Get current record number and update text box
+      nCurRec = Forms(FormName).CurrentRecord
+      Reports(ReportName).Controls(TextBoxName).Caption = CStr(nCurRec)
+
+      Exit Function
+
+    ErrorHandler1:
+    Exit Function
+
+End Function
+
+'---LOADMAXRECREPORT---'
+Public Function LoadMaxRecReport(ReportName As String, TextBoxName As String)
+'Load report text box label to show max record number
+
+    Dim nMaxRec As Integer
+
+    On Error GoTo ErrorHandler1
+
+      'Get max record number and update text box
+      nMaxRec = DLookup("MaxRecord","tblProperties","RecordID = 1")
+      Reports(ReportName).Controls(TextBoxName).Caption = CStr(nMaxRec)
+
+      Exit Function
+
+    ErrorHandler1:
+    Exit Function
+
+End Function
+
 '---LOADREPORTVALUES_PA---'
 Public Function LoadReportValues_PA(Subreport_PA_Name As String, ViewPrefix As String)
 'Set table values for ComboBox controls on PA view subform

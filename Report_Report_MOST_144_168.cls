@@ -36,8 +36,8 @@ Private Sub Report_Load()
     DummyBoolean = LoadReportValues_Lat("Subreport_LLAT", "LXL")
 
     'Load the record numbers
-    'DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
-    'DummyBoolean = LoadMaxRec("Form_MOST_144_168", "Text_MaxRecord")
+    DummyBoolean = LoadCurRecReport("Form_MOST_144_168", "Report_MOST_144_168","Text_CurrentRecord")
+    DummyBoolean = LoadMaxRecReport("Report_MOST_144_168", "Text_MaxRecord")
 
     'Clear the error catching
     On Error GoTo 0
@@ -79,8 +79,9 @@ Private Sub Report_Current()
     'Reload initial background color scheme for ComboBox Controls
     'LoadColor
 
-    'Reload the current record number
-    'DummyBoolean = LoadRecNav("Form_MOST_144_168", "Text_CurrentRecord")
+    'Load the record numbers
+    DummyBoolean = LoadCurRecReport("Form_MOST_144_168", "Report_MOST_144_168","Text_CurrentRecord")
+    DummyBoolean = LoadMaxRecReport("Report_MOST_144_168", "Text_MaxRecord")
 
     'Load the PA films and set subform focus automatically
     'Command_LOAD_PA_Click
