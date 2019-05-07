@@ -129,6 +129,22 @@ Resume Next
 
 End Sub
 
+'---COMMAND_QUIT_CLICK---'
+Private Sub Command_QUIT_Click()
+'Close the printing report
+
+  On Error GoTo QuitError
+
+  DoCmd.Close
+
+  On Error GoTo 0
+  Exit Sub
+
+QuitError:
+  Exit Sub
+
+End Sub
+
 '---LOADVIEW---'
 Private Sub LoadView()
 ' Show/Hide/Lock/Unlock the ComboBoxes for default view on all subforms
