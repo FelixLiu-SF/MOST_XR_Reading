@@ -49,53 +49,6 @@ ErrorHandler_Main1:
 
 End Sub
 
-'---REPORT_CURRENT---'
-Private Sub Report_Current()
-' Reload view for current record/participant ID
-
-    Dim DummyBoolean As Boolean
-
-    'Error catching
-    On Error GoTo ErrorHandler_Main1
-
-    'Set the ComboBox After Updates
-    'LoadAfterUpdate
-
-    'Reload default view for ComboBox Controls
-    'LoadView
-
-    'Load subform views
-    DummyBoolean = LoadReportVisitDates("Subreport_PA")
-    DummyBoolean = LoadReportValues_PA("Subreport_PA", "XR")
-    DummyBoolean = LoadReportValues_PA("Subreport_PA", "XL")
-    DummyBoolean = LoadReportVisitDates("Subreport_RLAT")
-    DummyBoolean = LoadReportValues_Lat("Subreport_RLAT", "LXR")
-    DummyBoolean = LoadReportVisitDates("Subreport_LLAT")
-    DummyBoolean = LoadReportValues_Lat("Subreport_LLAT", "LXL")
-
-    'Insert assigned reader into reader ComboBox
-    Insert_Report_Reader
-
-    'Reload initial background color scheme for ComboBox Controls
-    'LoadColor
-
-    'Load the record numbers
-    DummyBoolean = LoadCurRecReport("Form_MOST_144_168", "Report_MOST_144_168","Text_CurrentRecord")
-    DummyBoolean = LoadMaxRecReport("Report_MOST_144_168", "Text_MaxRecord")
-
-    'Load the PA films and set subform focus automatically
-    'Command_LOAD_PA_Click
-
-'Clear the error catching
-    On Error GoTo 0
-
-    Exit Sub
-
-ErrorHandler_Main1:
-    Resume Next
-
-End Sub
-
 '---INSERT_REPORT_READER---'
 Private Sub Insert_Report_Reader()
   'Insert the selected reader into the reader var
