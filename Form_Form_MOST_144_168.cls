@@ -154,7 +154,7 @@ Private Sub LoadView()
       AdjudicationComments = Me.Recordset.Fields("COMMENTS").Value
       AdjudicationComments = Replace(AdjudicationComments, "|", vbCrLf)
       Forms("Form_MOST_144_168").Controls("Text_COMMENTS").Value = AdjudicationComments
-      
+
     End If
 
     'Construct ComboBox Control Names from preloaded MOST variable root names
@@ -209,6 +209,9 @@ Private Sub LoadView()
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV12_PFKLG, DebugBoolean)
     DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_PFKLG, DebugBoolean)
     DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV12_PFKLG, DebugBoolean)
+
+    ' Check for missing RV3 or RV4 and hide/lock vars if N/A
+    DummyBoolean = MissingVisitView
 
     'Clear the error catching
     On Error GoTo 0

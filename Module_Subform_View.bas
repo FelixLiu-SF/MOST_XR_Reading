@@ -165,7 +165,7 @@ Public Function LoadVisitDates(Subform_Name As String)
 End Function
 
 '---MISSINGVISITVIEW---'
-Public Function MissingVisitView(Subform_Name As String)
+Public Function MissingVisitView()
 'Check RV3 and RV4 visit strings and hide variables if they are N/A
 
     Dim VisitStrs(2) As String
