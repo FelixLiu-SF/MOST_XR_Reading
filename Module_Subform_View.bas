@@ -163,3 +163,41 @@ Public Function LoadVisitDates(Subform_Name As String)
     Forms("Form_MOST_144_168").Controls(Subform_Name).Form.Controls("Text_RV4DATE").Value = DateStrs(3)
 
 End Function
+
+'---MISSINGVISITVIEW---'
+Public Function MissingVisitView(Subform_Name As String)
+'Check RV3 and RV4 visit strings and hide variables if they are N/A
+
+    Dim VisitStrs(2) As String
+    Dim DummyBoolean As Boolean
+
+    Dim ControlName_RV3_PA() As String
+    Dim ControlName_RV4_PA() As String
+    Dim ControlName_RV3_BLAT() As String
+    Dim ControlName_RV4_BLAT() As String
+
+    'Construct ComboBox Control Names from preloaded MOST variable root names
+    ControlName_RV3_PA = Concat_Prefix("Combo_", MOST_RV3_XB_Vars)
+    ControlName_RV4_PA = Concat_Prefix("Combo_", MOST_RV4_XB_Vars)
+    ControlName_RV3_BLAT = Concat_Prefix("Combo_", MOST_RV3_LXB_Vars)
+    ControlName_RV4_BLAT = Concat_Prefix("Combo_", MOST_RV4_LXB_Vars)
+
+    'Get RV3 and RV4 time points from current record
+    VisitStrs(0) = Forms("Form_MOST_144_168").Recordset.Fields("RV3TP").Value
+    VisitStrs(1) = Forms("Form_MOST_144_168").Recordset.Fields("RV4TP").Value
+
+    'Check if RV3 is N/A and hide vars
+    If Nz(VisitStrs(0),"") = "N/A" Then
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV3_PA, DebugBoolean)
+      DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV3_BLAT, DebugBoolean)
+      DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV3_BLAT, DebugBoolean)
+    End If
+
+    'Check if RV4 is N/A and hide vars
+    If Nz(VisitStrs(1),"") = "N/A" Then
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV4_PA, DebugBoolean)
+      DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV4_BLAT, DebugBoolean)
+      DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV4_BLAT, DebugBoolean)
+    End If
+
+End Function
