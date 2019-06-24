@@ -10,6 +10,9 @@ Global MOST_LATKnee_Array(2) As String
 Global MOST_PARoot_Array(19) As String
 Global MOST_LATRoot_Array(18) As String
 
+Global MOST_RV3_Array(1) As String
+Global MOST_RV4_Array(1) As String
+
 Global MOST_RV1234_XB_Vars() As String
 Global MOST_RV12_XB_Vars() As String
 Global MOST_RV34_XB_Vars() As String
@@ -48,6 +51,9 @@ Public Function MOST_Load_VariableNameArrays()
 
   MOST_RV34_Array(0) = "RV3"
   MOST_RV34_Array(1) = "RV4"
+
+  MOST_RV3_Array(0) = "RV3"
+  MOST_RV4_Array(0) = "RV4"
 
   MOST_PAKnee_Array(0) = "XR"
   MOST_PAKnee_Array(1) = "XL"
@@ -104,15 +110,15 @@ Public Function MOST_Load_VariableNameArrays()
   MOST_RV12_XB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
   MOST_RV34_XB_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
 
-  MOST_RV3_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array(2), MOST_PAKnee_Array, MOST_PARoot_Array)
-  MOST_RV4_XB_Vars = Concat_VisitVarSide(MOST_Visits_Array(3), MOST_PAKnee_Array, MOST_PARoot_Array)
+  MOST_RV3_XB_Vars = Concat_VisitVarSide(MOST_RV3_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
+  MOST_RV4_XB_Vars = Concat_VisitVarSide(MOST_RV4_Array, MOST_PAKnee_Array, MOST_PARoot_Array)
 
   MOST_RV1234_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
   MOST_RV12_LXB_Vars = Concat_VisitVarSide(MOST_RV12_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
   MOST_RV34_LXB_Vars = Concat_VisitVarSide(MOST_RV34_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
 
-  MOST_RV3_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array(2), MOST_LATKnee_Array, MOST_LATRoot_Array)
-  MOST_RV4_LXB_Vars = Concat_VisitVarSide(MOST_Visits_Array(3), MOST_LATKnee_Array, MOST_LATRoot_Array)
+  MOST_RV3_LXB_Vars = Concat_VisitVarSide(MOST_RV3_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
+  MOST_RV4_LXB_Vars = Concat_VisitVarSide(MOST_RV4_Array, MOST_LATKnee_Array, MOST_LATRoot_Array)
 
   MOST_RV12_LXB_PFKLG(0) = "RV1LXRPFKLG"
   MOST_RV12_LXB_PFKLG(1) = "RV1LXLPFKLG"
