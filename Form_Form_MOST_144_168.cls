@@ -1295,64 +1295,74 @@ Private Sub Command_RV3ZERO_Click()
   Dim FilterValue1 As String
   Dim FilterName2 As String
   Dim FilterValue2 As String
+  Dim VisitStrs(2) As String
 
   'Error catching
   On Error GoTo ErrorHandler_Main1
 
-  'Set flag for record keeping
-  Me.Recordset.Edit
-  Me.Recordset.Fields("FLAG_ZERO_RV3").Value = True
-  Me.Recordset.Update
+  'Get RV3 and RV4 time points from current record
+  VisitStrs(0) = Forms("Form_MOST_144_168").Recordset.Fields("RV3TP").Value
+  VisitStrs(1) = Forms("Form_MOST_144_168").Recordset.Fields("RV4TP").Value
 
-  'Set filter var names
-  FilterName1 = "READINGID"
-  FilterName2 = "RVNUM"
+  'Check if RV3 is NOT N/A
+  If Nz(VisitStrs(0), "") <> "N/A" Then
 
-  'Get READINGID from current record
-  FilterValue1 = Forms("Form_MOST_144_168").Recordset.Fields("READINGID").Value
+    'Set flag for record keeping
+    Me.Recordset.Edit
+    Me.Recordset.Fields("FLAG_ZERO_RV3").Value = True
+    Me.Recordset.Update
 
-  'Set constant filter values
-  FilterValue2 = "3"
-  TableName = "tblScores"
+    'Set filter var names
+    FilterName1 = "READINGID"
+    FilterName2 = "RVNUM"
 
-  'Zero the right knee PA view vars
-  Upper = UBound(MOST_RPAKnee_Vars,1) - 1
-  Index = 0
-  For Index = 0 To Upper
-    VarName = MOST_RPAKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
-  Next
+    'Get READINGID from current record
+    FilterValue1 = Forms("Form_MOST_144_168").Recordset.Fields("READINGID").Value
 
-  'Zero the left knee PA view vars
-  Upper = UBound(MOST_LPAKnee_Vars,1) - 1
-  Index = 0
-  For Index = 0 To Upper
-    VarName = MOST_LPAKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
-  Next
+    'Set constant filter values
+    FilterValue2 = "3"
+    TableName = "tblScores"
 
-  'Zero the right knee lateral view vars
-  Upper = UBound(MOST_RLATKnee_Vars,1) - 1
-  Index = 0
-  For Index = 0 To Upper
-    VarName = MOST_RLATKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
-  Next
+    'Zero the right knee PA view vars
+    Upper = UBound(MOST_RPAKnee_Vars,1) - 1
+    Index = 0
+    For Index = 0 To Upper
+      VarName = MOST_RPAKnee_Vars(Index)
+      DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    Next
 
-  'Zero the left knee lateral view vars
-  Upper = UBound(MOST_LLATKnee_Vars,1) - 1
-  Index = 0
-  For Index = 0 To Upper
-    VarName = MOST_LLATKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
-  Next
+    'Zero the left knee PA view vars
+    Upper = UBound(MOST_LPAKnee_Vars,1) - 1
+    Index = 0
+    For Index = 0 To Upper
+      VarName = MOST_LPAKnee_Vars(Index)
+      DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    Next
 
-  'Reload subform views
-  DummyBoolean = LoadValues_PA("XR")
-  DummyBoolean = LoadValues_PA("XL")
-  DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
-  DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
-  LoadColor
+    'Zero the right knee lateral view vars
+    Upper = UBound(MOST_RLATKnee_Vars,1) - 1
+    Index = 0
+    For Index = 0 To Upper
+      VarName = MOST_RLATKnee_Vars(Index)
+      DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    Next
+
+    'Zero the left knee lateral view vars
+    Upper = UBound(MOST_LLATKnee_Vars,1) - 1
+    Index = 0
+    For Index = 0 To Upper
+      VarName = MOST_LLATKnee_Vars(Index)
+      DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    Next
+
+    'Reload subform views
+    DummyBoolean = LoadValues_PA("XR")
+    DummyBoolean = LoadValues_PA("XL")
+    DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
+    DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
+    LoadColor
+
+  End If
 
   'Exit the Sub
   On Error GoTo 0
@@ -1375,64 +1385,74 @@ Private Sub Command_RV4ZERO_Click()
   Dim FilterValue1 As String
   Dim FilterName2 As String
   Dim FilterValue2 As String
+  Dim VisitStrs(2) As String
 
   'Error catching
   On Error GoTo ErrorHandler_Main1
 
-  'Set flag for record keeping
-  Me.Recordset.Edit
-  Me.Recordset.Fields("FLAG_ZERO_RV4").Value = True
-  Me.Recordset.Update
+  'Get RV3 and RV4 time points from current record
+  VisitStrs(0) = Forms("Form_MOST_144_168").Recordset.Fields("RV3TP").Value
+  VisitStrs(1) = Forms("Form_MOST_144_168").Recordset.Fields("RV4TP").Value
 
-  'Set filter var names
-  FilterName1 = "READINGID"
-  FilterName2 = "RVNUM"
+  'Check if RV4 is NOT N/A
+  If Nz(VisitStrs(1), "") <> "N/A" Then
 
-  'Get READINGID from current record
-  FilterValue1 = Forms("Form_MOST_144_168").Recordset.Fields("READINGID").Value
+    'Set flag for record keeping
+    Me.Recordset.Edit
+    Me.Recordset.Fields("FLAG_ZERO_RV4").Value = True
+    Me.Recordset.Update
 
-  'Set constant filter values
-  FilterValue2 = "4"
-  TableName = "tblScores"
+    'Set filter var names
+    FilterName1 = "READINGID"
+    FilterName2 = "RVNUM"
 
-  'Zero the right knee PA view vars
-  Upper = UBound(MOST_RPAKnee_Vars,1) - 1
-  Index = 0
-  For Index = 0 To Upper
-    VarName = MOST_RPAKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
-  Next
+    'Get READINGID from current record
+    FilterValue1 = Forms("Form_MOST_144_168").Recordset.Fields("READINGID").Value
 
-  'Zero the left knee PA view vars
-  Upper = UBound(MOST_LPAKnee_Vars,1) - 1
-  Index = 0
-  For Index = 0 To Upper
-    VarName = MOST_LPAKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
-  Next
+    'Set constant filter values
+    FilterValue2 = "4"
+    TableName = "tblScores"
 
-  'Zero the right knee lateral view vars
-  Upper = UBound(MOST_RLATKnee_Vars,1) - 1
-  Index = 0
-  For Index = 0 To Upper
-    VarName = MOST_RLATKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
-  Next
+    'Zero the right knee PA view vars
+    Upper = UBound(MOST_RPAKnee_Vars,1) - 1
+    Index = 0
+    For Index = 0 To Upper
+      VarName = MOST_RPAKnee_Vars(Index)
+      DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    Next
 
-  'Zero the left knee lateral view vars
-  Upper = UBound(MOST_LLATKnee_Vars,1) - 1
-  Index = 0
-  For Index = 0 To Upper
-    VarName = MOST_LLATKnee_Vars(Index)
-    DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
-  Next
+    'Zero the left knee PA view vars
+    Upper = UBound(MOST_LPAKnee_Vars,1) - 1
+    Index = 0
+    For Index = 0 To Upper
+      VarName = MOST_LPAKnee_Vars(Index)
+      DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    Next
 
-  'Reload subform views
-  DummyBoolean = LoadValues_PA("XR")
-  DummyBoolean = LoadValues_PA("XL")
-  DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
-  DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
-  LoadColor
+    'Zero the right knee lateral view vars
+    Upper = UBound(MOST_RLATKnee_Vars,1) - 1
+    Index = 0
+    For Index = 0 To Upper
+      VarName = MOST_RLATKnee_Vars(Index)
+      DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    Next
+
+    'Zero the left knee lateral view vars
+    Upper = UBound(MOST_LLATKnee_Vars,1) - 1
+    Index = 0
+    For Index = 0 To Upper
+      VarName = MOST_LLATKnee_Vars(Index)
+      DummyBoolean = ZeroTableValue(VarName, TableName, FilterName1, FilterValue1, FilterName2, FilterValue2)
+    Next
+
+    'Reload subform views
+    DummyBoolean = LoadValues_PA("XR")
+    DummyBoolean = LoadValues_PA("XL")
+    DummyBoolean = LoadValues_Lat("Subform_RLAT", "LXR")
+    DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
+    LoadColor
+
+  End If
 
   'Exit the Sub
   On Error GoTo 0
