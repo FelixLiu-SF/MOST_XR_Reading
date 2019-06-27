@@ -1490,8 +1490,8 @@ Private Sub Command_RV3NC_Click()
   VisitStrs(2) = Forms("Form_MOST_144_168").Recordset.Fields("RV3TP").Value
   VisitStrs(3) = Forms("Form_MOST_144_168").Recordset.Fields("RV4TP").Value
 
-  'Check if RV2 & RV3 is NOT N/A
-  If Nz(VisitStrs(1), "") <> "N/A" And Nz(VisitStrs(2),"") <> "N/A" Then
+  'Check if RV3 is NOT N/A
+  If Nz(VisitStrs(2),"") <> "N/A" Then
 
     'Set flag for record keeping
     Me.Recordset.Edit
@@ -1508,9 +1508,21 @@ Private Sub Command_RV3NC_Click()
     FilterValue1 = Forms("Form_MOST_144_168").Recordset.Fields("READINGID").Value
     FilterValue3 = FilterValue1
 
-    'Set constant filter values
-    FilterValue2 = "2"
-    FilterValue4 = "3"
+    'Check which visit to propagate from
+    If Nz(VisitStrs(1), "") <> "N/A" Then
+
+      'Set constant filter values
+      FilterValue2 = "2"
+      FilterValue4 = "3"
+
+    Elseif Nz(VisitStrs(0), "") <> "N/A" Then
+
+      'Set constant filter values
+      FilterValue2 = "1"
+      FilterValue4 = "3"
+
+    End If
+
     TableName = "tblScores"
 
     'Copy the right knee PA view vars
@@ -1590,8 +1602,8 @@ Private Sub Command_RV4NC_Click()
   VisitStrs(2) = Forms("Form_MOST_144_168").Recordset.Fields("RV3TP").Value
   VisitStrs(3) = Forms("Form_MOST_144_168").Recordset.Fields("RV4TP").Value
 
-  'Check if RV3 & RV4 is NOT N/A
-  If Nz(VisitStrs(2), "") <> "N/A" And Nz(VisitStrs(3),"") <> "N/A" Then
+  'Check if RV4 is NOT N/A
+  If Nz(VisitStrs(3),"") <> "N/A" Then
 
     'Set flag for record keeping
     Me.Recordset.Edit
@@ -1608,9 +1620,27 @@ Private Sub Command_RV4NC_Click()
     FilterValue1 = Forms("Form_MOST_144_168").Recordset.Fields("READINGID").Value
     FilterValue3 = FilterValue1
 
-    'Set constant filter values
-    FilterValue2 = "3"
-    FilterValue4 = "4"
+    'Check which visit to propagate from
+    If Nz(VisitStrs(2), "") <> "N/A" Then
+
+      'Set constant filter values
+      FilterValue2 = "3"
+      FilterValue4 = "4"
+
+    Elseif Nz(VisitStrs(1), "") <> "N/A" Then
+
+      'Set constant filter values
+      FilterValue2 = "2"
+      FilterValue4 = "4"
+
+    Elseif Nz(VisitStrs(0), "") <> "N/A" Then
+
+      'Set constant filter values
+      FilterValue2 = "1"
+      FilterValue4 = "4"
+
+    End If
+
     TableName = "tblScores"
 
     'Copy the right knee PA view vars
@@ -1652,7 +1682,7 @@ Private Sub Command_RV4NC_Click()
     DummyBoolean = LoadValues_Lat("Subform_LLAT", "LXL")
     LoadColor
 
-  End If 
+  End If
 
   'Exit the Sub
   On Error GoTo 0
