@@ -324,6 +324,11 @@ End Function
 '---MOST_VALIDATE_YES---'
 Public Function MOST_Validate_Yes(VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
 
+  Dim ValidationResultInt As Integer
+  Dim ValidationResultStr As String
+  Dim ValidationKeyInt As String
+  Dim ValidationKeyStr As String
+
   ValidationKeyInt = "RV" & VisitStrIn & SideView & "Int"
   ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
