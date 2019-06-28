@@ -208,8 +208,13 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
   Dim NewCohortBoolean As Boolean
   Dim ValidationResponse As Integer
   Dim DummyBoolean As Boolean
+  Dim VisitStrs(2) As String
 
   ValidationResponse = vbYes
+
+  'Get RV3 and RV4 time points from current record
+  VisitStrs(0) = Forms("Form_MOST_144_168").Recordset.Fields("RV3TP").Value
+  VisitStrs(1) = Forms("Form_MOST_144_168").Recordset.Fields("RV4TP").Value
 
   'Check if existing or new cohort
   NewCohortBoolean = IsMOSTNewCohortID(ReadingIDIn)
@@ -217,39 +222,95 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
   If NewCohortBoolean = True Then
     'New cohort
 
-    'Validate right knee PA
-    DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "3", "XR", ValidationResult)
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XR", ValidationResult)
+    'Check if RV3 is not missing
+    If Nz(VisitStrs(0), "") <> "N/A" Then
 
-    'Validate left knee PA
-    DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "3", "XL", ValidationResult)
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XL", ValidationResult)
+      'Validate right knee PA
+      DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "3", "XR", ValidationResult)
+      'Validate left knee PA
+      DummyBoolean = MOST_Validate_PA_2N_Invalid(ReadingIDIn, "3", "XL", ValidationResult)
+      'Validate right knee lateral
+      DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXR", ValidationResult)
+      'Validate left knee lateral
+      DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXL", ValidationResult)
 
-    'Validate right knee lateral
-    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXR", ValidationResult)
-    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXR", ValidationResult)
+    Else
 
-    'Validate left knee lateral
-    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXL", ValidationResult)
-    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXL", ValidationResult)
+      'V3 is automatically valid if no visit
+      DummyBoolean = MOST_Validate_Yes("3","XR",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("3","XL",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("3","LXR",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("3","LXL",ValidationResult)
+
+    End If
+
+    'Check if RV4 is not missing
+    If Nz(VisitStrs(1), "") <> "N/A" Then
+
+      'Validate right knee PA
+      DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XR", ValidationResult)
+      'Validate left knee PA
+      DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XL", ValidationResult)
+      'Validate right knee lateral
+      DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXR", ValidationResult)
+      'Validate left knee lateral
+      DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXL", ValidationResult)
+
+    Else
+
+      'V4 is automatically valid if no visit
+      DummyBoolean = MOST_Validate_Yes("4","XR",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("4","XL",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("4","LXR",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("4","LXL",ValidationResult)
+
+    End If
 
   Else 'Existing cohort
 
-    'Validate right knee PA
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "3", "XR", ValidationResult)
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XR", ValidationResult)
+    'Check if RV3 is not missing
+    If Nz(VisitStrs(0), "") <> "N/A" Then
 
-    'Validate left knee PA
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "3", "XL", ValidationResult)
-    DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XL", ValidationResult)
+      'Validate right knee PA
+      DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "3", "XR", ValidationResult)
+      'Validate left knee PA
+      DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "3", "XL", ValidationResult)
+      'Validate right knee lateral
+      DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXR", ValidationResult)
+      'Validate left knee lateral
+      DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXL", ValidationResult)
 
-    'Validate right knee lateral
-    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXR", ValidationResult)
-    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXR", ValidationResult)
+    Else
 
-    'Validate left knee lateral
-    DummyBoolean = MOST_Validate_LAT_2N_Invalid(ReadingIDIn, "3", "LXL", ValidationResult)
-    DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXL", ValidationResult)
+      'V3 is automatically valid if no visit
+      DummyBoolean = MOST_Validate_Yes("3","XR",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("3","XL",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("3","LXR",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("3","LXL",ValidationResult)
+
+    End If
+
+    'Check if RV4 is not missing
+    If Nz(VisitStrs(1), "") <> "N/A" Then
+
+      'Validate right knee PA
+      DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XR", ValidationResult)
+      'Validate left knee PA
+      DummyBoolean = MOST_Validate_PA_Standard(ReadingIDIn, "4", "XL", ValidationResult)
+      'Validate right knee lateral
+      DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXR", ValidationResult)
+      'Validate left knee lateral
+      DummyBoolean = MOST_Validate_LAT_Standard(ReadingIDIn, "4", "LXL", ValidationResult)
+
+    Else
+
+      'V4 is automatically valid if no visit
+      DummyBoolean = MOST_Validate_Yes("4","XR",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("4","XL",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("4","LXR",ValidationResult)
+      DummyBoolean = MOST_Validate_Yes("4","LXL",ValidationResult)
+
+    End If
 
   End If
 
@@ -257,6 +318,22 @@ Public Function MOST_Validate_By_ID(ReadingIDIn As String) As Integer
   ValidationResponse = MOST_Validate_MsgBox(ValidationResult)
 
   MOST_Validate_By_ID = ValidationResponse
+
+End Function
+
+'---MOST_VALIDATE_YES---'
+Public Function MOST_Validate_Yes(VisitStrIn As String, SideView As String, ByRef ValidationResult As Collection)
+
+  ValidationKeyInt = "RV" & VisitStrIn & SideView & "Int"
+  ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
+
+  'Initialize validation result variables as automatically valid
+  ValidationResultInt = 1
+  ValidationResultStr = ""
+
+  'Return checks as item and keys in referenced collection object
+  ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
+  ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
 
 End Function
 
@@ -308,7 +385,7 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
   ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
   'Initialize validation result variables
-  ValidationResultInt = 0
+  ValidationResultInt = 1
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
@@ -451,11 +528,11 @@ Public Function MOST_Validate_PA_Standard(ReadingIDIn As String, VisitStrIn As S
 
     End If 'empty
 
-    'Return checks as item and keys in referenced collection object
-    ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
-    ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
-
   End If 'combo locked
+
+  'Return checks as item and keys in referenced collection object
+  ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
+  ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
 
 End Function
 
@@ -507,7 +584,7 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
   ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
   'Initialize validation result variables
-  ValidationResultInt = 0
+  ValidationResultInt = 1
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
@@ -644,11 +721,11 @@ Public Function MOST_Validate_PA_2N_Invalid(ReadingIDIn As String, VisitStrIn As
 
     End If 'empty
 
-    'Return checks as item and keys in referenced collection object
-    ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
-    ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
-
   End If 'combo locked
+
+  'Return checks as item and keys in referenced collection object
+  ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
+  ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
 
 End Function
 
@@ -705,7 +782,7 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
   ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
   'Initialize validation result variables
-  ValidationResultInt = 0
+  ValidationResultInt = 1
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
@@ -850,11 +927,11 @@ Public Function MOST_Validate_LAT_Standard(ReadingIDIn As String, VisitStrIn As 
 
     End If 'empty
 
-    'Return checks as item and keys in referenced collection object
-    ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
-    ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
-
   End If 'combo locked
+
+  'Return checks as item and keys in referenced collection object
+  ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
+  ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
 
 End Function
 
@@ -911,7 +988,7 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
   ValidationKeyStr = "RV" & VisitStrIn & SideView & "Str"
 
   'Initialize validation result variables
-  ValidationResultInt = 0
+  ValidationResultInt = 1
   ValidationResultStr = ""
 
   'Check if combobox is visible & unlocked
@@ -1051,11 +1128,11 @@ Public Function MOST_Validate_LAT_2N_Invalid(ReadingIDIn As String, VisitStrIn A
 
     End If 'empty
 
-    'Return checks as item and keys in referenced collection object
-    ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
-    ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
-
   End If 'combo locked
+
+  'Return checks as item and keys in referenced collection object
+  ValidationResult.Add item := ValidationResultInt, key := ValidationKeyInt
+  ValidationResult.Add item := ValidationResultStr, key := ValidationKeyStr
 
 End Function
 
