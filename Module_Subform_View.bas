@@ -1,3 +1,4 @@
+Attribute VB_Name = "Module_Subform_View"
 Option Compare Database
 Option Explicit
 
@@ -193,19 +194,19 @@ Public Function MissingVisitView()
       DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV3_BLAT, True)
       DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV3_BLAT, True)
 
-      DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV3_PA, True)
+      DummyBoolean = HideVars("Form_MOST_144_168", "Subform_PA", ControlName_RV3_PA, True)
       DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV3_BLAT, True)
       DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV3_BLAT, True)
     End If
 
     'Check if RV4 is N/A and hide vars
     If Nz(VisitStrs(1), "") = "N/A" Then
-    
-      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV4_PA, True)
-      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV4_BLAT, True)
-      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV4_BLAT, True)
 
-      DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV4_PA, True)
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_PA", ControlName_RV4_PA, True)
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV4_BLAT, True)
+      DummyBoolean = LockVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV4_BLAT, True)
+
+      DummyBoolean = HideVars("Form_MOST_144_168", "Subform_PA", ControlName_RV4_PA, True)
       DummyBoolean = HideVars("Form_MOST_144_168", "Subform_LLAT", ControlName_RV4_BLAT, True)
       DummyBoolean = HideVars("Form_MOST_144_168", "Subform_RLAT", ControlName_RV4_BLAT, True)
     End If
